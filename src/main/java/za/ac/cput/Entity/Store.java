@@ -3,7 +3,7 @@ package za.ac.cput.Entity;
 /**
  * Author: GAYNOR JANTJIES 213069555
  * POJO Store.java
- *  Store file to be implemented
+ *  Store Entity file to be implemented
  * Created: 9/04/2022
  * */
 
