@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class StoreFactoryTest {
 
     @Test
-    void buildStore() {
+    void buildRestaurant() {
 
         Store store = new Store.Builder()
                 .setStoreId("012")

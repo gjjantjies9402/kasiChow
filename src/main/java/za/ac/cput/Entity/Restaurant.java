@@ -54,11 +54,11 @@ public class Restaurant {
             this.restaurantId = restaurantId;
             return this;
         }
-        public Restaurant.Builder setRestaurantName(String supermarketName) {
+        public Restaurant.Builder setRestaurantName(String restaurantName) {
             this.restaurantName = restaurantName;
             return this;
         }
-        public Restaurant.Builder setRestaurantLocation(String supermarketLocation) {
+        public Restaurant.Builder setRestaurantLocation(String restaurantLocation) {
             this.restaurantLocation = restaurantLocation;
             return this;
         }
