@@ -8,35 +8,35 @@ package za.ac.cput.Entity;
 
 public class Supermarket {
 
-    private int supermarketId;
-    private String supermarketName;
-    private String supermarketLocation;
+    private int marketId;
+    private String marketName;
+    private String marketLocation;
 
     private Supermarket(Supermarket.Builder sm){
 
-        this.supermarketId = sm.supermarketId;
-        this.supermarketName = sm.supermarketName;
-        this.supermarketLocation = sm.supermarketLocation;
+        this.marketId = sm.marketId;
+        this.marketName = sm.marketName;
+        this.marketLocation = sm.marketLocation;
     }
 
-    public int getSupermarketId() {
-        return supermarketId;
+    public int getMarketId() {
+        return marketId;
     }
 
-    public String getSupermarketName() {
-        return supermarketName;
+    public String getMarketName() {
+        return marketName;
     }
 
-    public String getSupermarketLocation() {
-        return supermarketLocation;
+    public String getMarketLocation() {
+        return marketLocation;
     }
 
     @Override
     public String toString() {
         return "Builder{" +
-                "supermarketId=" + supermarketId +
-                ", supermarketName='" + supermarketName + '\'' +
-                ", supermarketLocation='" + supermarketLocation + '\'' +
+                "marketId=" + marketId +
+                ", marketName='" + marketName + '\'' +
+                ", marketLocation='" + marketLocation + '\'' +
                 '}';
     }
 
@@ -44,30 +44,30 @@ public class Supermarket {
     public static class Builder {
 
 
-        private int supermarketId;
-        private String supermarketName;
-        private String supermarketLocation;
+        private int marketId;
+        private String marketName;
+        private String marketLocation;
 
 
 
-        public Supermarket.Builder setSupermarketId(int supermarketId) {
-            this.supermarketId = supermarketId;
+        public Supermarket.Builder setMarketId(int marketId) {
+            this.marketId = marketId;
             return this;
         }
-        public Supermarket.Builder setSupermarketName(String supermarketName) {
-            this.supermarketName = supermarketName;
+        public Supermarket.Builder setMarketName(String marketName) {
+            this.marketName = marketName;
             return this;
         }
-        public Supermarket.Builder setSupermarketLocation(String supermarketLocation) {
-            this.supermarketLocation = supermarketLocation;
+        public Supermarket.Builder setMarketLocation(String marketLocation) {
+            this.marketLocation = marketLocation;
             return this;
         }
 
 
         public Supermarket.Builder copy(Supermarket smk){
-            this.supermarketId = smk.supermarketId;
-            this.supermarketName = smk.supermarketName;
-            this.supermarketLocation = smk.supermarketLocation;
+            this.marketId = smk.marketId;
+            this.marketName = smk.marketName;
+            this.marketLocation = smk.marketLocation;
 
             return this;
         }

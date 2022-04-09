@@ -13,7 +13,7 @@ public class Store {
 
 
     private int storeId;
-    private int supermarketId;
+    private int restaurantId;
     private int marketId;
 
 
@@ -21,7 +21,7 @@ public class Store {
 
     private Store(Builder s) {
         this.storeId = s.storeId;
-        this.supermarketId = s.supermarketId;
+        this.restaurantId = s.restaurantId;
         this.marketId = s.marketId;
     }
 
@@ -29,8 +29,8 @@ public class Store {
         return storeId;
     }
 
-    public int getSupermarketId() {
-        return supermarketId;
+    public int getRestaurantId() {
+        return restaurantId;
     }
 
     public int getMarketId() {
@@ -41,7 +41,7 @@ public class Store {
     public java.lang.String toString() {
         return "Store{" +
                 "storeId='" + storeId + '\'' +
-                ", supermarketId=" + supermarketId +
+                ", restaurantId=" + restaurantId +
                 ", marketId=" + marketId +
                 '}';
     }
@@ -49,7 +49,7 @@ public class Store {
     public static class Builder {
 
         private int storeId;
-        private int supermarketId;
+        private int restaurantId;
         private int marketId;
 
         public Builder setStoreId(int storeId) {
@@ -57,8 +57,8 @@ public class Store {
             return this;
         }
 
-        public Builder setSupermarketId(int supermarketId) {
-            this.supermarketId = supermarketId;
+        public Builder setRestaurantId(int restaurantId) {
+            this.restaurantId = restaurantId;
             return this;
         }
         public Builder setMarketId(int marketId) {
@@ -69,7 +69,7 @@ public class Store {
 
         public Builder copy(Store st) {
             this.storeId = st.storeId;
-            this.supermarketId = st.supermarketId;
+            this.restaurantId = st.restaurantId;
             this.marketId = st.marketId;
 
             return this;
