@@ -7,6 +7,6 @@
  * 10 Aprile 2022**/
 package za.ac.cput.Entity;
 
-public class Registration {
+public class registration {
 }
 
