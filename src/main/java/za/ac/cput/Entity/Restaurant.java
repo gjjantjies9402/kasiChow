@@ -1,7 +1,7 @@
 package za.ac.cput.Entity;
 /**
  * Author: GAYNOR JANTJIES 213069555
- * POJO Supermarket.java
+ * POJO Restaurant.java
  *  Restaurant Entity file to be implemented
  * Created: 9/04/2022
  * */
