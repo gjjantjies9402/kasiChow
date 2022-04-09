@@ -2,7 +2,7 @@ package za.ac.cput.Entity;
 /**
  * Author: GAYNOR JANTJIES 213069555
  * POJO Supermarket.java
- *  Supermarket Entity file to be implemented
+ *  Restaurant Entity file to be implemented
  * Created: 9/04/2022
  * */
 
