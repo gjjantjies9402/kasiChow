@@ -8,7 +8,7 @@ package za.ac.cput.Entity;
 
 public class Restaurant {
 
-    private int restaurantId;
+    private String restaurantId;
     private String restaurantName;
     private String restaurantLocation;
 
@@ -19,7 +19,7 @@ public class Restaurant {
         this.restaurantLocation = rs.restaurantLocation;
     }
 
-    public int getRestaurantId() {
+    public String getRestaurantId() {
         return restaurantId;
     }
 
@@ -44,13 +44,13 @@ public class Restaurant {
     public static class Builder {
 
 
-        private int restaurantId;
+        private String restaurantId;
         private String restaurantName;
         private String restaurantLocation;
 
 
 
-        public Restaurant.Builder setRestaurantId(int restaurantId) {
+        public Restaurant.Builder setRestaurantId(String restaurantId) {
             this.restaurantId = restaurantId;
             return this;
         }
