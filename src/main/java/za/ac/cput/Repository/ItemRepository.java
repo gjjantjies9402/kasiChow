@@ -1,6 +1,4 @@
 package za.ac.cput.Repository;
-
-
 import za.ac.cput.Entity.Item;
 import za.ac.cput.Repository.Interface.iItemRepository;
 
@@ -20,30 +18,45 @@ public class ItemRepository implements iItemRepository {
             repository = new ItemRepository();
     return repository;
 }
-
-
-
-
     @Override
     public Item create(Item item) {
-        return null;
+        boolean created = itemDB.add(item);
+        if(created)
+            return item;
+        else
+            return null;
     }
 
     @Override
     public Item read(String s) {
+        for (Item item : itemDB) {
+            if (item.getItemID().equals(item))
+                return item;
+        }
         return null;
     }
 
     @Override
     public Item update(Item item) {
+        Item updateItem = read(item.getItemID());
+
+        if (updateItem != null){
+            itemDB.remove(updateItem);
+            itemDB.add(item);
+            return item;
+        }
         return null;
     }
 
     @Override
     public boolean delete(String s) {
-        return false;
-    }
+        Item itemDeleted = read(s);
 
+        if (itemDeleted == null)
+            return false;
+        itemDB.remove(itemDeleted);
+        return true;
+    }
     @Override
     public Set<Item> getAll() {
         return null;
