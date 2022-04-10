@@ -1,3 +1,9 @@
+/**
+ * Mandisa Msongelwa
+ * 217149073
+ * Group 28
+ */
+
 package za.ac.cput.Entity;
 
 public class orderItem {
