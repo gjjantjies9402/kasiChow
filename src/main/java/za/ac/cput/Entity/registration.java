@@ -81,7 +81,6 @@ public class registration {
     //Tostring
 
 
-    @Override
     public String toString() {
         return "registration{" +
                 ", firstName='" + firstName + '\'' +
