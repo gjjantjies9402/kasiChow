@@ -4,6 +4,8 @@
 # Default ignored files
 
 /workspace.xml
+
+
 HELP.md
 target/
 pom.xml.tag
@@ -17,4 +19,9 @@ buildNumber.properties
 #https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wraper/maven-wrapper.jar
 
-/.idea/
+###Intellij IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
