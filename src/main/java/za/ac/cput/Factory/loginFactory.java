@@ -15,14 +15,14 @@ import za.ac.cput.Entity.login;
 import za.ac.cput.util.Auth;
 
 public class loginFactory {
-    public static login createLogin(String username, String password){
+    public static login createLogin(String id, String username, String password){
 
         if (Auth.isNullorEmpty(username) ||Auth.isNullorEmpty(password) )
             return null;
 
-        return new login.Builder().setUsername(username)
+        return new login.Builder().setId(id)
+                .setUsername(username)
                 .setPassword(password)
                 .build();
-
     }
 }
