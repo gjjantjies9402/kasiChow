@@ -6,7 +6,7 @@ Date: 09 April 2022*/
 package za.ac.cput.Repository;
 
 import za.ac.cput.Entity.Customer;
-import za.ac.cput.Interface.CustomerInterface;
+import za.ac.cput.Repository.Interface.CustomerInterface;
 
 import java.util.HashSet;
 import java.util.Set;
