@@ -20,7 +20,6 @@ public class Contact {
 
     }
 
-    @Override
     public String toString() {
         return "Contact{" +
                 "Contact ID ='" + contID + '\'' +
