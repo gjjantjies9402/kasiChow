@@ -12,6 +12,7 @@ package za.ac.cput.Entity;
 
 public class staff {
     //Declaration of the attributes
+
     private String adminName;
     private String deliveryDriver;
     private String assistant ;
@@ -52,6 +53,7 @@ public class staff {
 
     //Builder starts
     public static class Builder{
+
         private String adminName;
         private String deliveryDriver;
         private String assistant ;

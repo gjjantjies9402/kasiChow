@@ -11,12 +11,22 @@
 package za.ac.cput.Entity;
 
 public class login {
+    private String id;
     private String username;
     private String password;
 
     private login(Builder builder){
+        this.id = builder.id;
         this.username = builder.username;
         this.password = builder.password;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getUsername() {
@@ -38,15 +48,22 @@ public class login {
     @Override
     public String toString() {
         return "login{" +
-                "username='" + username + '\'' +
+                "id='" + id + '\'' +
+                ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }
 
 
     public static class Builder{
+        private String id;
         private String username;
         private String password;
+
+        public Builder setId(String id) {
+            this.id = id;
+            return this;
+        }
 
         public Builder setUsername(String username) {
             this.username = username;
@@ -59,6 +76,7 @@ public class login {
         }
 
         public Builder copy(login login){
+            this.id = login.id;
             this.username = login.username;
             this.password = login.password;
             return this;
