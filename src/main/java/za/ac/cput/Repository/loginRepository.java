@@ -1,4 +1,6 @@
 package za.ac.cput.Repository;
 
-public class loginRepository {
+import za.ac.cput.Interface.loginInterface;
+
+public class loginRepository implements loginInterface {
 }
