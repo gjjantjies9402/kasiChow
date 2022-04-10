@@ -1,9 +1,13 @@
 package za.ac.cput.Repository;
 
+import za.ac.cput.Entity.Store;
 import za.ac.cput.Entity.login;
+import za.ac.cput.Repository.Interface.IStoreRepository;
 import za.ac.cput.Repository.Interface.loginInterface;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class loginRepository implements loginInterface {
@@ -63,5 +67,65 @@ public class loginRepository implements loginInterface {
     @Override
     public Set<login> getAll() {
         return loginDB;
+    }
+
+    public static class StoreRepository implements IStoreRepository {
+
+        private static StoreRepository storeRepository = null;
+        private List<Store> storeRepositoryDB = null;
+
+        private StoreRepository(){
+            storeRepositoryDB = new ArrayList<Store>();
+        }
+
+        public static StoreRepository getStoreRepository(){
+
+            if (storeRepository == null)
+                storeRepository = new StoreRepository();
+
+            return storeRepository;
+        }
+    @Override
+        public Store create(Store store) {
+            boolean created = storeRepositoryDB.add(store);
+            if(created)
+                return store;
+            else
+                return null;
+        }
+
+    @Override
+        public Store read(String storeId) {
+            for (Store sto:storeRepositoryDB) {
+                if (sto.getStoreId() == storeId)
+                    return sto;
+            }
+            return null;
+        }
+
+    @Override
+        public Store update(Store s) {
+            Store oldStore = read(s.getStoreId());
+            if (oldStore != null){
+                storeRepositoryDB.remove(oldStore);
+                storeRepositoryDB.add(s);
+                return s;
+            }
+            return null;
+        }
+
+    @Override
+        public boolean delete(String storeId) {
+            Store delStore = read(storeId);
+            if (delStore == null)
+                return false;
+            storeRepositoryDB.remove(delStore);
+            return true;
+        }
+
+        @Override
+        public List<Store> getAll() {
+            return null;
+        }
     }
 }

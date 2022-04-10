@@ -65,4 +65,7 @@ public class registrationRepository implements registrationInterface {
     public Set<registration> getAll() {
         return registrationDB;
     }
+
+    public static class RestaurantRepository {
+    }
 }
