@@ -6,7 +6,7 @@ Date: 09 April 2022*/
 package za.ac.cput.Repository;
 
 import za.ac.cput.Entity.DeliveryAddress;
-import za.ac.cput.Interface.DeliveryAddressInterface;
+import za.ac.cput.Repository.Interface.DeliveryAddressInterface;
 
 import java.util.HashSet;
 import java.util.Set;
