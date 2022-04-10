@@ -12,9 +12,9 @@ package za.ac.cput.Entity;
 public class Store {
 
 
-    private int storeId;
-    private int restaurantId;
-    private int marketId;
+    private String storeId;
+    private String restaurantId;
+    private String marketId;
 
 
 //    protected Store(){}
@@ -25,15 +25,15 @@ public class Store {
         this.marketId = s.marketId;
     }
 
-    public int getStoreId() {
+    public String getStoreId() {
         return storeId;
     }
 
-    public int getRestaurantId() {
+    public String getRestaurantId() {
         return restaurantId;
     }
 
-    public int getMarketId() {
+    public String getMarketId() {
         return marketId;
     }
 
@@ -48,20 +48,20 @@ public class Store {
 
     public static class Builder {
 
-        private int storeId;
-        private int restaurantId;
-        private int marketId;
+        private String storeId;
+        private String restaurantId;
+        private String marketId;
 
-        public Builder setStoreId(int storeId) {
+        public Builder setStoreId(String storeId) {
             this.storeId = storeId;
             return this;
         }
 
-        public Builder setRestaurantId(int restaurantId) {
+        public Builder setRestaurantId(String restaurantId) {
             this.restaurantId = restaurantId;
             return this;
         }
-        public Builder setMarketId(int marketId) {
+        public Builder setMarketId(String marketId) {
             this.marketId = marketId;
             return this;
         }
