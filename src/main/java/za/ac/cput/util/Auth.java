@@ -1,3 +1,12 @@
+/**
+ * Mziyanda Mwanda
+ * 2133765
+ * ADP 3
+ *Assignment 1
+ * Due date
+ * 10 Aprile 2022
+ *Generics
+ * **/
 package za.ac.cput.util;
 
 import org.apache.commons.validator.EmailValidator;
