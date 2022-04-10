@@ -1,29 +1,33 @@
 package za.ac.cput.Repository;
 
+
 import za.ac.cput.Entity.Payment;
-import za.ac.cput.Interface.iPaymentRepository;
+import za.ac.cput.Repository.Interface.iPaymentRepository;
 
 import java.util.Set;
 
 public class PaymentRepository implements iPaymentRepository {
 
-    @Override
-    public void create() {
 
+
+
+    @Override
+    public Payment create(Payment payment) {
+        return null;
     }
 
     @Override
-    public void read() {
-
+    public Payment read(String s) {
+        return null;
     }
 
     @Override
-    public void update() {
-
+    public Payment update(Payment payment) {
+        return null;
     }
 
     @Override
-    public boolean delete() {
+    public boolean delete(String s) {
         return false;
     }
 

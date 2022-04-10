@@ -1,30 +1,46 @@
 package za.ac.cput.Repository;
 
-import za.ac.cput.Entity.Item;
-import za.ac.cput.Interface.iItemRepository;
 
+import za.ac.cput.Entity.Item;
+import za.ac.cput.Repository.Interface.iItemRepository;
+
+import java.util.HashSet;
 import java.util.Set;
 
 public class ItemRepository implements iItemRepository {
+    private static ItemRepository repository = null;
+    private Set<Item> itemDB = null;
+
+    private ItemRepository() {
+        itemDB = new HashSet<Item>();
+    }
+
+    public static ItemRepository getRepository() {
+        if (repository == null)
+            repository = new ItemRepository();
+    return repository;
+}
+
+
 
 
     @Override
-    public void create() {
-
+    public Item create(Item item) {
+        return null;
     }
 
     @Override
-    public void read() {
-
+    public Item read(String s) {
+        return null;
     }
 
     @Override
-    public void update() {
-
+    public Item update(Item item) {
+        return null;
     }
 
     @Override
-    public boolean delete() {
+    public boolean delete(String s) {
         return false;
     }
 
