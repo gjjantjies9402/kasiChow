@@ -18,13 +18,8 @@ public class registrationFactory {
 
     //creating object
     public static registration createRegistration(String firstName, String lastName, String username, String password, String confirmPassword, String emailAddress){
-
-        if (Auth.isNullorEmpty(password) || Auth.isNullorEmpty(confirmPassword))
-            return null;
-        if (Auth.isValid(emailAddress))
-            return null;
-
-        return new registration.Builder().setFirstName(firstName)
+        return new registration.Builder()
+                .setFirstName(firstName)
                 .setLastName(lastName)
                 .setUsername(username)
                 .setPassword(password)

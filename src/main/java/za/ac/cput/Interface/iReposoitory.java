@@ -1,6 +1,6 @@
 package za.ac.cput.Interface;
 
-public interface iReposoitory<T,t> {
+public interface iReposoitory {
     void create();
     void read();
     void update();

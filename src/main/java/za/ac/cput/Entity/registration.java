@@ -11,6 +11,7 @@
 package za.ac.cput.Entity;
 
 public class registration {
+
     private String firstName;
     private String lastName;
     private String username;
@@ -28,6 +29,8 @@ public class registration {
         this.emailAddress = builder.emailAddress;
     }
     //Getters and Setters
+
+
     public String getFirstName() {
         return firstName;
     }
@@ -81,7 +84,7 @@ public class registration {
     @Override
     public String toString() {
         return "registration{" +
-                "firstName='" + firstName + '\'' +
+                ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
@@ -98,6 +101,7 @@ public class registration {
         private String password;
         private String confirmPassword;
         private String emailAddress;
+
 
 
         public Builder setFirstName(String firstName) {

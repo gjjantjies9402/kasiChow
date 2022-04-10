@@ -17,7 +17,7 @@ import za.ac.cput.util.Auth;
 public class staffFactory {
     public static staff createStaff(String adminName, String deliveryDriver, String assistant){
 
-      String staffId = Auth.generateId();
+      //String staffId = Auth.generateId();
         return new staff.Builder()
                 .setAdminName(adminName)
                 .setDeliveryDriver(deliveryDriver)

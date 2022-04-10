@@ -8,7 +8,7 @@ package za.ac.cput.Entity;
 
 public class Supermarket {
 
-    private int marketId;
+    private String marketId;
     private String marketName;
     private String marketLocation;
 
@@ -19,7 +19,7 @@ public class Supermarket {
         this.marketLocation = sm.marketLocation;
     }
 
-    public int getMarketId() {
+    public String getMarketId() {
         return marketId;
     }
 
@@ -44,13 +44,13 @@ public class Supermarket {
     public static class Builder {
 
 
-        private int marketId;
+        private String marketId;
         private String marketName;
         private String marketLocation;
 
 
 
-        public Supermarket.Builder setMarketId(int marketId) {
+        public Supermarket.Builder setMarketId(String marketId) {
             this.marketId = marketId;
             return this;
         }

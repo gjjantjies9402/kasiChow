@@ -1,14 +1,14 @@
 package za.ac.cput.Entity;
 /**
  * Author: GAYNOR JANTJIES 213069555
- * POJO Supermarket.java
- *  Supermarket Entity file to be implemented
+ * POJO Restaurant.java
+ *  Restaurant Entity file to be implemented
  * Created: 9/04/2022
  * */
 
 public class Restaurant {
 
-    private int restaurantId;
+    private String restaurantId;
     private String restaurantName;
     private String restaurantLocation;
 
@@ -19,7 +19,7 @@ public class Restaurant {
         this.restaurantLocation = rs.restaurantLocation;
     }
 
-    public int getRestaurantId() {
+    public String getRestaurantId() {
         return restaurantId;
     }
 
@@ -44,21 +44,21 @@ public class Restaurant {
     public static class Builder {
 
 
-        private int restaurantId;
+        private String restaurantId;
         private String restaurantName;
         private String restaurantLocation;
 
 
 
-        public Restaurant.Builder setRestaurantId(int restaurantId) {
+        public Restaurant.Builder setRestaurantId(String restaurantId) {
             this.restaurantId = restaurantId;
             return this;
         }
-        public Restaurant.Builder setRestaurantName(String supermarketName) {
+        public Restaurant.Builder setRestaurantName(String restaurantName) {
             this.restaurantName = restaurantName;
             return this;
         }
-        public Restaurant.Builder setRestaurantLocation(String supermarketLocation) {
+        public Restaurant.Builder setRestaurantLocation(String restaurantLocation) {
             this.restaurantLocation = restaurantLocation;
             return this;
         }
