@@ -37,8 +37,7 @@ public class Store {
         return marketId;
     }
 
-   @Override
-    public java.lang.String toString() {
+   public java.lang.String toString() {
         return "Store{" +
                 "storeId='" + storeId + '\'' +
                 ", restaurantId=" + restaurantId +

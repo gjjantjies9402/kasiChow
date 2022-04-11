@@ -31,7 +31,6 @@ public class Restaurant {
         return restaurantLocation;
     }
 
-    @Override
     public String toString() {
         return "Builder{" +
                 "restaurantId=" + restaurantId +
