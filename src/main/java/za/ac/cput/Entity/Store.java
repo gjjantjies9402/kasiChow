@@ -1,23 +1,31 @@
 package za.ac.cput.Entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+
 /**
  * Author: GAYNOR JANTJIES 213069555
  * POJO Store.java
  *  Store Entity file to be implemented
  * Created: 9/04/2022
+ * Modified : 07/08/2022
+ * add the entity to database
+ * establish a connection to db
  * */
 
 
-
+@Entity
+//@IdClass(StoreRestMarketID.class)
 public class Store {
 
-
+    @Id
     private String storeId;
     private String restaurantId;
     private String marketId;
 
 
-//    protected Store(){}
+    protected Store(){}
 
     private Store(Builder s) {
         this.storeId = s.storeId;
