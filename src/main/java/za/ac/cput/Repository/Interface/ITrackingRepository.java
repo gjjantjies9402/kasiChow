@@ -6,11 +6,11 @@ package za.ac.cput.Repository.Interface;
  Date: 10 April 2022
  */
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import za.ac.cput.Entity.Tracking;
-import za.ac.cput.Repository.iml.iRepository;
 
-import java.util.Set;
 
-public interface ITrackingRepository extends iRepository<Tracking, String> {
-    Set<Tracking> getAll();
+@Repository
+public interface ITrackingRepository extends JpaRepository<Tracking, String> {
 }
