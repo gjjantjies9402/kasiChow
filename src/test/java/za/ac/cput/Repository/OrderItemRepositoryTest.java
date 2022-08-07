@@ -6,27 +6,25 @@
 package za.ac.cput.Repository;
 
 import org.junit.jupiter.api.Test;
-import za.ac.cput.Entity.login;
-import za.ac.cput.Entity.orderItem;
-import za.ac.cput.Factory.loginFactory;
-import za.ac.cput.Factory.orderItemFactory;
+import za.ac.cput.Entity.OrderItem;
+import za.ac.cput.Factory.OrderItemFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class orderItemRepositoryTest {
-    private static orderItemRepository oItem = orderItemRepository.getRepository();
-    private static orderItem item = orderItemFactory.createOrderItem(2, 25.99, 51.98);
+class OrderItemRepositoryTest {
+    private static OrderItemRepository oItem = OrderItemRepository.getRepository();
+    private static OrderItem item = OrderItemFactory.createOrderItem(2, 25.99, 51.98);
 
     @Test
     void create() {
-        orderItem create = oItem.create(item);
+        OrderItem create = oItem.create(item);
         assertEquals(item.getTotalAmount(), create.getTotalAmount());
         System.out.println(create);
     }
 
     @Test
     void read() {
-        orderItem read = oItem.read(item.getPrice());
+        OrderItem read = oItem.read(item.getPrice());
         assertNotNull(read);
         System.out.println(read);
     }
@@ -34,7 +32,7 @@ class orderItemRepositoryTest {
 
     @Test
     void update() {
-        orderItem update = new orderItem.Builder().copy(item).setQuantity(2).build();
+        OrderItem update = new OrderItem.Builder().copy(item).setQuantity(2).build();
         assertNull(oItem.update(update));
         System.out.println(update);
     }

@@ -5,30 +5,29 @@
  */
 package za.ac.cput.Repository;
 
-import za.ac.cput.Entity.menu;
-import za.ac.cput.Entity.rating;
-import za.ac.cput.Repository.Interface.ratingInterface;
+import za.ac.cput.Entity.Rating;
+import za.ac.cput.Repository.Interface.RatingInterface;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class ratingRepository implements ratingInterface {
-    private static ratingRepository repository = null;
-    private Set<rating> ratingsDb = null;
+public class RatingRepository implements RatingInterface {
+    private static RatingRepository repository = null;
+    private Set<Rating> ratingsDb = null;
 
-    private ratingRepository(){
-        ratingsDb = new HashSet<rating>();
+    private RatingRepository(){
+        ratingsDb = new HashSet<Rating>();
     }
 
-    public static ratingRepository getRepository(){
+    public static RatingRepository getRepository(){
         if (repository == null){
-            repository = new ratingRepository();
+            repository = new RatingRepository();
         }
         return repository;
     }
 
     @Override
-    public rating create(rating rates) {
+    public Rating create(Rating rates) {
         boolean success = ratingsDb.add(rates);
         if (!success)
             return null;
@@ -37,8 +36,8 @@ public class ratingRepository implements ratingInterface {
     }
 
     @Override
-    public rating read(String id) {
-        rating r = null;
+    public Rating read(String id) {
+        Rating r = null;
             if (r.equals(ratingsDb))
    
         return r;
@@ -47,8 +46,8 @@ public class ratingRepository implements ratingInterface {
     }
 
     @Override
-    public rating update(rating rate ) {
-        rating newRating = read(rate.getRateReview());
+    public Rating update(Rating rate ) {
+        Rating newRating = read(rate.getRateReview());
 
         if (newRating != null){
             ratingsDb.remove(newRating);
@@ -60,7 +59,7 @@ public class ratingRepository implements ratingInterface {
 
     @Override
     public boolean delete(String id) {
-        rating delRating = read(id);
+        Rating delRating = read(id);
 
         if (delRating == null)
             return false;
@@ -69,7 +68,7 @@ public class ratingRepository implements ratingInterface {
     }
 
     @Override
-    public Set<rating> getAll() {
+    public Set<Rating> getAll() {
         return ratingsDb;
     }
 }

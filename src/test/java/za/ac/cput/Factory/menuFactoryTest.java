@@ -6,8 +6,7 @@
 package za.ac.cput.Factory;
 
 import org.junit.jupiter.api.Test;
-import za.ac.cput.Entity.login;
-import za.ac.cput.Entity.menu;
+import za.ac.cput.Entity.Menu;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,7 +14,7 @@ class menuFactoryTest {
 
     @Test
     void creatingMenu() {
-        menu men = new menu.Builder()
+        Menu men = new Menu.Builder()
                 .setMenuID(1)
                 .setMenuCategory("Poultry")
                 .build();

@@ -5,30 +5,29 @@
  */
 package za.ac.cput.Repository;
 
-import za.ac.cput.Entity.menu;
-import za.ac.cput.Entity.registration;
-import za.ac.cput.Repository.Interface.menuInterface;
+import za.ac.cput.Entity.Menu;
+import za.ac.cput.Repository.Interface.MenuInterface;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class menuRepository implements menuInterface {
-    private static menuRepository repository = null;
-    private Set<menu> menuDb = null;
+public class MenuRepository implements MenuInterface {
+    private static MenuRepository repository = null;
+    private Set<Menu> menuDb = null;
 
-    private menuRepository(){
-        menuDb = new HashSet<menu>();
+    private MenuRepository(){
+        menuDb = new HashSet<Menu>();
     }
 
-    public static menuRepository getRepository(){
+    public static MenuRepository getRepository(){
         if (repository == null){
-            repository = new menuRepository();
+            repository = new MenuRepository();
         }
         return repository;
     }
 
     @Override
-    public menu create(menu menu) {
+    public Menu create(Menu menu) {
         boolean success = menuDb.add(menu);
         if (!success)
             return null;
@@ -37,8 +36,8 @@ public class menuRepository implements menuInterface {
     }
 
     @Override
-    public menu read(String id) {
-        for (menu m : menuDb) {
+    public Menu read(String id) {
+        for (Menu m : menuDb) {
             if (m.getMenuCategory().equals(id))
                 return m;
         }
@@ -46,8 +45,8 @@ public class menuRepository implements menuInterface {
     }
 
     @Override
-    public menu update(menu menu ) {
-        menu newMenu = read(menu.getMenuCategory());
+    public Menu update(Menu menu ) {
+        Menu newMenu = read(menu.getMenuCategory());
 
         if (newMenu != null){
             menuDb.remove(newMenu);
@@ -59,7 +58,7 @@ public class menuRepository implements menuInterface {
 
     @Override
     public boolean delete(String id) {
-        menu delMenu = read(id);
+        Menu delMenu = read(id);
 
         if (delMenu == null)
             return false;
@@ -68,7 +67,7 @@ public class menuRepository implements menuInterface {
     }
 
     @Override
-    public Set<menu> getAll() {
+    public Set<Menu> getAll() {
         return menuDb;
     }
 }

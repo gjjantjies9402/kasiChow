@@ -5,30 +5,29 @@
  */
 package za.ac.cput.Repository;
 
-import za.ac.cput.Entity.menu;
-import za.ac.cput.Entity.orderItem;
-import za.ac.cput.Repository.Interface.orderItemInterface;
+import za.ac.cput.Entity.OrderItem;
+import za.ac.cput.Repository.Interface.OrderItemInterface;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class orderItemRepository implements orderItemInterface {
-    private static orderItemRepository repository = null;
-    private Set<orderItem> orderItemDb = null;
+public class OrderItemRepository implements OrderItemInterface {
+    private static OrderItemRepository repository = null;
+    private Set<OrderItem> orderItemDb = null;
 
-    private orderItemRepository(){
-        orderItemDb = new HashSet<orderItem>();
+    private OrderItemRepository(){
+        orderItemDb = new HashSet<OrderItem>();
     }
 
-    public static orderItemRepository getRepository(){
+    public static OrderItemRepository getRepository(){
         if (repository == null){
-            repository = new orderItemRepository();
+            repository = new OrderItemRepository();
         }
         return repository;
     }
 
     @Override
-    public orderItem create(orderItem oItem) {
+    public OrderItem create(OrderItem oItem) {
         boolean success = orderItemDb.add(oItem);
         if (!success)
             return null;
@@ -37,13 +36,13 @@ public class orderItemRepository implements orderItemInterface {
     }
 
     @Override
-    public orderItem read(String s) {
+    public OrderItem read(String s) {
         return null;
     }
 
     //@Override
-    public orderItem read (double id) {
-        for (orderItem o : orderItemDb) {
+    public OrderItem read (double id) {
+        for (OrderItem o : orderItemDb) {
             if (o.getTotalAmount() != id )
                 return o;
         }
@@ -51,8 +50,8 @@ public class orderItemRepository implements orderItemInterface {
     }
 
     @Override
-    public orderItem update(orderItem oItem) {
-            orderItem newOrderItem = read(oItem.toString());
+    public OrderItem update(OrderItem oItem) {
+            OrderItem newOrderItem = read(oItem.toString());
 
         if (newOrderItem != null){
             orderItemDb.remove(newOrderItem);
@@ -64,7 +63,7 @@ public class orderItemRepository implements orderItemInterface {
 
     @Override
     public boolean delete(String s) {
-        orderItem  deleted = read(s);
+        OrderItem deleted = read(s);
 
         if (deleted == null){
             return false;
@@ -73,7 +72,7 @@ public class orderItemRepository implements orderItemInterface {
     }
 
     @Override
-        public Set<orderItem> getAll(){
+        public Set<OrderItem> getAll(){
             return orderItemDb;
         }
     }
