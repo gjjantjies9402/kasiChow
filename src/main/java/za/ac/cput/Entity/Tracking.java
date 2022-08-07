@@ -11,8 +11,12 @@ import javax.persistence.Id;
 @Entity
 public class Tracking {
     @Id
+    private String orderNr;
     private int  trackETA;
-    private String trackStatus, orderNr;
+    private String trackStatus;
+
+    protected Tracking() {
+    }
 
     private Tracking(Builder builder) {
         this.orderNr = builder.orderNr;
@@ -20,9 +24,6 @@ public class Tracking {
         this.trackStatus = builder.trackStatus;
     }
 
-    public Tracking() {
-
-    }
 
     public String getOrderNr() {
         return orderNr;

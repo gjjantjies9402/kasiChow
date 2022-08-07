@@ -12,8 +12,12 @@ import javax.persistence.Id;
 @Entity
 public class Order {
     @Id
-    private int custID, custIMEI, storeRefID;
+    private int custID;
+    private int custIMEI, storeRefID;
     private String orderUpdate, orderNr;
+
+    protected Order() {
+    }
 
     private Order(Builder builder) {
         this.orderNr = builder.orderNr;
@@ -22,9 +26,7 @@ public class Order {
         this.storeRefID = builder.storeRefID;
         this.orderUpdate = builder.orderUpdate;
     }
-    public Order() {
 
-    }
 
     public String getOrderNr() {
         return orderNr;
