@@ -16,11 +16,13 @@ import javax.persistence.IdClass;
 
 
 @Entity
-@IdClass(StoreRestMarketID.class)
+//@IdClass(StoreRestMarketID.class)
 public class Store {
 
     @Id
-    private String storeId, restaurantId, marketId;
+    private String storeId;
+    private String restaurantId;
+    private String marketId;
 
 
     protected Store(){}
