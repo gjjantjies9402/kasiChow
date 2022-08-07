@@ -1,16 +1,25 @@
 package za.ac.cput.Entity;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  * Author: GAYNOR JANTJIES 213069555
  * POJO Supermarket.java
  *  Supermarket Entity file to be implemented
  * Created: 9/04/2022
+ *  * Modified : 07/08/2022
+ *  * add the entity to database
+ *  * establish a connection to db
  * */
-
+@Entity
 public class Supermarket {
-
+@Id
     private String marketId;
     private String marketName;
     private String marketLocation;
+
+     protected Supermarket(){}
 
     private Supermarket(Supermarket.Builder sm){
 

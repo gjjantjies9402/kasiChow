@@ -1,16 +1,25 @@
 package za.ac.cput.Entity;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  * Author: GAYNOR JANTJIES 213069555
  * POJO Restaurant.java
  *  Restaurant Entity file to be implemented
  * Created: 9/04/2022
+ *  * Modified : 07/08/2022
+ *  * add the entity to database
+ *  * establish a connection to db
  * */
-
+@Entity
 public class Restaurant {
-
+    @Id
     private String restaurantId;
     private String restaurantName;
     private String restaurantLocation;
+
+    protected Restaurant(){}
 
     private Restaurant(Restaurant.Builder rs){
 
