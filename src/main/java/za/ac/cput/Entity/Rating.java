@@ -5,15 +5,15 @@
  */
 package za.ac.cput.Entity;
 
-public class rating {
-    private int rateID;
+public class Rating {
+    private String rateID;
     private int orderNr;
     private String rateStars;
     private String rateReview;
 
 
     //private constructor
-    private rating(Builder builder) {
+    private Rating(Builder builder) {
         this.rateID = builder.rateID;
         this.orderNr = builder.orderNr;
         this.rateStars = builder.rateStars;
@@ -27,7 +27,7 @@ public class rating {
         return rateID;
     }
 
-    public void setRateID(int rateID) {
+    public void setRateID(String rateID) {
         this.rateID = rateID;
     }
 
@@ -67,14 +67,14 @@ public class rating {
     }
 
     public static class Builder{
-        private int rateID;
+        private String rateID;
         private int orderNr;
         private String rateStars;
         private String rateReview;
 
 
         //Setters
-        public Builder setRateID(int rateID) {
+        public Builder setRateID(String rateID) {
             this.rateID = rateID;
             return this;
         }
@@ -96,7 +96,7 @@ public class rating {
 
 
 
-        Builder copy(rating rating) {
+        Builder copy(Rating rating) {
             this.rateID = rating.rateID;
             this.orderNr = rating.orderNr;
             this.rateStars = rating.rateStars;
@@ -104,8 +104,8 @@ public class rating {
             return this;
         }
 
-        public rating build() {
-            return new rating(this);
+        public Rating build() {
+            return new Rating(this);
         }
     }
 }

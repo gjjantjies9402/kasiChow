@@ -5,12 +5,12 @@
  */
 package za.ac.cput.Entity;
 
-public class menu {
+public class Menu {
     private int menuID;
     private String menuCategory;
 
     //private constructor
-    private menu(Builder builder) {
+    private Menu(Builder builder) {
         this.menuID = builder.menuID;
         this.menuCategory = builder.menuCategory;
     }
@@ -57,14 +57,14 @@ public class menu {
             return this;
         }
 
-        Builder copy(menu menu) {
+        Builder copy(Menu menu) {
             this.menuID = menu.menuID;
             this.menuCategory = menu.menuCategory;
             return this;
         }
 
-        public menu build() {
-            return new menu(this);
+        public Menu build() {
+            return new Menu(this);
         }
     }
 }

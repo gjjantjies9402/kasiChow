@@ -6,14 +6,14 @@
 
 package za.ac.cput.Entity;
 
-public class orderItem {
+public class OrderItem {
 
     private int quantity;
     private double price;
     private double totalAmount;
 
     //private constructor
-    private orderItem(Builder builder) {
+    private OrderItem(Builder builder) {
         this.price = builder.price;
         this.quantity = builder.quantity;
         this.totalAmount = builder.totalAmount;
@@ -73,16 +73,16 @@ public class orderItem {
             return this;
         }
 
-        public Builder copy(orderItem oItem) {
+        public Builder copy(OrderItem oItem) {
             this.price = oItem.price;
             this.quantity = oItem.quantity;
             this.totalAmount = oItem.totalAmount;
             return this;
         }
 
-        public orderItem build() {
+        public OrderItem build() {
 
-            return new orderItem(this);
+            return new OrderItem(this);
         }
     }
 

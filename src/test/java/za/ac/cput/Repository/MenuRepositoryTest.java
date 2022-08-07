@@ -6,19 +6,17 @@
 package za.ac.cput.Repository;
 
 import org.junit.jupiter.api.Test;
-import za.ac.cput.Entity.login;
-import za.ac.cput.Entity.menu;
-import za.ac.cput.Factory.loginFactory;
-import za.ac.cput.Factory.menuFactory;
+import za.ac.cput.Entity.Menu;
+import za.ac.cput.Factory.MenuFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class menuRepositoryTest {
-    private static  menuRepository menuRepo = menuRepository.getRepository();
-    private static menu men = menuFactory.creatingMenu(1, "Poultry");
+class MenuRepositoryTest {
+    private static MenuRepository menuRepo = MenuRepository.getRepository();
+    private static Menu men = MenuFactory.creatingMenu(1, "Poultry");
     @Test
     void create() {
-        menu create = menuRepo.create(men);
+        Menu create = menuRepo.create(men);
         assertEquals(men.getMenuID(), create.getMenuID());
         System.out.println(create);
 
@@ -26,14 +24,14 @@ class menuRepositoryTest {
 
     @Test
     void read() {
-        menu read = menuRepo.read(men.getMenuCategory());
+        Menu read = menuRepo.read(men.getMenuCategory());
         assertNotNull(read);
         System.out.println(read);
     }
 
     @Test
     void update() {
-        menu update = new menu.Builder()
+        Menu update = new Menu.Builder()
                 .setMenuCategory("Poultry")
                 .build();
     }

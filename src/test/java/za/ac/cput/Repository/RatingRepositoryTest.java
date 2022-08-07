@@ -6,27 +6,26 @@
 package za.ac.cput.Repository;
 
 import org.junit.jupiter.api.Test;
-import za.ac.cput.Entity.rating;
-import za.ac.cput.Factory.orderItemFactory;
-import za.ac.cput.Factory.ratingFactory;
+import za.ac.cput.Entity.Rating;
+import za.ac.cput.Factory.RatingFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ratingRepositoryTest {
+class RatingRepositoryTest {
 
-    private static ratingRepository rateRepo = ratingRepository.getRepository();
-    private static rating rate = ratingFactory.createRating(1, 1234, "****", "Service was great");
+    private static RatingRepository rateRepo = RatingRepository.getRepository();
+    private static Rating rate = RatingFactory.createRating("1", 1234, "****", "Service was great");
 
     @Test
     void create() {
-        rating create = rateRepo.create(rate);
+        Rating create = rateRepo.create(rate);
         assertEquals(rate.getRateID(), create.getRateID());
         System.out.println(create);
     }
 
     @Test
     void read() {
-        rating read = rateRepo.read(rate.getRateID());
+        Rating read = rateRepo.read(rate.getRateID());
         assertNotNull(read);
         System.out.println(read);
     }
@@ -34,7 +33,7 @@ class ratingRepositoryTest {
 
     @Test
     void update() {
-        rating update = new rating.Builder().build();
+        Rating update = new Rating.Builder().build();
         assertNull(rateRepo.update(update));
         System.out.println(update);
     }
