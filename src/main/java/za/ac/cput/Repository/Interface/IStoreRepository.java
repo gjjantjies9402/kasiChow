@@ -1,11 +1,10 @@
 package za.ac.cput.Repository.Interface;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import za.ac.cput.Entity.Store;
-import za.ac.cput.Repository.iml.iRepository;
 
-import java.util.List;
+@Repository
+public interface IStoreRepository extends JpaRepository<Store, String> {
 
-public interface IStoreRepository extends iRepository<Store, String> {
-
-    List<Store> getAll();
 }

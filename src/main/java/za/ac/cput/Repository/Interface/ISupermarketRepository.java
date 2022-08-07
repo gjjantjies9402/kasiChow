@@ -1,11 +1,12 @@
 package za.ac.cput.Repository.Interface;
 
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import za.ac.cput.Entity.Supermarket;
-import za.ac.cput.Repository.iml.iRepository;
 
-import java.util.List;
+@Repository
+public interface ISupermarketRepository extends JpaRepository<Supermarket, String> {
 
-public interface ISupermarketRepository extends iRepository<Supermarket, String> {
 
-        List<Supermarket> getAll();
         }
