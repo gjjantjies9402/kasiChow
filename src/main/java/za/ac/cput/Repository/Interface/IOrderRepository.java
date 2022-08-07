@@ -7,11 +7,10 @@ package za.ac.cput.Repository.Interface;
  */
 
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import za.ac.cput.Entity.Order;
-import za.ac.cput.Repository.iml.iRepository;
 
-import java.util.Set;
-
-public interface IOrderRepository extends iRepository<Order, String> {
-    Set<Order> getAll();
+@Repository
+public interface IOrderRepository extends JpaRepository<Order, String> {
         }
