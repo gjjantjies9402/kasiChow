@@ -1,12 +1,16 @@
 package za.ac.cput.Entity;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
 /**
  Tracking.java
  Entity: Tracking
  Author: Zimkhitha Nkqenkqa 216280427
  Date: 10 April 2022
  */
-
+@Entity
 public class Tracking {
+    @Id
     private int  trackETA;
     private String trackStatus, orderNr;
 

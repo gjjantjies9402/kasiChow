@@ -1,4 +1,7 @@
 package za.ac.cput.Entity;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
 /**
  Order.java
  Entity: Order
@@ -6,7 +9,9 @@ package za.ac.cput.Entity;
  Date: 10 April 2022
  */
 
+@Entity
 public class Order {
+    @Id
     private int custID, custIMEI, storeRefID;
     private String orderUpdate, orderNr;
 
