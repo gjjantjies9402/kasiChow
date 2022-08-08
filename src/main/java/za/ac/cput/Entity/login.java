@@ -10,10 +10,17 @@
  * **/
 package za.ac.cput.Entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class login {
+    @Id
     private String id;
     private String username;
     private String password;
+
+    protected login(){}
 
     private login(Builder builder){
         this.id = builder.id;

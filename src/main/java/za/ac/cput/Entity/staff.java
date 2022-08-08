@@ -10,13 +10,20 @@
  * **/
 package za.ac.cput.Entity;
 
+import com.mysql.cj.x.protobuf.MysqlxDatatypes;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class staff {
     //Declaration of the attributes
-
+    @Id
     private String adminName;
     private String deliveryDriver;
     private String assistant ;
 
+    protected staff(){}
     //Builder Constructor
     private staff(Builder builder){
         this.adminName = builder.adminName;
