@@ -1,14 +1,22 @@
 package za.ac.cput.Entity;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
 /**
  Tracking.java
  Entity: Tracking
  Author: Zimkhitha Nkqenkqa 216280427
  Date: 10 April 2022
  */
-
+@Entity
 public class Tracking {
+    @Id
+    private String orderNr;
     private int  trackETA;
-    private String trackStatus, orderNr;
+    private String trackStatus;
+
+    protected Tracking() {
+    }
 
     private Tracking(Builder builder) {
         this.orderNr = builder.orderNr;
@@ -16,9 +24,6 @@ public class Tracking {
         this.trackStatus = builder.trackStatus;
     }
 
-    public Tracking() {
-
-    }
 
     public String getOrderNr() {
         return orderNr;

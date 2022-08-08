@@ -1,4 +1,7 @@
 package za.ac.cput.Entity;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
 /**
  Order.java
  Entity: Order
@@ -6,9 +9,15 @@ package za.ac.cput.Entity;
  Date: 10 April 2022
  */
 
+@Entity
 public class Order {
-    private int custID, custIMEI, storeRefID;
+    @Id
+    private int custID;
+    private int custIMEI, storeRefID;
     private String orderUpdate, orderNr;
+
+    protected Order() {
+    }
 
     private Order(Builder builder) {
         this.orderNr = builder.orderNr;
@@ -17,9 +26,7 @@ public class Order {
         this.storeRefID = builder.storeRefID;
         this.orderUpdate = builder.orderUpdate;
     }
-    public Order() {
 
-    }
 
     public String getOrderNr() {
         return orderNr;
