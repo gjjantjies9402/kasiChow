@@ -1,14 +1,24 @@
-/*Customer.java
-Entity for Customer
-Author: Kanya Ramncwana (218297521)
-Date: 08 April 2022
+/**
+ * Customer.java
+ * Entity for Customer
+ * Author: Kanya Ramncwana (218297521)
+ * Date: 08 April 2022
+ * Date Modefied: 07 August 2022
+ *  - Adding entity and database connection
  */
 
 package za.ac.cput.Entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Customer {
 
+    @Id
     private String custID,firstName, lastName, custIMEI;
+
+    protected Customer () {}
 
     public Customer(Builder builder) {
 
