@@ -5,11 +5,17 @@ Date: 08 April 2022
  */
 package za.ac.cput.Entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Item {
+ @Id
     private String itemID;
     private String itemName;
     private double itemPrice;
-
+protected Item (){
+}
     //private constructer
     private Item(Builder builder){
         this.itemID = builder.itemID;
