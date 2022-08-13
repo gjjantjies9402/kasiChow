@@ -5,13 +5,20 @@ Date: 08 April 2022
  */
 package za.ac.cput.Entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Receipt {
+    @Id
     private String receiptID;
     private double orderNr;
     private String staffID;
     private String customerIMEI;
     private double amountPaid;
+protected Receipt(){
 
+}
     //private constructer
     private Receipt(Builder builder){
         this.receiptID = builder.receiptID;
