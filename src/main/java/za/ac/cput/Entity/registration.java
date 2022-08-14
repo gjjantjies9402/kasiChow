@@ -12,6 +12,7 @@ package za.ac.cput.Entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.Objects;
 
 @Entity
 public class registration {
@@ -156,6 +157,19 @@ public class registration {
         public registration build(){
             return new registration(this);
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        registration that = (registration) o;
+        return firstName.equals(that.firstName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName);
     }
 }
 
