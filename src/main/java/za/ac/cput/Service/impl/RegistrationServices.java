@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 @Service
 public class RegistrationServices implements IRegistration {
     @Autowired
-   private static RegistrationServices registrationServices = null;
+   private static RegistrationServices registrationServices;
     private registrationInterface registrationRepository;
 
     @Override

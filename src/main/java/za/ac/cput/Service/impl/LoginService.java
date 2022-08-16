@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 public class LoginService implements Ilogin {
 
     @Autowired
-    private static Ilogin loginServices = null;
+    private static Ilogin loginServices;
     private loginInterface loginRepository;
 
     @Override
