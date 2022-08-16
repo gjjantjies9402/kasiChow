@@ -10,9 +10,9 @@ import java.util.Set;
 import java.util.stream.Collectors;
 @Service
 public class RegistrationServices implements IRegistration {
+    @Autowired
    private static RegistrationServices registrationServices = null;
-   @Autowired
-   private registrationInterface registrationRepository;
+    private registrationInterface registrationRepository;
 
     @Override
     public registration create(registration registration) {
