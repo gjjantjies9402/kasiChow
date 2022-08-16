@@ -10,16 +10,14 @@
  * **/
 package za.ac.cput.Repository.Interface;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 import za.ac.cput.Entity.login;
 import za.ac.cput.Repository.iml.iRepository;
 
 import java.util.Set;
-@Repository
-public interface loginInterface extends JpaRepository<login, String> {
 
-    //public Set<login> getAll();
+public interface loginInterface extends iRepository<login, String> {
+
+    public Set<login> getAll();
 
 
 }

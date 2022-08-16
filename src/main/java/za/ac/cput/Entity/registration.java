@@ -25,8 +25,7 @@ public class registration {
     private String confirmPassword;
     private String emailAddress;
 
-    protected registration() {
-    }
+    protected registration() {}
 
     //Constructor
     private registration(Builder builder){
