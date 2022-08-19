@@ -46,7 +46,7 @@ public class Order {
         return storeRefID;
     }
 
-    public String isOrderUpdate() {
+    public String getOrderUpdate() {
         return orderUpdate;
     }
 
@@ -60,6 +60,7 @@ public class Order {
                 ", orderUpdate=" + orderUpdate +
                 '}';
     }
+
     public static class Builder {
         private String orderNr;
         private int custID;
