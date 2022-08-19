@@ -1,7 +1,8 @@
 /*ContactInterface.java
 Interface for ContactRepository
 Author: Kanya Ramncwana (218297521)
-Date: 09 April 2022*/
+Date: 09 April 2022*//*
+
 
 package za.ac.cput.Repository.Interface;
 
@@ -17,3 +18,4 @@ public interface ContactInterface extends iRepository<Contact,String>
         public Set<Contact> getAll();
 
 }
+*/

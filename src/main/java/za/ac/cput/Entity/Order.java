@@ -13,8 +13,10 @@ import javax.persistence.Id;
 public class Order {
     @Id
     private int custID;
-    private int custIMEI, storeRefID;
-    private String orderUpdate, orderNr;
+    private int custIMEI;
+    private int storeRefID;
+    private String orderUpdate;
+    private String orderNr;
 
     protected Order() {
     }
