@@ -16,7 +16,10 @@ import javax.persistence.Id;
 public class Customer {
 
     @Id
-    private String custID,firstName, lastName, custIMEI;
+    private String custID;
+    private String firstName;
+    private String lastName;
+    private String custIMEI;
 
     protected Customer () {}
 
