@@ -10,14 +10,22 @@
  * **/
 package za.ac.cput.Entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class registration {
 
+    @Id
     private String firstName;
     private String lastName;
     private String username;
     private String password;
     private String confirmPassword;
     private String emailAddress;
+
+    protected registration() {
+    }
 
     //Constructor
     private registration(Builder builder){
@@ -28,6 +36,7 @@ public class registration {
         this.confirmPassword = builder.confirmPassword;
         this.emailAddress = builder.emailAddress;
     }
+
     //Getters and Setters
 
 
@@ -81,7 +90,6 @@ public class registration {
     //Tostring
 
 
-    @Override
     public String toString() {
         return "registration{" +
                 ", firstName='" + firstName + '\'' +
