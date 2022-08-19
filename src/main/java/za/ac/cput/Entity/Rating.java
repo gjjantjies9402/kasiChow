@@ -5,12 +5,19 @@
  */
 package za.ac.cput.Entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Rating {
+    @Id
     private String rateID;
     private int orderNr;
     private String rateStars;
     private String rateReview;
 
+
+    protected Rating(){}
 
     //private constructor
     private Rating(Builder builder) {

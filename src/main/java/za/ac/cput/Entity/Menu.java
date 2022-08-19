@@ -5,9 +5,17 @@
  */
 package za.ac.cput.Entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
 public class Menu {
+    @Id
     private int menuID;
     private String menuCategory;
+
+    protected Menu(){}
 
     //private constructor
     private Menu(Builder builder) {
