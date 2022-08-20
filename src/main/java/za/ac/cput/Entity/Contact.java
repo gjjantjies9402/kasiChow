@@ -10,14 +10,24 @@
 
 package za.ac.cput.Entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+
+@Table (name = "Contacts")
+
 public class Contact {
 
     @Id
-    private String contID, primaryNr, secondaryNr, emailAddress;
+    @Column (name = "Contact ID")
+    private String contID;
+
+    private String primaryNr;
+    private String secondaryNr;
+    private String emailAddress;
 
     protected  Contact(){}
 
