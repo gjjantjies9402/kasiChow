@@ -1,5 +1,10 @@
-package za.ac.cput.Controllers;
-
+package za.ac.cput.Controller;
+/*
+ * Author: GAYNOR JANTJIES 213069555
+ * POJO SupermarketController.java
+ *  Supermarket Controller file to be implemented
+ * Created: 21/08/2022
+ * */
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
