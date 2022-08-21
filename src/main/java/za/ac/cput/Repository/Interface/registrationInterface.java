@@ -2,12 +2,9 @@
  * Mziyanda Mwanda
  * 2133765
  * ADP 3
- *Assignment 1
- * Due date
- * 10 Aprile 2022
- * Interface
- * Registration
+ * DB connection
  * **/
+
 package za.ac.cput.Repository.Interface;
 
 import org.springframework.data.jpa.repository.JpaRepository;

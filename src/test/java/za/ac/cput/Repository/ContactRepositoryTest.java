@@ -1,3 +1,4 @@
+/*
 package za.ac.cput.Repository;
 
 import org.junit.jupiter.api.Test;
@@ -57,4 +58,4 @@ class ContactRepositoryTest {
         System.out.println("Display All: ");
         System.out.println(repository.getAll());
     }
-}
+}*/

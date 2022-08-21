@@ -8,6 +8,7 @@
  *  - Adding entity and database connection
 
 
+*/
 
 
 package za.ac.cput.Entity;
@@ -43,7 +44,6 @@ public class Contact {
 
 
     public String getContID() {
-return
         return contID;
     }
 
@@ -115,4 +115,3 @@ return
     }
 
 }
-*/
