@@ -5,10 +5,18 @@ Date: 08 April 2022
  */
 package za.ac.cput.Entity;
 
-public class Payment {
-    private String paymentType;
-    private String receiptID;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@Entity
+public class Payment {
+    @Id
+    private String receiptID;
+    private String paymentType;
+
+    protected Payment(){
+
+    }
     //private constructers
     private Payment(Builder builder){
         this.paymentType = builder.paymentType;

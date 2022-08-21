@@ -1,15 +1,25 @@
-/*Contact.java
-Entity for Contact
-Author: Kanya Ramncwana (218297521)
-Date: 08 April 2022
+/**
+ * Contact.java
+ * Entity for Contact
+ * Author: Kanya Ramncwana (218297521)
+ * Date Created: 08 April 2022
+ * Date Modefied: 07 August 2022
+ *  - Adding entity and database connection
  */
 
 
 package za.ac.cput.Entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Contact {
 
+    @Id
     private String contID, primaryNr, secondaryNr, emailAddress;
+
+    protected  Contact(){}
 
     public Contact(Builder builder) {
 
