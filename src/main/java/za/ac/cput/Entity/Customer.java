@@ -11,8 +11,12 @@ package za.ac.cput.Entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+
+@Table(name = "Customers")
+
 public class Customer {
 
     @Id
