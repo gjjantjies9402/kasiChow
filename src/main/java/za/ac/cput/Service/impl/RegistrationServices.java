@@ -1,3 +1,9 @@
+/**
+ * Mziyanda Mwanda
+ * 215133765
+ * ADP 3
+ * Service class implementation
+ * */
 package za.ac.cput.Service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +15,7 @@ import za.ac.cput.Service.Interface.IRegistration;
 import java.util.Set;
 import java.util.stream.Collectors;
 @Service
+
 public class RegistrationServices implements IRegistration {
     @Autowired
    private static RegistrationServices registrationServices;

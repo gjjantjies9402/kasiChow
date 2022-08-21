@@ -10,47 +10,50 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.AutoConfigureOrder;
+import za.ac.cput.Entity.login;
 import za.ac.cput.Entity.staff;
+import za.ac.cput.Factory.loginFactory;
 import za.ac.cput.Factory.staffFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 @TestMethodOrder(MethodOrderer.MethodName.class)
-class StaffServicesTest {
+class LoginServiceTest {
 
     @Autowired
-    private static StaffServices services;
-    private static staff created = staffFactory.createStaff("Admin", "Tomas", "John");
+    private static LoginService services;
+    private static login created = loginFactory.createLogin(" ", "Tom", "1234567" );
 
     @Test
     void create() {
-        staff saved = services.create(created);
-        assertEquals(created.getAdminName(), saved.getAdminName());
+        login saved = services.create(created);
+        assertEquals(created.getId(), saved.getId());
     }
 
     @Test
     void read() {
-        staff staf = services.read(created.getAdminName());
-        assertNotNull(staf);
+        login loginB = services.read(created.getId());
+        assertNotNull(loginB);
     }
 
     @Test
     void update() {
-        staff updated = services.update(created);
-        assertEquals(created.getAdminName(), updated.getAdminName());
+        login updated = services.update(created);
+        assertEquals(created.getId(), updated.getId());
     }
 
     @Test
     void delete() {
-        boolean delete = services.delete(created.getAdminName());
+        boolean delete = services.delete(created.getId());
         assertTrue(delete);
         System.out.println("Deleted: " + true);
     }
 
     @Test
-    void getAll() {
+    void getAll(){
         assertEquals(1, services.getAll().size());
         System.out.println("Staff: " + services.getAll());
 
     }
+
 }
