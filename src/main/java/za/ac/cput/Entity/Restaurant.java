@@ -3,7 +3,7 @@ package za.ac.cput.Entity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-/**
+/*
  * Author: GAYNOR JANTJIES 213069555
  * POJO Restaurant.java
  *  Restaurant Entity file to be implemented

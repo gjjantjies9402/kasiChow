@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 
-/**
+/*
  * Author: GAYNOR JANTJIES 213069555
  * POJO Store.java
  *  Store Entity file to be implemented
