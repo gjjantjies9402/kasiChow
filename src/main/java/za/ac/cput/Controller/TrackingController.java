@@ -14,15 +14,18 @@ import java.util.Set;
 public class TrackingController {
     @Autowired
     private TrackingService trackingService;
+    
 
     @PostMapping("/Create")
+    @ResponseBody
     public Tracking create(@RequestBody Tracking tracking) {
         Tracking tracking1 = TrackingFactory.createTracking(tracking.getOrderNr(), tracking.getTrackETA(),tracking.isTrackStatus());
         return trackingService.create(tracking1);
     }
 
     @GetMapping("/read/{id}")
-    public Tracking read(@PathVariable int id)
+    @ResponseBody
+    public Tracking read(@PathVariable String id)
     {
         return trackingService.read(id);
     }
@@ -34,7 +37,7 @@ public class TrackingController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public boolean delete(@PathVariable int id)
+    public boolean delete(@PathVariable String id)
     {
         return trackingService.delete(id);
     }
