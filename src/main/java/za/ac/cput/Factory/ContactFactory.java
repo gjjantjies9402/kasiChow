@@ -2,7 +2,7 @@
 Factory for Contact
 Author: Kanya Ramncwana (218297521)
 Date: 08 April 2022
- *//*
+ */
 
 
 package za.ac.cput.Factory;
@@ -27,4 +27,4 @@ public class ContactFactory {
     }
 }
 
-*/
+

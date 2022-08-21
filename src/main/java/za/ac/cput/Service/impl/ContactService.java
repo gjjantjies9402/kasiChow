@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 @Service
 public class ContactService implements IContactService {
 
-    private static ContactService contactService = null;
+    private static ContactService contactService;
 
     @Autowired
     private IContactRepository contactRepository;

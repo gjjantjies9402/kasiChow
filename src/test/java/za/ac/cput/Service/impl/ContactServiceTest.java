@@ -11,7 +11,7 @@ import za.ac.cput.Factory.ContactFactory;
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.MethodName.class)
-
+@SpringBootTest
 class ContactServiceTest {
 
     private static ContactService service = ContactService.getContactService();
