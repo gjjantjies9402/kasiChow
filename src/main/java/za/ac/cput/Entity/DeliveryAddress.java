@@ -6,9 +6,19 @@ Date: 08 April 2022
 
 package za.ac.cput.Entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Delivery Address")
 public class DeliveryAddress {
 
-    private String deliveryID,streetAddress;
+    @Id
+    private String deliveryID;
+    private String streetAddress;
+
+    protected DeliveryAddress(){}
 
     public DeliveryAddress(Builder builder) {
 
