@@ -6,11 +6,17 @@
 
 package za.ac.cput.Entity;
 
-public class OrderItem {
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@Entity
+public class OrderItem {
+    @Id
     private int quantity;
     private double price;
     private double totalAmount;
+
+    protected OrderItem(){}
 
     //private constructor
     private OrderItem(Builder builder) {
