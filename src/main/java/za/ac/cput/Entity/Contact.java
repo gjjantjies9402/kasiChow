@@ -5,8 +5,6 @@
  * Date Created: 08 April 2022
  * Date Modefied: 07 August 2022
  *  - Adding entity and database connection
- */
-
 
 package za.ac.cput.Entity;
 
