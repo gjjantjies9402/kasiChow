@@ -17,14 +17,12 @@ public class TrackingController {
 
 
     @PostMapping("/Create")
-    @ResponseBody
     public Tracking create(@RequestBody Tracking tracking) {
         Tracking tracking1 = TrackingFactory.createTracking(tracking.getOrderNr(), tracking.getTrackETA(),tracking.isTrackStatus());
         return trackingService.create(tracking1);
     }
 
     @GetMapping("/read/{id}")
-    @ResponseBody
     public Tracking read(@PathVariable String id)
     {
         return trackingService.read(id);
