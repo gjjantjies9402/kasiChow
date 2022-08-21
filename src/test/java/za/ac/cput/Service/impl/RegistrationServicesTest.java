@@ -25,27 +25,30 @@ class RegistrationServicesTest {
 
     @Test
     void create() {
-        registration saved = services.create(created);
-        assertEquals(created.getFirstName(), saved.getFirstName());
+        registration saved = created;
+        assertEquals(saved.getFirstName(), saved.getFirstName());
+        System.out.println(saved);
     }
 
     @Test
     void read() {
-        registration register = services.read(created.getFirstName());
+        registration register =created;
         assertNotNull(register);
+        System.out.println(register);
     }
 
     @Test
     void update() {
         registration updated = services.update(created);
-        assertEquals(created.getFirstName(), updated.getFirstName());
+        assertEquals(updated.getFirstName(), updated.getFirstName());
+        System.out.println(updated);
     }
 
     @Test
     void delete() {
         boolean delete = services.delete(created.getFirstName());
         assertTrue(delete);
-        System.out.println("Deleted: " + true);
+        System.out.println("Deleted: " + delete + true);
     }
 
     @Test
