@@ -10,39 +10,40 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.AutoConfigureOrder;
+import za.ac.cput.Entity.registration;
 import za.ac.cput.Entity.staff;
+import za.ac.cput.Factory.registrationFactory;
 import za.ac.cput.Factory.staffFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.MethodName.class)
-class StaffServicesTest {
+class RegistrationServicesTest {
 
     @Autowired
-    private static StaffServices services;
-    private static staff created = staffFactory.createStaff("Admin", "Tomas", "John");
+    private static RegistrationServices services;
+    private static registration created = registrationFactory.createRegistration("Mziyanda", "Mwanda", "Mz@gmail.com", "123456", "123456", "Mzi@gmail.com");
 
     @Test
     void create() {
-        staff saved = services.create(created);
-        assertEquals(created.getAdminName(), saved.getAdminName());
+        registration saved = services.create(created);
+        assertEquals(created.getFirstName(), saved.getFirstName());
     }
 
     @Test
     void read() {
-        staff staf = services.read(created.getAdminName());
-        assertNotNull(staf);
+        registration register = services.read(created.getFirstName());
+        assertNotNull(register);
     }
 
     @Test
     void update() {
-        staff updated = services.update(created);
-        assertEquals(created.getAdminName(), updated.getAdminName());
+        registration updated = services.update(created);
+        assertEquals(created.getFirstName(), updated.getFirstName());
     }
 
     @Test
     void delete() {
-        boolean delete = services.delete(created.getAdminName());
+        boolean delete = services.delete(created.getFirstName());
         assertTrue(delete);
         System.out.println("Deleted: " + true);
     }
@@ -53,4 +54,5 @@ class StaffServicesTest {
         System.out.println("Staff: " + services.getAll());
 
     }
+
 }
