@@ -1,3 +1,9 @@
+/**
+ * Mziyanda Mwanda
+ * 215133765
+ * ADP 3
+ * Controller class implementation
+ * */
 package za.ac.cput.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;

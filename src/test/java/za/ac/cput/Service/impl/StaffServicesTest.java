@@ -26,18 +26,21 @@ class StaffServicesTest {
     void create() {
         staff saved = services.create(created);
         assertEquals(created.getAdminName(), saved.getAdminName());
+        System.out.println(saved);
     }
 
     @Test
     void read() {
         staff staf = services.read(created.getAdminName());
         assertNotNull(staf);
+        System.out.println(staf);
     }
 
     @Test
     void update() {
         staff updated = services.update(created);
         assertEquals(created.getAdminName(), updated.getAdminName());
+        System.out.println(updated);
     }
 
     @Test
@@ -45,6 +48,7 @@ class StaffServicesTest {
         boolean delete = services.delete(created.getAdminName());
         assertTrue(delete);
         System.out.println("Deleted: " + true);
+        System.out.println(delete);
     }
 
     @Test
