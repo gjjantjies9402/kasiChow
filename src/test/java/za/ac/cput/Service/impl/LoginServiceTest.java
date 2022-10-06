@@ -26,20 +26,23 @@ class LoginServiceTest {
 
     @Test
     void create() {
-        login saved = services.create(created);
+        login saved = created;
         assertEquals(created.getId(), saved.getId());
+        System.out.println(saved);
     }
 
     @Test
     void read() {
         login loginB = services.read(created.getId());
         assertNotNull(loginB);
+        System.out.println(loginB);
     }
 
     @Test
     void update() {
         login updated = services.update(created);
         assertEquals(created.getId(), updated.getId());
+        System.out.println(updated);
     }
 
     @Test
@@ -47,6 +50,7 @@ class LoginServiceTest {
         boolean delete = services.delete(created.getId());
         assertTrue(delete);
         System.out.println("Deleted: " + true);
+        System.out.println(delete);
     }
 
     @Test
