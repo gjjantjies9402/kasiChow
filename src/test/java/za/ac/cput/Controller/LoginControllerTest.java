@@ -1,3 +1,9 @@
+/**
+ * Mziyanda Mwanda
+ * 215133765
+ * ADP 3
+ * Controller class Test implementation
+ * */
 package za.ac.cput.Controller;
 
 import org.junit.jupiter.api.Test;

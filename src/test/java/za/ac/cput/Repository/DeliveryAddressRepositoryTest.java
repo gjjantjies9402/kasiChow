@@ -1,3 +1,4 @@
+/**
 package za.ac.cput.Repository;
 
 import org.junit.jupiter.api.Test;
@@ -55,4 +56,4 @@ class DeliveryAddressRepositoryTest {
         System.out.println("Display All: ");
         System.out.println(repository.getAll());
     }
-}
+}*/
