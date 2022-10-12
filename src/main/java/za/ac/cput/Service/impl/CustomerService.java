@@ -6,74 +6,93 @@ import za.ac.cput.Entity.Customer;
 import za.ac.cput.Repository.Interface.ICustomerRepository;
 import za.ac.cput.Service.Interface.ICustomerService;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
 public class CustomerService implements ICustomerService {
 
-    private static CustomerService service;
+    private static ICustomerService customerService = null;
 
     @Autowired
-    private ICustomerRepository repository;
-
-    public static CustomerService getCustomerService() {
-
-        if(service == null) {
-            service = new CustomerService();
-        }
-
-        return service;
-    }
+    private ICustomerRepository customerRepository;
 
     private CustomerService()
     {
-        this.repository = repository;
+        //this.customerRepository = customerRepository;
 
     }
 
-    public Set<Customer> getAll() {
+    public static ICustomerService getCustomerService() {
 
-        return this.repository.findAll().stream().collect(Collectors.toSet());
+        if(customerService == null)
+            customerService = new CustomerService();
+            return customerService;
 
     }
-
+    
+    
 
     @Override
     public Customer create(Customer customer) {
-
-        return this.repository.save(customer);
-
+        
+         return this.customerRepository.save(customer);
+        
     }
 
     @Override
     public Customer read(String s) {
 
-        return this.repository.findById(s).orElseGet(null);
-
+        Optional<Customer> optCustomer = this.customerRepository.findById(s);
+        return optCustomer.orElse(null);
+        
     }
 
     @Override
     public Customer update(Customer customer) {
-        if(this.repository.existsById(customer.getCustID())) {
-            return this.repository.save(customer);
-        }
 
+        if (this.customerRepository.existsById(customer.getCustID())) {
+            return this.customerRepository.save(customer);
+        }
+        
         return null;
     }
 
     @Override
     public boolean delete(String s) {
 
-        this.repository.deleteById(s);
+        this.customerRepository.deleteById(s);
 
-        if(this.repository.existsById(s)) return false;
+        if(this.customerRepository.existsById(s)) return false;
         else return true;
-
+        
     }
 
-    public List<Customer> getAllCustomers() {
-        return this.repository.findAll();
+
+    @Override
+    public List<Customer> getAll() {
+        
+        return this.customerRepository.findAll();
+        
     }
+    
+    public List<Customer> getAllCustomersStartingWithA() {
+        
+        List<Customer> customersWithA = new ArrayList<>();
+        List<Customer> customers = getAll();
+
+        for(Customer customer : customers) {
+
+            if(customer.getFirstName().trim().toLowerCase().startsWith("a")){
+
+                customersWithA.add(customer);
+            }
+        }
+
+        return customersWithA;
+    }
+    
 }
