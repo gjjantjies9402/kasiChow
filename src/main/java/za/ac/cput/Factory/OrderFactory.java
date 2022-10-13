@@ -9,13 +9,13 @@ package za.ac.cput.Factory;
 import za.ac.cput.Entity.Order;
 
 public class OrderFactory {
-    public static Order createOrder(String orderNr, int custID, int custIMEI, int storeRefID, String orderUpdate){
-        //int orderNr = GenericHelper.generateId();
-       return new Order.Builder().setOrderNr(orderNr).
-               setCustID(custID).
-               setCustIMEI(custIMEI).
-               setStoreRefID(storeRefID).
-               setOrderUpdate(orderUpdate).build();
-     //   return order;
+    public static Order createOrder(int custID, String orderID, int driverID, int itemID, String trackStatus, String trackETA){
+
+       return new Order.Builder().setCustID(custID).
+               setOrderID(orderID).
+               setDriverID(driverID).
+               setItemID(itemID).
+               setTrackStatus(trackStatus).
+               setTrackETA(trackETA).build();
     }
 }

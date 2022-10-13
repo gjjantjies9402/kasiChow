@@ -18,7 +18,7 @@ public class OrderController {
 
     @PostMapping("/Create")
     public Order create(@RequestBody Order order) {
-        Order order1 = OrderFactory.createOrder(order.getOrderNr(),order.getCustID(),order.getCustIMEI(),order.getStoreRefID(),order.getOrderUpdate());
+        Order order1 = OrderFactory.createOrder(order.getCustID(),order.getOrderID(),order.getDriverID(),order.getItemID(),order.getTrackStatus(),order.getTrackETA());
         return orderService.create(order1);
     }
 

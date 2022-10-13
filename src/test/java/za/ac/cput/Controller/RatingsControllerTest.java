@@ -10,58 +10,58 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import za.ac.cput.Entity.Tracking;
-import za.ac.cput.Factory.TrackingFactory;
+import za.ac.cput.Entity.Ratings;
+import za.ac.cput.Factory.RatingsFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.MethodName.class)
 @SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
-class TrackingControllerTest {
+class RatingsControllerTest {
 
-    private static Tracking tracking = TrackingFactory.createTracking("ORD98", 2568, "Complete");
+    private static Ratings ratings = RatingsFactory.createRatings(8868, "ORD98", 5, "Service was great!" );
 
     @Autowired
     private TestRestTemplate restTemplate;
-    private final String baseURL = "http://localhost:8080/tracking";
+    private final String baseURL = "http://localhost:8080/ratings/";
 
 
     @Test
     void create() {
         String url = baseURL + "/create";
-        ResponseEntity<Tracking> postResponse = restTemplate.postForEntity(url, tracking, Tracking.class);
+        ResponseEntity<Ratings> postResponse = restTemplate.postForEntity(url, ratings, Ratings.class);
         System.out.println(postResponse);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
         assertEquals(HttpStatus.OK, postResponse.getStatusCode());
-        tracking = postResponse.getBody();
-        System.out.println("Saved data\n----------\n" + tracking);
-        assertEquals(tracking.getOrderNr(), postResponse.getBody().getOrderNr());
+        ratings = postResponse.getBody();
+        System.out.println("Saved data\n----------\n" + ratings);
+        assertEquals(ratings.getOrderID(), postResponse.getBody().getOrderID());
     }
 
     @Test
     void read() {
-        String url = baseURL + "/read/" + tracking.getOrderNr();
-        ResponseEntity<Tracking> response =
+        String url = baseURL + "/read/" + ratings.getOrderID();
+        ResponseEntity<Ratings> response =
                 restTemplate.getForEntity(
                         url,
-                        Tracking.class
+                        Ratings.class
                 );
         assertNotNull(response.getBody());
-        assertEquals(tracking.getOrderNr(), response.getBody().getOrderNr());
+        assertEquals(ratings.getOrderID(), response.getBody().getOrderID());
         System.out.println(response.getBody());
     }
 
     @Test
     void update() {
-        Tracking updated =
-                new Tracking.Builder().setOrderNr("ORD69").build();
+        Ratings updated =
+                new Ratings.Builder().setOrderID("ORD69").build();
         String url = baseURL + "/update";
-        ResponseEntity<Tracking> response =
+        ResponseEntity<Ratings> response =
                 restTemplate.postForEntity(
                         url,
                         updated,
-                        Tracking.class
+                        Ratings.class
                 );
         assertNotNull(response.getBody());
         System.out.println("Updated data\n------------\n" + updated);
@@ -69,7 +69,7 @@ class TrackingControllerTest {
 
     @Test
     void delete() {
-        String url = baseURL+"/delete/"+tracking.getOrderNr() ;
+        String url = baseURL+"/delete/"+ ratings.getOrderID() ;
         System.out.println("URL: "+url);
         restTemplate.delete(url);
     }
@@ -81,7 +81,7 @@ class TrackingControllerTest {
         org.springframework.http.HttpHeaders headers = new org.springframework.http.HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<>(null, headers);
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
-        System.out.println("Tracking");
+        System.out.println("Rating");
         System.out.println(response);
         System.out.println(response.getBody());
     }

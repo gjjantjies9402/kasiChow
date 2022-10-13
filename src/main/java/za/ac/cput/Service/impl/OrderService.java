@@ -33,7 +33,7 @@ public class OrderService implements IOrderService {
 
     @Override
     public Order update(Order order) {
-        if (this.repository.existsById(order.getOrderNr()))
+        if (this.repository.existsById(order.getOrderID()))
             return this.repository.save(order);
         return null;
     }

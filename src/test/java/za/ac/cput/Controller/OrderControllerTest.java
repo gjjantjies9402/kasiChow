@@ -21,11 +21,11 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
 class OrderControllerTest {
 
-    private static Order order = OrderFactory.createOrder("ORD98", 9684, 684, 10, "Delivered");
+    private static Order order = OrderFactory.createOrder(1416, "ORD98",6804, 10, "Delivered", "14:32");
 
     @Autowired
     private TestRestTemplate restTemplate;
-    private  String baseURL = "http://localhost:8080/order";
+    private  String baseURL = "http://localhost:8080/order/";
 
     @Test
     void create() {
@@ -37,26 +37,26 @@ class OrderControllerTest {
         assertEquals(HttpStatus.OK, postResponse.getStatusCode());
         order = postResponse.getBody();
         System.out.println("Saved data\n----------\n" + order);
-        assertEquals(order.getOrderNr(), postResponse.getBody().getOrderNr());
+        assertEquals(order.getOrderID(), postResponse.getBody().getOrderID());
     }
 
     @Test
     void read() {
-        String url = baseURL + "/read/" + order.getOrderUpdate();
+        String url = baseURL + "/read/" + order.getTrackStatus();
         ResponseEntity<Order> response =
                 restTemplate.getForEntity(
                         url,
                         Order.class
                 );
         assertNotNull(response.getBody());
-        assertEquals(order.getOrderUpdate(), response.getBody().getOrderUpdate());
+        assertEquals(order.getTrackStatus(), response.getBody().getTrackStatus());
         System.out.println(response.getBody());
     }
 
     @Test
     void update() {
         Order updated =
-                new Order.Builder().setOrderNr("ORD94").build();
+                new Order.Builder().setOrderID("ORD94").build();
         String url = baseURL + "/update";
         ResponseEntity<Order> response =
                 restTemplate.postForEntity(
@@ -70,7 +70,7 @@ class OrderControllerTest {
 
     @Test
     void delete() {
-        String url = baseURL+"/delete/"+order.getOrderNr() ;
+        String url = baseURL+"/delete/"+order.getOrderID() ;
         System.out.println("URL: "+url);
         restTemplate.delete(url);
 //        String urlDelete = baseURL + "/delete/" + order.getOrderNr();

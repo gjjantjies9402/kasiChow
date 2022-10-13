@@ -15,32 +15,32 @@ class OrderServiceTest {
 
     @Autowired
     private static OrderService orderServ;
-    private static Order order = OrderFactory.createOrder("ORD98", 9684,684, 10, "Delivered");
+    private static Order order = OrderFactory.createOrder(1416, "ORD98",6804, 10, "Delivered", "14:32");
 
     @Test
     void create() {
         Order created = orderServ.create(order);
-        assertEquals(order.getOrderNr(), created.getOrderNr());
+        assertEquals(order.getOrderID(), created.getOrderID());
         System.out.println("\nCreated: " + created);
     }
 
     @Test
     void read() {
-        Order read = orderServ.read(order.getOrderNr());
+        Order read = orderServ.read(order.getOrderID());
         assertNotNull(read);
         System.out.println("\nRead:\n" + read.toString());
     }
 
     @Test
     void update() {
-        Order order1 = new Order.Builder().copy(order).setOrderNr("ORD96").build();
+        Order order1 = new Order.Builder().copy(order).setOrderID("ORD96").build();
         order1 = orderServ.update(order1);
         System.out.println("\nUpdated: " + order1);
     }
 
     @Test
     void delete() {
-        boolean deleteSuccessful = orderServ.delete(order.getOrderNr());
+        boolean deleteSuccessful = orderServ.delete(order.getOrderID());
         System.out.println("\nDeleted: ");
         assertTrue(deleteSuccessful);
     }

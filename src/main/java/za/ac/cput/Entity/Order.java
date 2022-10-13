@@ -13,92 +13,106 @@ import javax.persistence.Id;
 public class Order {
     @Id
     private int custID;
-    private int custIMEI;
-    private int storeRefID;
-    private String orderUpdate;
-    private String orderNr;
+    private String orderID;
+    private int driverID;
+    private int itemID;
+    private String trackStatus;
+    private String trackETA;
 
     protected Order() {
     }
 
     private Order(Builder builder) {
-        this.orderNr = builder.orderNr;
         this.custID = builder.custID;
-        this.custIMEI = builder.custIMEI;
-        this.storeRefID = builder.storeRefID;
-        this.orderUpdate = builder.orderUpdate;
-    }
+        this.orderID = builder.orderID;
+        this.driverID = builder.driverID;
+        this.itemID = builder.itemID;
+        this.trackStatus = builder.trackStatus;
+        this.trackETA = builder.trackETA;
 
-
-    public String getOrderNr() {
-        return orderNr;
     }
 
     public int getCustID() {
         return custID;
     }
 
-    public int getCustIMEI() {
-        return custIMEI;
+    public String getOrderID() {
+        return orderID;
     }
 
-    public int getStoreRefID() {
-        return storeRefID;
+    public int getDriverID() {
+        return driverID;
     }
 
-    public String getOrderUpdate() {
-        return orderUpdate;
+    public int getItemID() {
+        return itemID;
+    }
+
+    public String getTrackStatus() {
+        return trackStatus;
+    }
+
+    public String getTrackETA() {
+        return trackETA;
     }
 
     @Override
     public String toString() {
         return "Order{" +
-                "orderNr=" + orderNr +
-                ", custID=" + custID +
-                ", custIMEI=" + custIMEI +
-                ", storeRefID=" + storeRefID +
-                ", orderUpdate=" + orderUpdate +
+                "custID=" + custID +
+                ", orderID=" + orderID +
+                ", driverID=" + driverID +
+                ", itemID=" + itemID +
+                ", trackStatus='" + trackStatus + '\'' +
+                ", trackETA='" + trackETA + '\'' +
                 '}';
     }
 
     public static class Builder {
-        private String orderNr;
         private int custID;
-        private int custIMEI;
-        private int storeRefID;
-        private String orderUpdate;
-
-        public Builder setOrderNr(String orderNr) {
-            this.orderNr = orderNr;
-            return this;
-        }
+        private String orderID;
+        private int driverID;
+        private int itemID;
+        private String trackStatus;
+        private String trackETA;
 
         public Builder setCustID(int custID) {
             this.custID = custID;
             return this;
         }
 
-        public Builder setCustIMEI(int custIMEI) {
-            this.custIMEI = custIMEI;
+        public Builder setOrderID(String orderID) {
+            this.orderID = orderID;
             return this;
         }
 
-        public Builder setStoreRefID(int storeRefID) {
-            this.storeRefID = storeRefID;
+        public Builder setDriverID(int driverID) {
+            this.driverID = driverID;
             return this;
         }
 
-        public Builder setOrderUpdate(String orderUpdate) {
-            this.orderUpdate = orderUpdate;
+        public Builder setItemID(int itemID) {
+            this.itemID = itemID;
+            return this;
+        }
+
+        public Builder setTrackStatus(String trackStatus) {
+            this.trackStatus = trackStatus;
+            return this;
+        }
+
+        public Builder setTrackETA(String trackETA) {
+            this.trackETA = trackETA;
             return this;
         }
 
         public Builder copy(Order order) {
-            this.orderNr = order.orderNr;
             this.custID = order.custID;
-            this.custIMEI = order.custIMEI;
-            this.storeRefID = order.storeRefID;
-            this.orderUpdate = order.orderUpdate;
+            this.orderID = order.orderID;
+            this.driverID = order.driverID;
+            this.itemID = order.itemID;
+            this.trackStatus = order.trackStatus;
+            this.trackETA = order.trackETA;
             return this;
         }
 
