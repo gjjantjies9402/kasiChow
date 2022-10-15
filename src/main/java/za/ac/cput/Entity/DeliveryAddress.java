@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Delivery Address")
+//@Table(name = "Delivery Address")
 public class DeliveryAddress {
 
     @Id

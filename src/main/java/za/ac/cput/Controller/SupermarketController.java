@@ -25,7 +25,7 @@ public class SupermarketController {
     @GetMapping("/home")
     public String home(Model model) {
         model.addAttribute("supermarkets", service.getAll());
-        return "supermarketsHome";
+        return "supermarket";
     }
 
     @GetMapping("/create")

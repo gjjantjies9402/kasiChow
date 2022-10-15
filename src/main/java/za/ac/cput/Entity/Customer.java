@@ -9,17 +9,19 @@
 
 package za.ac.cput.Entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 
-@Table(name = "Customers")
+//@Table(name = "Customers")
 
 public class Customer {
 
     @Id
+//    @Column(name = "Customer ID")
     private String custID;
     private String firstName;
     private String lastName;

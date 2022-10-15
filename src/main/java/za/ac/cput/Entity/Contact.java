@@ -17,12 +17,12 @@ import javax.persistence.Table;
 
 @Entity
 
-@Table (name = "Contacts")
+//@Table (name = "Contacts")
 
 public class Contact {
 
     @Id
-    @Column (name = "Contact ID")
+//    @Column (name = "Contact ID")
     private String contID;
 
     private String primaryNr;
