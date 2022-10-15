@@ -2,108 +2,60 @@ package za.ac.cput.Entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 @Entity
-public class Driver {
-
+public class Driver implements Serializable {
     @Id
-    private String driverID;
-    private String driverFname;
-    private String driverLname;
-    private String driverContact;
+    public String Id;
+    public String name;
 
-    protected Driver () {}
-
-    public Driver(Driver.Builder builder) {
-
-        this.driverID = builder.driverID;
-        this.driverFname = builder.driverFname;
-        this.driverLname = builder.driverLname;
-        this.driverContact = builder.driverContact;
-
+    protected Driver() {
     }
 
-    public String toString() {
-        return "Contact{" +
-                "Driver ID='" + driverID + '\'' +
-                ", Driver First Name='" + driverFname + '\'' +
-                ", Driver Last Name='" + driverLname + '\'' +
-                ", Driver Contact='" + driverContact + '\'' +
-                '}';
+    public Driver(Builder builder) {
+        this.Id = builder.Id;
+        this.name = builder.name;
     }
 
-
-    public String getDriverID() {
-
-        return driverID;
+    public String getId() {
+        return Id;
     }
 
-
-    public String getDriverFname() {
-
-        return driverFname;
+    public void setId(String id) {
+        Id = id;
     }
 
-    public String getDriverLname() {
-
-        return driverLname;
+    public String getName() {
+        return name;
     }
 
-    public String getDriverContact() {
-
-        return driverContact;
+    public void setName(String name) {
+        this.name = name;
     }
-
 
     public static class Builder {
+        public String Id;
+        public String name;
 
-        private String driverID, driverFname, driverLname, driverContact;
-
-
-
-        public Driver.Builder setDriverID(String driverID) {
-
-            this.driverID = driverID;
-
+        public Builder setId(String id) {
+            this.Id = id;
             return this;
         }
 
-        public Driver.Builder setDriverFname(String driverFname) {
-
-            this.driverFname = driverFname;
-
+        public Builder setName(String name) {
+            this.name = name;
             return this;
         }
 
-        public Driver.Builder setDriverLname(String driverLname) {
-
-            this.driverLname = driverLname;
-
+        public Builder copy(Driver driver) {
+            this.Id = driver.Id;
+            this.name = driver.name;
             return this;
         }
-
-        public Driver.Builder setDriverContact(String driverContact) {
-
-            this.driverContact = driverContact;
-
-            return this;
-        }
-
 
         public Driver build() {
-
             return new Driver(this);
-
-        }
-        public Driver.Builder copy(Driver driver) {
-
-            this.driverID = driver.driverID;
-            this.driverFname = driver.driverFname;
-            this.driverLname = driver.driverLname;
-            this.driverContact = driver.driverContact;
-
-            return this;
         }
     }
-
 }
