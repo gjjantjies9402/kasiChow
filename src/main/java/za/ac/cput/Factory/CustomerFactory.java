@@ -11,16 +11,18 @@ import za.ac.cput.util.Auth;
 
 public class CustomerFactory {
 
-    public static Customer createCustomer(String custID, String firstName, String lastName, String custIMEI){
+    public static Customer createCustomer(String custID, String firstName, String lastName, String primaryNr, String emailAddress, String custAddress){
 
-        if (Auth.isNullorEmpty(custID) ||Auth.isNullorEmpty(firstName) || Auth.isNullorEmpty(lastName) || Auth.isNullorEmpty(custIMEI) )
+        if (Auth.isNullorEmpty(custID) ||Auth.isNullorEmpty(firstName) || Auth.isNullorEmpty(lastName) || Auth.isNullorEmpty(primaryNr)  || Auth.isNullorEmpty(emailAddress) || Auth.isNullorEmpty(custAddress))
             return null;
 
         return new Customer.Builder()
                 .setCustID(custID)
                 .setFirstName(firstName)
                 .setLastName(lastName)
-                .setCustIMEI(custIMEI)
+                .setPrimaryNr(primaryNr)
+                .setEmailAddress(emailAddress)
+                .setCustAddress(custAddress)
                 .build();
 
     }
