@@ -27,6 +27,11 @@ public class RestaurantController {
         model.addAttribute("restaurants", service.getAll());
         return "restaurant";
     }
+    @GetMapping("/menu")
+    public String menu(Model model) {
+        model.addAttribute("restaurantsmenu", service.getAll());
+        return "restaurantMenu";
+    }
 
     @GetMapping("/create")
     public String getCreateForm(Restaurant store) {
