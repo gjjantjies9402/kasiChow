@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Passenger</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+</head>
+<body>
+<!--Navbar-->
+<nav class="navbar navbar-dark red">
+
+    <!-- Navbar brand -->
+    <a class="navbar-brand" href="/services">City Sight Seeing Tours</a>
+
+    <!-- Collapse button -->
+    <button class="navbar-toggler toggler-example" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false"
+            aria-label="Toggle navigation"><span class="dark-blue-text"><i
+            class="fas fa-bars fa-1x"></i></span></button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/driver/home">Driver</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/guide/home">Guide</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/location/home">Location</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/customer/home">Passenger</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/route/home">Route</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/ticket/home">Ticket</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/vehicle/home">Vehicle</a>
+            </li>
+        </ul>
+        <!-- Links -->
+
+    </div>
+    <!-- Collapsible content -->
+
+</nav>
+<!--/.Navbar-->
+<section class="container-fluid col-6 pt-xl-4">
+
+    <h3> Add Passenger</h3>
+    <div>
+        <!--/*@thymesVar id="passenger" type="java"*/-->
+        <form action="#" th:action="@{/passenger/create}" th:object="${passenger}" method="post">
+
+            <div class="form-outline mb-4">
+                <input type="text" th:field="*{id}" class="form-control" readonly>
+                <label>Passenger Id</label>
+            </div>
+
+            <div class="form-outline mb-4">
+                <input type="text" th:field="*{name}" class="form-control" required>
+                <label>Name</label>
+            </div>
+
+            <div class="form-outline mb-4">
+                <input type="text" th:field="*{contact}" class="form-control">
+                <label>Contact</label>
+            </div>
+
+            <div >
+                <button type="submit" class="btn btn-light btn-block mb-4">Add</button>
+            </div>
+        </form>
+    </div>
+</section>
+<!-- Footer -->
+<footer class="page-footer font-small red fixed-bottom">
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    </div>
+    <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+</body>
+</html>
