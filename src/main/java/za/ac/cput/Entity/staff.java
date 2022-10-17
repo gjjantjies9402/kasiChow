@@ -10,10 +10,10 @@
  * **/
 package za.ac.cput.Entity;
 
-import com.mysql.cj.x.protobuf.MysqlxDatatypes;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.Objects;
 
 @Entity
 public class staff {
@@ -93,4 +93,16 @@ public class staff {
         }
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        staff staff = (staff) o;
+        return adminName.equals(staff.adminName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(adminName);
+    }
 }

@@ -23,7 +23,7 @@
 //    private registrationRepository(){
 //        registrationDB = new HashSet<registration>();
 //    }
-//
+//static
 //    public static registrationRepository getRegRepository(){
 //        if (regRepository == null){
 //            regRepository = new registrationRepository();
