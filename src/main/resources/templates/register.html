@@ -11,25 +11,28 @@
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!-- CSS Files -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../assets/css/now-ui-kit.css?v=1.3.0" rel="stylesheet" />
+  <link href="../static/css/now-ui-kit.css?v=1.3.0" rel="stylesheet" />
   <link href="../static/css/style.css" rel="stylesheet" />
 </head>
 
 <body class="login-page sidebar-collapse">
 <div class="page-header clear-filter" filter-color="orange">
   <div class="content">
+
     <div class="container">
       <div class="col-md-4 ml-auto mr-auto">
         <div>
-          <form class="form" method="" action="">
+
             <div>
               <div class="logo-container">
                 <img th:src="@{/img/logo.png}" alt="">
               </div>
             </div>
+          <form action="#" th:action="@{/customer/create}" th:object="${customer}" method="post">
               <div class="card-body">
+
                 <div class="input-group no-border input-lg">
-                  <input type="text" class="form-control" placeholder="Username">
+                  <input type="text"  class="form-control" placeholder="First Name">
                 </div>
                 <div class="input-group no-border input-lg">
                     <input type="email" class="form-control" placeholder="Email">
@@ -43,6 +46,7 @@
                   <div class="input-group no-border input-lg">
                     <input type="password" class="form-control" placeholder="Confirm Password">
                   </div>
+
               </div>
               <div class=" text-center">
                 <a href="/home" class="btn btn-primary btn-round btn-lg btn-block">Register</a>
