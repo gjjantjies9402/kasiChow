@@ -10,7 +10,6 @@
  * **/
 package za.ac.cput.Entity;
 
-import com.mysql.cj.x.protobuf.MysqlxDatatypes;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

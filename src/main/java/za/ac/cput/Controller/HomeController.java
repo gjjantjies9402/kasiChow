@@ -1,8 +1,9 @@
 package za.ac.cput.Controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+@CrossOrigin
 @Controller
 public class HomeController {
 
@@ -18,6 +19,7 @@ public class HomeController {
         return "about";
     }
 
+
     @RequestMapping("/contact")
     public String contact() {
         System.out.println("Contact Page");
@@ -28,6 +30,12 @@ public class HomeController {
     public String login() {
         System.out.println("Login Page");
         return "login";
+    }
+
+    @RequestMapping("/register")
+    public String register() {
+        System.out.println("Register Page");
+        return "register";
     }
 
     @RequestMapping("/services")

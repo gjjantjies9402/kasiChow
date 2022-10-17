@@ -1,4 +1,4 @@
-package za.ac.cput.Repository.Interface;
+package za.ac.cput.Repository;
 
 import za.ac.cput.Entity.Order;
 
