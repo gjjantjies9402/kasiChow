@@ -17,7 +17,7 @@ import java.util.Set;
 
 @Controller
 @RequestMapping("/restaurant")
-public class ResturantController {
+public class RestaurantController {
 
     @Autowired
     private RestaurantService service;
@@ -25,7 +25,12 @@ public class ResturantController {
     @GetMapping("/home")
     public String home(Model model) {
         model.addAttribute("restaurants", service.getAll());
-        return "restaurantsHome";
+        return "restaurant";
+    }
+    @GetMapping("/menu")
+    public String menu(Model model) {
+        model.addAttribute("restaurantsmenu", service.getAll());
+        return "restaurantMenu";
     }
 
     @GetMapping("/create")
@@ -36,7 +41,7 @@ public class ResturantController {
     @PostMapping("/create")
     public String create(@ModelAttribute Restaurant restaurant, BindingResult result, Model model) {
         if (result.hasErrors())
-            return "restaurantAdd";
+            return "restaurant";
         service.create(restaurant);
         return "redirect:/restaurant/home";
     }
