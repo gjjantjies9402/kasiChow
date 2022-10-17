@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
 class OrderControllerTest {
 
-    private static Order order = OrderFactory.createOrder(1416, "ORD98",6804, 10, "Delivered", "14:32");
+    private static Order order = OrderFactory.createOrder(1416, "ORD98","DRV25", 10, "Delivered", "14:32");
 
     @Autowired
     private TestRestTemplate restTemplate;

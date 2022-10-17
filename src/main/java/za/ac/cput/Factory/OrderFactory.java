@@ -9,7 +9,7 @@ package za.ac.cput.Factory;
 import za.ac.cput.Entity.Order;
 
 public class OrderFactory {
-    public static Order createOrder(int custID, String orderID, int driverID, int itemID, String trackStatus, String trackETA){
+    public static Order createOrder(int custID, String orderID, String driverID, int itemID, String trackStatus, String trackETA){
 
        return new Order.Builder().setCustID(custID).
                setOrderID(orderID).

@@ -14,7 +14,7 @@ public class Order {
     @Id
     private int custID;
     private String orderID;
-    private int driverID;
+    private String driverID;
     private int itemID;
     private String trackStatus;
     private String trackETA;
@@ -40,7 +40,7 @@ public class Order {
         return orderID;
     }
 
-    public int getDriverID() {
+    public String getDriverID() {
         return driverID;
     }
 
@@ -71,7 +71,7 @@ public class Order {
     public static class Builder {
         private int custID;
         private String orderID;
-        private int driverID;
+        private String driverID;
         private int itemID;
         private String trackStatus;
         private String trackETA;
@@ -86,7 +86,7 @@ public class Order {
             return this;
         }
 
-        public Builder setDriverID(int driverID) {
+        public Builder setDriverID(String driverID) {
             this.driverID = driverID;
             return this;
         }

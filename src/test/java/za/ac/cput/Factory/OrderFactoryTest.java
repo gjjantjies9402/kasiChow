@@ -17,16 +17,16 @@ class OrderFactoryTest {
         Order order = new Order.Builder()
                 .setCustID(1416)
                 .setOrderID("ORD98")
-                .setDriverID(6804)
+                .setDriverID("DRV25")
                 .setItemID(10)
                 .setTrackStatus("Delivered")
-                .setTrackETA("Delivered")
+                .setTrackETA("14:32")
                 .build();
 
 
         assertEquals(1416, order.getCustID());
         assertEquals("ORD98", order.getOrderID());
-        assertEquals(6804, order.getDriverID());
+        assertEquals("DRV25", order.getDriverID());
         assertEquals(10, order.getItemID());
         assertEquals("Delivered", order.getTrackStatus());
         assertEquals("14:32", order.getTrackETA());

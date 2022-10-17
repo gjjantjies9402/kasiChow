@@ -15,7 +15,7 @@ class OrderServiceTest {
 
     @Autowired
     private static OrderService orderServ;
-    private static Order order = OrderFactory.createOrder(1416, "ORD98",6804, 10, "Delivered", "14:32");
+    private static Order order = OrderFactory.createOrder(1416, "ORD98","DRV25", 10, "Delivered", "14:32");
 
     @Test
     void create() {
@@ -28,7 +28,7 @@ class OrderServiceTest {
     void read() {
         Order read = orderServ.read(order.getOrderID());
         assertNotNull(read);
-        System.out.println("\nRead:\n" + read.toString());
+        System.out.println("\nRead:\n" + read);
     }
 
     @Test
