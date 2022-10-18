@@ -23,6 +23,10 @@ class DriverControllerTest {
 
     private static Driver driver = DriverFactory.createDriver("25896", "Luzuko", "Bhedengu", "0785214935");
 
+    private static Driver driver2 = DriverFactory.createDriver("159875", "Siviwe", "Adams", "0639574123");
+
+    private static Driver driver3 = DriverFactory.createDriver("25896", "Alakhe", "Mazwi", "0815972364");
+
     @Autowired
     private TestRestTemplate restTemplate;
     private final String baseURL = "http://localhost:8090/driver";
@@ -42,29 +46,29 @@ class DriverControllerTest {
     void create() {
 
         String url = baseURL + "/create";
-        ResponseEntity<Driver> postResponse = restTemplate.postForEntity(url, driver , Driver.class);
+        ResponseEntity<Driver> postResponse = restTemplate.postForEntity(url, driver2 , Driver.class);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
-        driver = postResponse.getBody();
-        System.out.println("Saved: " + driver);
-        assertEquals(driver.getDriverID(), postResponse.getBody().getDriverID());
+        driver2 = postResponse.getBody();
+        System.out.println("Saved: " + driver2);
+        assertEquals(driver2.getDriverID(), postResponse.getBody().getDriverID());
 
     }
 
     @Test
     void read() {
 
-        String url = baseURL + "/read/" + driver.getDriverID();
+        String url = baseURL + "/read/" + driver3.getDriverID();
         System.out.println("URL: " + url);
         ResponseEntity<Driver> response = restTemplate.getForEntity(url, Driver.class);
-        assertEquals(driver.getDriverID(), response.getBody().getDriverID());
+        assertEquals(driver3.getDriverID(), response.getBody().getDriverID());
 
     }
 
     @Test
     void update() {
 
-        Driver update = new Driver.Builder().copy(driver).setDriverContact("0619654213").build();
+        Driver update = new Driver.Builder().copy(driver3).setDriverContact("0619654213").build();
         String url = baseURL + "/update";
         System.out.println("Updated: " + update);
         ResponseEntity<Driver> response = restTemplate.postForEntity(url, update, Driver.class);
@@ -75,7 +79,7 @@ class DriverControllerTest {
     @Test
     void delete() {
 
-        String url = baseURL + "/delete/" + driver.getDriverID();
+        String url = baseURL + "/delete/" + driver2.getDriverID();
         System.out.println("URL: " + url);
         restTemplate.delete(url);
 
