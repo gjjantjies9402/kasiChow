@@ -1,25 +1,22 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>
-        Store
-    </title>
-    <link rel="icon" type="image/png" th:href="@{/img/favicon.png}" >
-    <link th:href="@{/css/now-ui-kit.css}"  rel="stylesheet" />
-    <!--  <link rel="stylesheet" th:href="@{/css/style.css}">-->
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-    <!--     Fonts and icons     -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../static/css/now-ui-kit.css?v=1.3.0" rel="stylesheet" />
-    <!--  <link href="../static/css/style.css" rel="stylesheet" />-->
-  
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    Payment Type
+  </title>
+  <link rel="icon" type="image/png" th:href="@{/img/favicon.png}" >
+  <link th:href="@{/css/now-ui-kit.css}"  rel="stylesheet" />
+  <!--  <link rel="stylesheet" th:href="@{/css/style.css}">-->
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/css/now-ui-kit.css?v=1.3.0" rel="stylesheet" />
+  <!--  <link href="../static/css/style.css" rel="stylesheet" />-->
 </head>
-
-
 <body class="login-page sidebar-collapse">
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent " color-on-scroll="400">
@@ -43,7 +40,7 @@
         </div>
         <div class="navbar-translate">
             <a class="navbar-brand" href="https://demos.creative-tim.com/now-ui-kit/index.html" rel="tooltip" title="Designed by Invision. Coded by Creative Tim" data-placement="bottom" target="_blank">
-                KasiChow
+                Payment
             </a>
             <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-bar top-bar"></span>
@@ -77,57 +74,57 @@
 </nav>
 <!-- End Navbar -->
 <div class="page-header clear-filter" filter-color="orange">
-    <div class="content">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="card card-chart">
-
-                    <div class="card-body">
-                        <a class="nav-link" href="/restaurant/home">
-                            <img th:src="@{/img/rest.jpg}" alt="" />
-                            <div class="middle">
-                                <div class="h4">Restaurant</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+  <div class="content">
+    <div class="container">
+        <div class="col-md-4 ml-auto mr-auto">
+            <h3>Payment</h3>
+            <label>Name on Card</label>
+            <div class="input-group no-border input-lg">
+                <input type="text" class="form-control" placeholder="Name on Card">
+            </div>
+            <label>Credit card number</label>
+            <div class="input-group no-border input-lg">
+                <input type="text" class="form-control" placeholder="Credit card number">
+            </div>
+            <label>Exp Month</label>
+            <div class="input-group no-border input-lg">
+                <input type="text" class="form-control" placeholder="Exp Month">
+            </div>
+            <label>Exp Year</label>
+            <div class="input-group no-border input-lg">
+                <input type="text" class="form-control" placeholder="Exp Year">
+            </div>
+             <label>CVV</label>
+            <div class="input-group no-border input-lg">
+                <input type="text" class="form-control" placeholder="CVV">
+            </div>
+            <div class="input-group no-border input-lg">
+                <a  method="post"  th:action="@{/login}"  href="./receipt.html" class="btn btn-primary btn-round btn-lg btn-block">  Payment </a>
+            </div>
             </div>
 
-            <div class="col-lg-6">
-                <div class="card card-chart">
-
-                    <div class="card-body">
-                        <a class="nav-link" href="/supermarket/menu">
-                            <img th:src="@{/img/supermarket.jpg}" alt="" />
-                            <div class="middle">
-                                <div class="h4">Supermarket</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
         </div>
-        <footer class="footer">
-            <div class=" container-fluid ">
-                <nav>
-                    <ul>
-                        <li>
-                            <a href="./home.html">
-                                Home
-                            </a>
-                        </li>
-                        <li>
-                            <a href="./home.html">
-                                About Us
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </footer>
     </div>
-</div>
+    <footer class="footer">
+        <div class=" container-fluid ">
+            <nav>
+                <ul>
+                    <li>
+                        <a href="./home.html">
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./home.html">
+                            About Us
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+    </div>
+  </div>
 
 </body>
-
 </html>
