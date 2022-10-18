@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface IDriverService extends IService<Driver, String> {
 
-    List<Driver> getAll();
+   List<Driver> getAll();
 
 }

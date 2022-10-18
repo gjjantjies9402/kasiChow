@@ -10,8 +10,7 @@ import za.ac.cput.Service.impl.CustomerService;
 import java.util.List;
 
 
-@Controller
-//@RestController
+@RestController
 @RequestMapping("/customer")
 public class CustomerController {
 
@@ -48,13 +47,9 @@ public class CustomerController {
     }
 
     @DeleteMapping ("/delete/{custID}")
-    public String delete (@RequestBody Customer customer)
+    public boolean delete (@PathVariable(value = "custID") String custID)
     {
-        if (customerService.delete(customer.getCustID()))
-
-            return "Deleted";
-        else
-            return "Not Deleted";
+        return customerService.delete(custID);
     }
 
     @GetMapping ("/getall")

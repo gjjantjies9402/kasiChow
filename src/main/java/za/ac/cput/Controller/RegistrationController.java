@@ -17,7 +17,7 @@ import za.ac.cput.Service.impl.RegistrationServices;
 
 import java.util.Set;
 @RestController
-@RequestMapping("kasichow/registration/type/")
+@RequestMapping("/registration")
 public class RegistrationController {
 
     @Autowired
@@ -39,7 +39,7 @@ public class RegistrationController {
         if (result.hasErrors())
             return "restaurantAdd";
         service.create(registers);
-        return "redirect:/registration/home";
+        return "redirect:/home";
     }
 
     @GetMapping(value = "/read/{id}")

@@ -3,11 +3,8 @@ package za.ac.cput.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import za.ac.cput.Entity.Customer;
 import za.ac.cput.Entity.Driver;
-import za.ac.cput.Factory.CustomerFactory;
 import za.ac.cput.Factory.DriverFactory;
-import za.ac.cput.Service.impl.CustomerService;
 import za.ac.cput.Service.impl.DriverService;
 
 import java.util.List;
@@ -47,14 +44,11 @@ public class DriverController {
     }
 
     @DeleteMapping ("/delete/{driverID}")
-    public String delete (@RequestBody Driver driver)
+    public boolean delete (@PathVariable(value = "driverID") String driverID)
     {
-        if (driverService.delete(driver.getDriverID()))
-
-            return "Deleted";
-        else
-            return "Not Deleted";
+        return driverService.delete(driverID);
     }
+
 
     @GetMapping ("/getall")
     public List<Driver> getAll()
