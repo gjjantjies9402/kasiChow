@@ -1,80 +1,59 @@
 package za.ac.cput.Controller;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.Entity.Driver;
 import za.ac.cput.Factory.DriverFactory;
-import za.ac.cput.Service.Interface.IDriverService;
+import za.ac.cput.Service.impl.DriverService;
 
-import java.util.Set;
+import java.util.List;
 
+@RestController
 @RequestMapping("/driver")
 public class DriverController {
 
     @Autowired
-    private IDriverService service;
+    private DriverService driverService;
 
-    @GetMapping("/home")
-    public String home(Model model) {
-        model.addAttribute("drivers", service.getAll());
-        return "driverHome";
-    }
-    @RequestMapping("/driver")
-    public String driver() {
-        System.out.println("Driver Page");
-        return "driverHome";
-    }
-
-    @GetMapping("/create")
-    public String getCreateForm(Driver driver){
-        return "driverAdd";
+    @PostMapping("/create")
+    public Driver create (@RequestBody Driver driver)
+    {
+        Driver newDriver = DriverFactory.createDriver
+                (
+                        driver.getDriverID(),
+                        driver.getDriverLname(),
+                        driver.getDriverLname(),
+                        driver.getDriverContact()
+                );
+        return driverService.create(newDriver);
     }
 
-    @PostMapping(value = "/create")
-    public String create(@ModelAttribute Driver driver, BindingResult result, Model model) {
-        if (result.hasErrors())
-            return "driverAdd";
-        Driver newDriver = DriverFactory.createId(driver.getName());
-        service.create(newDriver);
-        return "redirect:/driver/home";
+    @GetMapping("/read/{driverID}")
+    public Driver read (@PathVariable String driverID)
+    {
+        return driverService.read(driverID);
     }
 
-    @GetMapping(value = "/read/{id}")
-    public Driver read(@PathVariable String id) {
-        return service.read(id);
+    @PostMapping ("/update")
+    public Driver update (@RequestBody Driver driver)
+    {
+        Driver update = driverService.update(driver);
+
+        return update;
     }
 
-    @GetMapping("/update/{id}")
-    public String getUpdateForm(@PathVariable("id") String id, Model model) {
-        Driver driver = service.read(id);
-        model.addAttribute("driver", driver);
-        return "driverUpdate";
+    @DeleteMapping ("/delete/{driverID}")
+    public boolean delete (@PathVariable(value = "driverID") String driverID)
+    {
+        return driverService.delete(driverID);
     }
 
-    @PostMapping("/update")
-    public String update(Driver driver, BindingResult result, Model model) {
-        if (result.hasErrors())
-            return "driverUpdate";
-        service.update(driver);
-        return "redirect:/driver/home";
+
+    @GetMapping ("/getall")
+    public List<Driver> getAll()
+    {
+        return driverService.getAll();
     }
 
-    @DeleteMapping("/delete/{id}")
-    public boolean delete(@PathVariable("id") String id) {
-        return service.delete(id);
-    }
-
-    @GetMapping("/delete/{id}")
-    public String delete(@PathVariable("id") String id, Model model){
-        service.delete(id);
-        model.addAttribute("drivers", service.getAll());
-        return "redirect:/driver/home";
-    }
-
-    @GetMapping("/all")
-    public Set<Driver> getAll() {
-        return service.getAll();
-    }
 }
