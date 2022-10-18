@@ -20,6 +20,9 @@ import static org.junit.jupiter.api.Assertions.*;
 class CustomerControllerTest {
 
     private static Customer customer = CustomerFactory.createCustomer("21852", "Mandisa", "Msongelwa", "0789642013", "mandymsongelwa@gmail.com", "59 Grace Land Khayelitsha, Cape Town, 7500");
+    private static Customer customer2 = CustomerFactory.createCustomer("63248", "Buhle", "Khweba", "061785236", "buhlek@gmail.com", "59 Sir Lory Road Woodstock , Cape Town, 8000");
+
+    private static Customer customer3 = CustomerFactory.createCustomer("63259", "Avuzwa", "Nceba", "0832145698", "a.nceba@gmail.com", "No. 47 Zone 7, Cape Town, 7000");
 
 //    public static String ADMIN_USERNAME = "admin";
 //    public static String ADMIN_PASSWORD = "password";
@@ -44,12 +47,12 @@ class CustomerControllerTest {
     void create() {
 
         String url = baseURL + "/create";
-        ResponseEntity<Customer> postResponse = restTemplate.postForEntity(url, customer , Customer.class);
+        ResponseEntity<Customer> postResponse = restTemplate.postForEntity(url, customer2 , Customer.class);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
         customer = postResponse.getBody();
-        System.out.println("Saved: " + customer);
-        assertEquals(customer.getCustID(), postResponse.getBody().getCustID());
+        System.out.println("Saved: " + customer2);
+        assertEquals(customer2.getCustID(), postResponse.getBody().getCustID());
 
     }
 
@@ -77,7 +80,7 @@ class CustomerControllerTest {
     @Test
     void delete() {
 
-        String url = baseURL + "/delete/" + customer.getCustID();
+        String url = baseURL + "/delete/" + customer3.getCustID();
         System.out.println("URL: " + url);
         restTemplate.delete(url);
 

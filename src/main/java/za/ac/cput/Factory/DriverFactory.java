@@ -1,17 +1,23 @@
 package za.ac.cput.Factory;
 
+
 import za.ac.cput.Entity.Driver;
 import za.ac.cput.util.Auth;
 
 public class DriverFactory {
-    public static Driver createId(String name) {
-        String Id = Auth.generateId();
 
-        Driver driver = new Driver.Builder()
-                .setId(Id)
-                .setName(name)
+    public static Driver createDriver(String driverID, String driverFname, String driverLname, String driverContact){
+
+        if (Auth.isNullorEmpty(driverID) ||Auth.isNullorEmpty(driverFname) || Auth.isNullorEmpty(driverLname) || Auth.isNullorEmpty(driverContact))
+            return null;
+
+        return new Driver.Builder()
+                .setDriverID(driverID)
+                .setDriverFname(driverFname)
+                .setDriverLname(driverLname)
+                .setDriverContact(driverContact)
                 .build();
 
-        return driver;
     }
+
 }
