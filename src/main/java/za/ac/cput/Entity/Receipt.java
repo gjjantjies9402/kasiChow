@@ -1,30 +1,32 @@
-/*Item.java
-Entity for Receipt
-Author: Nikitha Mbokotwana (218337906)
-Date: 08 April 2022
- */
+/**Receipt.java
+ * Entity for Receipt
+ * Author: Nikitha Mbokotwana (218337906)
+ * Date: 08 April 2022
+ **/
 package za.ac.cput.Entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.Objects;
 
 @Entity
 public class Receipt {
     @Id
     private String receiptID;
-    private double orderNr;
-    private String staffID;
-    private String customerIMEI;
+    private String orderNr;
+    private String customerID;
+    private String driverID;
     private double amountPaid;
-protected Receipt(){
 
-}
+    protected Receipt(){
+
+    }
     //private constructer
     private Receipt(Builder builder){
         this.receiptID = builder.receiptID;
         this.orderNr = builder.orderNr;
-        this.staffID = builder.staffID;
-        this.customerIMEI = builder.customerIMEI;
+        this.customerID = builder.customerID;
+        this.driverID = builder.driverID;
         this.amountPaid = builder.amountPaid;
     }
 
@@ -34,18 +36,14 @@ protected Receipt(){
         return receiptID;
     }
 
-    public double getOrderNr() {
+    public String getOrderNr() {
         return orderNr;
     }
 
-    public String getStaffID() {
-        return staffID;
+    public String getCustomerID() {
+        return customerID;
     }
-
-    public String getCustomerIMEI() {
-        return customerIMEI;
-    }
-
+    public String getDriverID(){return driverID;}
     public double getAmountPaid() {
         return amountPaid;
     }
@@ -55,18 +53,14 @@ protected Receipt(){
         this.receiptID = receiptID;
     }
 
-    public void setOrderNr(double orderNr) {
+    public void setOrderNr(String orderNr) {
         this.orderNr = orderNr;
     }
 
-    public void setStaffID(String staffID) {
-        this.staffID = staffID;
+    public void setCustomerID(String staffID) {
+        this.customerID = customerID;
     }
-
-    public void setCustomerIMEI(String customerIMEI) {
-        this.customerIMEI = customerIMEI;
-    }
-
+    public void setDriverID(String driverID){this.driverID = driverID;}
     public void setAmountPaid(double amountPaid) {
         this.amountPaid = amountPaid;
     }
@@ -76,17 +70,17 @@ protected Receipt(){
         return "Receipt{" +
                 "receiptID='" + receiptID + '\'' +
                 ", orderNr=" + orderNr +
-                ", staffID='" + staffID + '\'' +
-                ", customerIMEI='" + customerIMEI + '\'' +
+                ", customerID='" + customerID + '\'' +
+                ", driverID='" + driverID + '\'' +
                 ", amountPaid=" + amountPaid +
                 '}';
     }
 
     public static class Builder{
         private String receiptID;
-        private double orderNr;
-        private String staffID;
-        private String customerIMEI;
+        private String orderNr;
+        private String customerID;
+        private String driverID;
         private double amountPaid;
 
         public Builder setReceiptID(String receiptID) {
@@ -94,20 +88,20 @@ protected Receipt(){
             return this;
         }
 
-        public Builder setOrderNr(double orderNr) {
+        public Builder setOrderNr(String orderNr) {
             this.orderNr = orderNr;
             return this;
         }
 
-        public Builder setStaffID(String staffID) {
-            this.staffID = staffID;
+       public Builder setCustomerID(String customerID){
+            this.customerID = customerID;
             return this;
-        }
+       }
 
-        public Builder setCustomerIMEI(String customerIMEI) {
-            this.customerIMEI = customerIMEI;
+       public Builder setDriverID(String driverID){
+            this.driverID = driverID;
             return this;
-        }
+       }
 
         public Builder setAmountPaid(double amountPaid) {
             this.amountPaid = amountPaid;
@@ -116,8 +110,8 @@ protected Receipt(){
 
         public Builder copy(Receipt receipt){
             this.receiptID = receipt.receiptID;
-            this.staffID = receipt.staffID;
-            this.customerIMEI = receipt.customerIMEI;
+            this.customerID = receipt.customerID;
+            this.driverID = receipt.driverID;
             this.amountPaid = receipt.amountPaid;
             return this;
         }
@@ -125,5 +119,18 @@ protected Receipt(){
         public Receipt build(){
             return new Receipt(this);
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Receipt receipt = (Receipt) o;
+        return Objects.equals(receiptID, receipt.receiptID);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(receiptID);
     }
 }

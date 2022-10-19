@@ -1,8 +1,8 @@
-/*Item.java
-Entity for Payment
-Author: Nikitha Mbokotwana (218337906)
-Date: 08 April 2022
- */
+/**Payment.java
+ * Entity for Payment
+ * Author: Nikitha Mbokotwana (218337906)
+ * Date: 08 April 2022
+ **/
 package za.ac.cput.Entity;
 
 import javax.persistence.Entity;
