@@ -15,13 +15,14 @@ class orderItemFactoryTest {
     @Test
     void createOrderItem() {
         OrderItem oItem = new OrderItem.Builder()
-                .setPrice(25.99)
+                .setItemID("25")
                 .setQuantity(2)
                 .setTotalAmount(51.98)
                 .build();
 
-        assertEquals(25.99, oItem.getPrice());
+        assertEquals(25, oItem.getItemID());
         assertEquals(2,oItem.getQuantity());
         assertEquals(51.98,oItem.getTotalAmount());
     }
 }
+//
