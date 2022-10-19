@@ -8,15 +8,27 @@ package za.ac.cput.Factory;
 
 import org.junit.jupiter.api.Test;
 import za.ac.cput.Entity.Order;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class OrderFactoryTest {
 
     @Test
     void createOrder() {
-        Order order = OrderFactory.createOrder("ORD98", 9684,684, 10, "Delivered");
-        System.out.println(order.toString());
-        assertNotNull(order);
+        Order order = new Order.Builder()
+                .setCustID(1416)
+                .setOrderID("ORD98")
+                .setDriverID("DRV25")
+                .setItemID(10)
+                .setTrackStatus("Delivered")
+                .setTrackETA("14:32")
+                .build();
+
+
+        assertEquals(1416, order.getCustID());
+        assertEquals("ORD98", order.getOrderID());
+        assertEquals("DRV25", order.getDriverID());
+        assertEquals(10, order.getItemID());
+        assertEquals("Delivered", order.getTrackStatus());
+        assertEquals("14:32", order.getTrackETA());
     }
 }

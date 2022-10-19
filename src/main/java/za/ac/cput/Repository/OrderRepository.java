@@ -44,7 +44,7 @@ import java.util.Set;
 //    @Override
 //    public Order read(String s) {
 //        Order order = orderRepositoryDB.stream()
-//                .filter(e -> e.getOrderNr().equals(s))
+//                .filter(e -> e.getOrderID().equals(s))
 //                .findAny()
 //                .orElse(null);
 //        return order;
@@ -52,7 +52,7 @@ import java.util.Set;
 //
 //    @Override
 //    public Order update(Order order) {
-//        Order prevOrder = read(order.getOrderNr());
+//        Order prevOrder = read(order.getOrderID());
 //        if (prevOrder != null){
 //            orderRepositoryDB.remove(prevOrder);
 //            orderRepositoryDB.add(order);
