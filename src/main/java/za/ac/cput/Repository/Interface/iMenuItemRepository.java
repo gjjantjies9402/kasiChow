@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 import za.ac.cput.Entity.MenuItem;
 
 @Repository
-public interface MenuInterface extends JpaRepository<MenuItem, String> {
-
-//    public Set<Menu> getAll();
+public interface iMenuItemRepository extends JpaRepository<MenuItem,String> {
+//    public Set<Item> getAll();
 }
