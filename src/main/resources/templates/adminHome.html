@@ -76,7 +76,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="#pablo">Customer</a>
+            <a class="navbar-brand" href="#pablo">Driver</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -139,51 +139,49 @@
                 <h5 class="title">Customer</h5>
               </div>
               <div class="card-body">
-                <form>
-                  <section class="main">
-                    <div>
-                        <div th:switch="${passengers}" >
-                            <p>
-                                <a href="./customerAdd.html" class="btn btn-light"><i class="fas fa-plus"> Add Passenger</i></a>
-                            </p>
-                            <div>
-                                <h4 th:case="null">No Passengers</h4>
-                
-                                <div th:case="*" style="text-align: center;">
-                
-                                    <table id="table" class="table">
-                                        <thead>
-                                        <tr>
-                                            <th scope="col">Passenger Id</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Contact</th>
-                                            <th scope="col">Edit</th>
-                                            <th scope="col">Delete</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr th:each="class : ${passengers}">
-                                            <td th:text="${class.getId()}"></td>
-                                            <td th:text="${class.getName()}"></td>
-                                            <td th:text="${class.getContact()}"></td>
-                                            <td><a th:href="@{/passenger/update/{id}(id=${class.getId()})}"
-                                                   class="btn">
-                                                <i class="far fa-edit"></i>
-                                            </a>
-                                            </td>
-                                            <td><a th:href="@{/passenger/delete/{id}(id=${class.getId()})}"
-                                                   class="btn">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </a>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <section class="main">
+                  <div>
+                      <div th:switch="${drivers}" >
+                          <p>
+                              <a href="/driver/create" class="btn btn-light"><i class="fas fa-plus"> Add Driver</i></a>
+                          </p>
+                          <div>
+                              <h2 th:case="null">No Drivers</h2>
+              
+                              <div th:case="*" style="text-align: center;">
+              
+                                  <table id="table" class="table">
+                                      <thead>
+                                      <tr>
+                                          <th scope="col">Driver Id</th>
+                                          <th scope="col">Name</th>
+                                          <th scope="col">Edit</th>
+                                          <th scope="col">Delete</th>
+                                      </tr>
+                                      </thead>
+                                      <tbody>
+                                      <tr th:each="class : ${drivers}">
+                                          <td th:text="${class.getId()}"></td>
+                                          <td th:text="${class.getName()}"></td>
+                                          <td><a th:href="@{/driver/update/{id}(id=${class.getId()})}"
+                                                 class="btn">
+                                              <i class="far fa-edit"></i>
+                                          </a>
+                                          </td>
+                                          <td><a th:href="@{/driver/delete/{id}(id=${class.getId()})}"
+                                                 class="btn">
+                                              <i class="fas fa-trash-alt"></i>
+                                          </a>
+                                          </td>
+                                      </tr>
+                                      </tbody>
+                                  </table>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </section>
+               
               </div>
             </div>
           </div>
@@ -193,24 +191,19 @@
               <div class="card-body">
                 <section class="container-fluid col-6 pt-xl-4">
 
-                  <h5> Add Passenger</h5>
+                  <h3> Add Driver</h3>
                   <div>
-                      <!--/*@thymesVar id="passenger" type="java"*/-->
-                      <form action="#" th:action="@{/passenger/create}" th:object="${passenger}" method="post">
+                      <!--/*@thymesVar id="driver" type="java"*/-->
+                      <form action="#" th:action="@{/driver/create}" th:object="${driver}" method="post">
               
                           <div class="form-outline mb-4">
                               <input type="text" th:field="*{id}" class="form-control" readonly>
-                              <label>Passenger Id</label>
+                              <label>Driver Id</label>
                           </div>
               
                           <div class="form-outline mb-4">
                               <input type="text" th:field="*{name}" class="form-control" required>
-                              <label>Name</label>
-                          </div>
-              
-                          <div class="form-outline mb-4">
-                              <input type="text" th:field="*{contact}" class="form-control">
-                              <label>Contact</label>
+                              <label>Driver Name</label>
                           </div>
               
                           <div >
