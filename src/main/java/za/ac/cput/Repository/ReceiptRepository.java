@@ -6,6 +6,7 @@
 //import java.util.HashSet;
 //import java.util.Set;
 //
+//@Deprecated
 //public class ReceiptRepository implements iReceiptRepository {
 //    private static ReceiptRepository repository = null;
 //    private Set<Receipt> receiptDB = null;

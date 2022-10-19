@@ -1,8 +1,8 @@
-/*PaymentFactoryTest.java
-Factory test class for Payment
-Author: Nikitha Mbokotwana (218337906)
-Date: 08 April 2022
- */
+/**PaymentFactoryTest.java
+ * Factory test class for Payment
+ * Author: Nikitha Mbokotwana (218337906)
+ * Date: 08 April 2022
+ **/
 package za.ac.cput.Factory;
 
 import org.junit.jupiter.api.Test;

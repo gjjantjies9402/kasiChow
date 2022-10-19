@@ -1,8 +1,8 @@
-/*PaymentFactory.java
-Factory for Payment
-Author: Nikitha Mbokotwana (218337906)
-Date: 08 April 2022
- */
+/**PaymentFactory.java
+ * Factory for Payment
+ * Author: Nikitha Mbokotwana (218337906)
+ * Date: 08 April 2022
+ **/
 package za.ac.cput.Factory;
 
 import za.ac.cput.Entity.Payment;
