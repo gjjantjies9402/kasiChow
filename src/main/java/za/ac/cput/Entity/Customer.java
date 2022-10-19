@@ -15,17 +15,15 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-
-//@Table(name = "Customers")
-
 public class Customer {
 
     @Id
-//    @Column(name = "Customer ID")
     private String custID;
     private String firstName;
     private String lastName;
-    private String custIMEI;
+    private String primaryNr;
+    private String emailAddress;
+    private String custAddress;
 
     protected Customer () {}
 
@@ -34,7 +32,9 @@ public class Customer {
         this.custID = builder.custID;
         this.firstName = builder.firstName;
         this.lastName = builder.lastName;
-        this.custIMEI = builder.custIMEI;
+        this.primaryNr = builder.primaryNr;
+        this.emailAddress = builder.emailAddress;
+        this.custAddress = builder.custAddress;
 
     }
 
@@ -43,7 +43,9 @@ public class Customer {
                 "Customer ID='" + custID + '\'' +
                 ", First Name='" + firstName + '\'' +
                 ", Last Name='" + lastName + '\'' +
-                ", Customer IMEI='" + custIMEI + '\'' +
+                ", Primary Number='" + primaryNr + '\'' +
+                ", Email Address='" + emailAddress + '\'' +
+                ", Customer Address='" + custAddress + '\'' +
                 '}';
     }
 
@@ -64,15 +66,27 @@ public class Customer {
         return lastName;
     }
 
-    public String getCustIMEI() {
+    public String getPrimaryNr() {
 
-        return custIMEI;
+        return primaryNr;
     }
+
+    public String getEmailAddress() {
+
+        return emailAddress;
+    }
+
+    public String getCustAddress() {
+
+        return custAddress;
+
+    }
+
 
 
     public static class Builder {
 
-        private String custID, firstName, lastName, custIMEI;
+        private String custID, firstName, lastName, primaryNr, emailAddress, custAddress;
 
 
 
@@ -96,9 +110,24 @@ public class Customer {
 
             return this;
         }
-        public Builder setCustIMEI(String custIMEI) {
 
-            this.custIMEI = custIMEI;
+        public Builder setPrimaryNr(String primaryNr) {
+
+            this.primaryNr = primaryNr;
+
+            return this;
+        }
+
+        public Builder setEmailAddress(String emailAddress) {
+
+            this.emailAddress = emailAddress;
+
+            return this;
+        }
+
+        public Builder setCustAddress(String custAddress) {
+
+            this.custAddress = custAddress;
 
             return this;
         }
@@ -113,7 +142,9 @@ public class Customer {
             this.custID = customer.custID;
             this.firstName = customer.firstName;
             this.lastName = customer.lastName;
-            this.custIMEI = customer.custIMEI;
+            this.primaryNr = customer.primaryNr;
+            this.emailAddress = customer.emailAddress;
+            this.custAddress = customer.custAddress;
 
             return this;
         }
