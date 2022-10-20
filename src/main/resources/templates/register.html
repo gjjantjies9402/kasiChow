@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://thymeleaf.org">
+
 <head>
   <meta charset="utf-8" />
   <title> Register </title>
-  <link rel="icon" type="image/png" th:href="@{/img/favicon.png}" >
+  <link rel="icon" th:href="@{/img/favicon.png}" type="image/png">
   <link th:href="@{/css/now-ui-kit.css}"  rel="stylesheet" />
   <link rel="stylesheet" th:href="@{/css/style.css}">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -28,23 +29,37 @@
                 <img th:src="@{/img/logo.png}" alt="">
               </div>
             </div>
-          <form action="#" th:action="@{/customer/create}" th:object="${customer}" method="post">
+          <!--/*@thymesVar id="register" type="java"*/-->
+          <form action="#" th:action="@{/register/create}" th:object="${register}" method="post">
               <div class="card-body">
 
                 <div class="input-group no-border input-lg">
-                  <input type="text"  class="form-control" placeholder="First Name">
+                  <input type="text" th:field="*{firsName}" class="form-control" placeholder="First Name">
                 </div>
                 <div class="input-group no-border input-lg">
-                    <input type="email" class="form-control" placeholder="Email">
+                  <label>
+                    <input type="text" th:field="*{lastName}" class="form-control" placeholder="Email">
+                  </label>
+                </div>
+                <div class="input-group no-border input-lg">
+                  <label>
+                    <input type="email" th:field="*{emailAddress}" class="form-control" placeholder="Email">
+                  </label>
+                </div>
+                  <div class="input-group no-border input-lg">
+                    <label>
+                      <input type="text" th:field="*{username}" class="form-control" placeholder="Contact">
+                    </label>
                   </div>
                   <div class="input-group no-border input-lg">
-                    <input type="number" class="form-control" placeholder="Contact">
+                    <label>
+                      <input type="password" th:field="*{password}" class="form-control" placeholder="Password">
+                    </label>
                   </div>
                   <div class="input-group no-border input-lg">
-                    <input type="password" class="form-control" placeholder="Password">
-                  </div>
-                  <div class="input-group no-border input-lg">
-                    <input type="password" class="form-control" placeholder="Confirm Password">
+                    <label>
+                      <input type="password"  th:field="*{confirmPassword}" class="form-control" placeholder="Confirm Password">
+                    </label>
                   </div>
 
               </div>

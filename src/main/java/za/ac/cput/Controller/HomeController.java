@@ -18,7 +18,16 @@ public class HomeController {
         System.out.println("About Page");
         return "about";
     }
-
+    @RequestMapping("/landing")
+    public String landing() {
+        System.out.println("Landing Page");
+        return "landing";
+    }
+    @RequestMapping("/dashboard")
+    public String dashboard() {
+        System.out.println("Dashboard Page");
+        return "dashboard";
+    }
 
     @RequestMapping("/contact")
     public String contact() {
