@@ -10,14 +10,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import za.ac.cput.Entity.Customer;
 import za.ac.cput.Entity.Restaurant;
 import za.ac.cput.Entity.registration;
+import za.ac.cput.Factory.CustomerFactory;
+import za.ac.cput.Factory.registrationFactory;
 import za.ac.cput.Service.Interface.RestaurantService;
 import za.ac.cput.Service.impl.RegistrationServices;
 
 import java.util.Set;
 @RestController
-@RequestMapping("/registration")
+@RequestMapping("/register")
 public class RegistrationController {
 
     @Autowired
@@ -26,20 +29,30 @@ public class RegistrationController {
     @GetMapping("/home")
     public String home(Model model) {
         model.addAttribute("registration", service.getAll());
-        return "RegisterHome";
+        return "register";
     }
 
     @GetMapping("/create")
     public String getCreateForm(registration register) {
-        return "registerAdd";
+        return "register";
     }
 
     @PostMapping("/create")
-    public String create(@ModelAttribute registration registers, BindingResult result, Model model) {
-        if (result.hasErrors())
-            return "restaurantAdd";
-        service.create(registers);
-        return "redirect:/home";
+
+    public registration create(@RequestBody  registration register) {
+        {
+
+            registration newRegistration = registrationFactory.createRegistration(
+                    register.getFirstName(),
+                    register.getLastName(),
+                    register.getUsername(),
+                    register.getPassword(),
+                    register.getConfirmPassword(),
+                    register.getEmailAddress()
+            );
+            return service.create(newRegistration);
+
+        }
     }
 
     @GetMapping(value = "/read/{id}")
