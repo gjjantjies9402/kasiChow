@@ -12,65 +12,65 @@ import javax.persistence.Id;
 @Entity
 public class OrderItem {
     @Id
+    private String itemID;
     private int quantity;
-    private double price;
     private double totalAmount;
 
     protected OrderItem(){}
 
-    //private constructor
+    //Private constructor
     private OrderItem(Builder builder) {
-        this.price = builder.price;
+        this.itemID = builder.itemID;
         this.quantity = builder.quantity;
         this.totalAmount = builder.totalAmount;
     }
 
     //Getters & Setters & toString
+    public String getItemID() {
+        return itemID;
+    }
+
+//    public void setItemID(String itemID) {
+//        this.itemID = itemID;
+//    }
+
     public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
+//    public void setQuantity(int quantity) {
+//        this.quantity = quantity;
+//    }
 
     public double getTotalAmount() {
         return totalAmount;
     }
 
-    public void setTotalAmount(double totalAmount) {
-        this.totalAmount = totalAmount;
-    }
+//    public void setTotalAmount(double totalAmount) {
+//        this.totalAmount = totalAmount;
+//    }
 
     @Override
     public String toString() {
         return "OrderItem{" +
-                "quantity=" + quantity +
-                ", price=" + price +
-                ", totalAmount=" + totalAmount +
+                "Item ID=" + itemID +
+                " Quantity=" + quantity +
+                ", Total Amount=" + totalAmount +
                 '}';
     }
 
     public static class Builder {
+        private String itemID;
         private int quantity;
-        private double price;
         private double totalAmount;
 
-        public Builder setQuantity(int quantity) {
-            this.quantity = quantity;
+
+        public Builder setItemID(String itemID) {
+            this.itemID = itemID;
             return this;
         }
-
-        public Builder setPrice(double price) {
-            this.price = price;
+        public Builder setQuantity(int quantity) {
+            this.quantity = quantity;
             return this;
         }
 
@@ -80,7 +80,7 @@ public class OrderItem {
         }
 
         public Builder copy(OrderItem oItem) {
-            this.price = oItem.price;
+            this.itemID = oItem.itemID;
             this.quantity = oItem.quantity;
             this.totalAmount = oItem.totalAmount;
             return this;

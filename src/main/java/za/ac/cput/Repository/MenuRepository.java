@@ -1,73 +1,66 @@
-///**
-// * Mandisa Msongelwa
-// * 217149073
-// * Group 28
-// */
 //package za.ac.cput.Repository;
-//
-//import za.ac.cput.Entity.Menu;
-//import za.ac.cput.Repository.Interface.MenuInterface;
+//import za.ac.cput.Entity.MenuItem;
+//import za.ac.cput.Repository.Interface.iMenuItemRepository;
 //
 //import java.util.HashSet;
 //import java.util.Set;
 //
-//public class MenuRepository implements MenuInterface {
-//    private static MenuRepository repository = null;
-//    private Set<Menu> menuDb = null;
+//public class MenuItemRepository implements iMenuItemRepository {
+//    private static MenuItemRepository repository = null;
+//    private Set<MenuItem> menuItemDB = null;
 //
-//    private MenuRepository(){
-//        menuDb = new HashSet<Menu>();
+//    private MenuItemRepository() {
+//        menuItemDB = new HashSet<MenuItem>();
 //    }
 //
-//    public static MenuRepository getRepository(){
-//        if (repository == null){
-//            repository = new MenuRepository();
-//        }
-//        return repository;
-//    }
-//
+//    public static MenuItemRepository getRepository() {
+//        if (repository == null)
+//            repository = new MenuItemRepository();
+//    return repository;
+//}
 //    @Override
-//    public Menu create(Menu menu) {
-//        boolean success = menuDb.add(menu);
-//        if (!success)
+//    public MenuItem create(MenuItem menuItem) {
+//        boolean created = menuItemDB.add(menuItem);
+//        if(created)
+//            return menuItem;
+//        else
 //            return null;
-//
-//        return menu;
 //    }
 //
 //    @Override
-//    public Menu read(String id) {
-//        for (Menu m : menuDb) {
-//            if (m.getMenuCategory().equals(id))
-//                return m;
+//    public Item read(String s) {
+//        for (MenuItem menuItem : menuItemDB) {
+//            if (menuItem.getItemID().equals(menuItem))
+//                return menuItem;
 //        }
 //        return null;
 //    }
 //
 //    @Override
-//    public Menu update(Menu menu ) {
-//        Menu newMenu = read(menu.getMenuCategory());
+//    public MenuItem update(MenuItem menuItem) {
+//        MenuItem updateMenuItem = read(menuItem.getItemID());
 //
-//        if (newMenu != null){
-//            menuDb.remove(newMenu);
-//            menuDb.add(menu);
-//            return  menu;
+//        if (updateMenuItem != null){
+//            menuItemDB.remove(updateMenuItem);
+//            menuItemDB.add(menuItem);
+//            return menuItem;
 //        }
 //        return null;
 //    }
 //
 //    @Override
-//    public boolean delete(String id) {
-//        Menu delMenu = read(id);
+//    public boolean delete(String s) {
+//        MenuItem menuItemDeleted = read(s);
 //
-//        if (delMenu == null)
-//            return false;
-//        menuDb.remove(delMenu);
+//        if (menuItemDeleted == null)
+//            return true;
+//        menuItemDB.remove(menuItemDeleted);
 //        return true;
 //    }
-//
 //    @Override
-//    public Set<Menu> getAll() {
-//        return menuDb;
+//    public Set<MenuItem> getAll() {
+//        return null;
 //    }
 //}
+//
+//

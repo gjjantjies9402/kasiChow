@@ -7,11 +7,12 @@ package za.ac.cput.Factory;
 
 import za.ac.cput.Entity.OrderItem;
 
+//orderItem
 public class OrderItemFactory {
-    public static OrderItem createOrderItem(int quantity, double price, double totalAmount) {
+    public static OrderItem createOrderItem(String itemID, int quantity, double totalAmount) {
 
-        return new OrderItem.Builder().setQuantity(quantity)
-                .setPrice(price)
+        return new OrderItem.Builder().setItemID(itemID)
+                .setQuantity(quantity)
                 .setTotalAmount(totalAmount)
                 .build();
     }
