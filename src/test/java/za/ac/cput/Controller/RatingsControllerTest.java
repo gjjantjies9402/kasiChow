@@ -6,10 +6,8 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
+import za.ac.cput.Entity.Order;
 import za.ac.cput.Entity.Ratings;
 import za.ac.cput.Factory.RatingsFactory;
 
@@ -25,23 +23,34 @@ class RatingsControllerTest {
     private TestRestTemplate restTemplate;
     private final String baseURL = "http://localhost:8080/ratings/";
 
+    public static Ratings getRatings() {
+
+        return ratings;
+
+    }
+
+    public static void setRatings(Ratings ratings) {
+
+        RatingsControllerTest.ratings = ratings;
+    }
+
 
     @Test
     void create() {
         String url = baseURL + "/create";
         ResponseEntity<Ratings> postResponse = restTemplate.postForEntity(url, ratings, Ratings.class);
-        System.out.println(postResponse);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
-        assertEquals(HttpStatus.OK, postResponse.getStatusCode());
         ratings = postResponse.getBody();
         System.out.println("Saved data\n----------\n" + ratings);
         assertEquals(ratings.getOrderID(), postResponse.getBody().getOrderID());
+
     }
 
     @Test
     void read() {
         String url = baseURL + "/read/" + ratings.getOrderID();
+        System.out.println("URL: " + url);
         ResponseEntity<Ratings> response =
                 restTemplate.getForEntity(
                         url,
@@ -49,14 +58,14 @@ class RatingsControllerTest {
                 );
         assertNotNull(response.getBody());
         assertEquals(ratings.getOrderID(), response.getBody().getOrderID());
-        System.out.println(response.getBody());
+
     }
 
     @Test
     void update() {
-        Ratings updated =
-                new Ratings.Builder().setOrderID("ORD69").build();
+        Ratings updated = new Ratings.Builder().copy(ratings).setOrderID("ORD69").build();
         String url = baseURL + "/update";
+        System.out.println("Updated data\n------------\n" + updated);
         ResponseEntity<Ratings> response =
                 restTemplate.postForEntity(
                         url,
@@ -64,7 +73,7 @@ class RatingsControllerTest {
                         Ratings.class
                 );
         assertNotNull(response.getBody());
-        System.out.println("Updated data\n------------\n" + updated);
+
     }
 
     @Test
@@ -77,12 +86,12 @@ class RatingsControllerTest {
     @Test
     void getAll() {
         String url = baseURL+"/getall";
-        System.out.println("URL: " + url);
-        org.springframework.http.HttpHeaders headers = new org.springframework.http.HttpHeaders();
+        org.springframework.http.HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<>(null, headers);
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
         System.out.println("Rating");
         System.out.println(response);
         System.out.println(response.getBody());
+
     }
 }
