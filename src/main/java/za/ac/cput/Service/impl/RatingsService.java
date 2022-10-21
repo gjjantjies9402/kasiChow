@@ -1,8 +1,10 @@
 package za.ac.cput.Service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import za.ac.cput.Entity.Ratings;
 import za.ac.cput.Repository.Interface.IRatingsRepository;
+import za.ac.cput.Service.Interface.ICustomerService;
 import za.ac.cput.Service.Interface.IRatingsService;
 
 import java.util.Set;
@@ -18,6 +20,13 @@ public class RatingsService implements IRatingsService {
     private RatingsService() {
     }
 
+//    public static IRatingsService getIRatingsService() {
+//
+//        if(iRatingsService == null)
+//            iRatingsService = new IRatingsService();
+//        return iRatingsService;
+//
+//    }
     @Override
     public Ratings create(Ratings ratings) {
         return this.repository.save(ratings);
