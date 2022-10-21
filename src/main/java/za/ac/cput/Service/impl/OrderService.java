@@ -12,12 +12,21 @@ import java.util.stream.Collectors;
 @Service
 public class OrderService implements IOrderService {
 
-    private static IOrderService iOrderService = null;
+    private static IOrderService orderService = null;
 
     @Autowired
     private IOrderRepository repository;
 
+
     private OrderService() {
+    }
+
+    public static IOrderService getOrderService() {
+
+        if(orderService == null)
+            orderService = new OrderService();
+        return orderService;
+
     }
 
     @Override

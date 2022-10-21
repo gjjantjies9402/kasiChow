@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 public class RatingsService implements IRatingsService {
 
-    private static IRatingsService iRatingsService = null;
+    private static IRatingsService ratingsService = null;
 
     @Autowired
     private IRatingsRepository repository;

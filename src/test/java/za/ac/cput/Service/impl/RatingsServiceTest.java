@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.Entity.Ratings;
+import za.ac.cput.Entity.Restaurant;
 import za.ac.cput.Factory.RatingsFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -27,7 +28,8 @@ class RatingsServiceTest {
     void read() {
         Ratings read = ratingsServ.read(ratings.getOrderID());
         assertNotNull(read);
-        System.out.println("\nRead:\n" + read.toString());
+        System.out.println("\nRead:\n" + read);
+
     }
 
     @Test
@@ -40,12 +42,14 @@ class RatingsServiceTest {
     @Test
     void delete() {
         boolean deleteSuccessful = ratingsServ.delete(ratings.getOrderID());
-        System.out.println("\nDeleted: ");
         assertTrue(deleteSuccessful);
+        System.out.println("\nDeleted: " + true);
+
     }
 
     @Test
     void getAll() {
+        assertEquals(1, ratingsServ.getAll().size());
         System.out.println("\nDisplay All: " + ratingsServ.getAll());
     }
 
