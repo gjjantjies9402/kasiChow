@@ -1,19 +1,20 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org">
 
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8"/>
   <title> Register </title>
   <link rel="icon" th:href="@{/img/favicon.png}" type="image/png">
-  <link th:href="@{/css/now-ui-kit.css}"  rel="stylesheet" />
+  <link th:href="@{/css/now-ui-kit.css}" rel="stylesheet"/>
   <link rel="stylesheet" th:href="@{/css/style.css}">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
-  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+        name='viewport'/>
   <!-- CSS Files -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../static/css/now-ui-kit.css?v=1.3.0" rel="stylesheet" />
-  <link href="../static/css/style.css" rel="stylesheet" />
+  <link href="../static/css/now-ui-kit.css?v=1.3.0" rel="stylesheet"/>
+  <link href="../static/css/style.css" rel="stylesheet"/>
 </head>
 
 <body class="login-page sidebar-collapse">
@@ -24,53 +25,58 @@
       <div class="col-md-4 ml-auto mr-auto">
         <div>
 
-            <div>
-              <div class="logo-container">
-                <img th:src="@{/img/logo.png}" alt="">
-              </div>
-            </div>
-          <!--/*@thymesVar id="register" type="java"*/-->
-          <form action="#" th:action="@{/register/create}" th:object="${register}" method="post">
-              <div class="card-body">
-
-                <div class="input-group no-border input-lg">
-                  <input type="text" th:field="*{firsName}" class="form-control" placeholder="First Name">
-                </div>
-                <div class="input-group no-border input-lg">
-                  <label>
-                    <input type="text" th:field="*{lastName}" class="form-control" placeholder="Email">
-                  </label>
-                </div>
-                <div class="input-group no-border input-lg">
-                  <label>
-                    <input type="email" th:field="*{emailAddress}" class="form-control" placeholder="Email">
-                  </label>
-                </div>
-                  <div class="input-group no-border input-lg">
-                    <label>
-                      <input type="text" th:field="*{username}" class="form-control" placeholder="Contact">
-                    </label>
-                  </div>
-                  <div class="input-group no-border input-lg">
-                    <label>
-                      <input type="password" th:field="*{password}" class="form-control" placeholder="Password">
-                    </label>
-                  </div>
-                  <div class="input-group no-border input-lg">
-                    <label>
-                      <input type="password"  th:field="*{confirmPassword}" class="form-control" placeholder="Confirm Password">
-                    </label>
-                  </div>
-
-              </div>
-              <div class=" text-center">
-                <a href="/home" class="btn btn-primary btn-round btn-lg btn-block">Register</a>
-
-                </div>
-            </form>
+          <div>
+            <div class="logo-container">
+              <img th:src="@{/img/logo.png}" alt="">
             </div>
           </div>
+          <!--/*@thymesVar id="register" type="java"*/-->
+
+            <div data-th-each="r : ${register}" class="card-body">
+              <form th:action="@{/register/create}" th:object="${register}" method="post">
+              <div class="input-group no-border input-lg">
+                <label>
+                  <input type="text"  th:value="${{r}}" th:text="${firsName}"  class="form-control" placeholder="First Name">
+                </label>
+              </div>
+              <div class="input-group no-border input-lg">
+                <label>
+                  <input type="text" th:value="${{r}}" th:field="*{lastName}" class="form-control" placeholder="Last Name">
+                </label>
+              </div>
+
+              <div class="input-group no-border input-lg">
+                <label>
+                  <input type="email" th:field="*{emailAddress}" class="form-control" placeholder="Email">
+                </label>
+              </div>
+              <div class="input-group no-border input-lg">
+                <label>
+                  <input type="text" th:field="*{username}" class="form-control" placeholder="Contact">
+                </label>
+              </div>
+              <div class="input-group no-border input-lg">
+                <label>
+                  <input type="password" th:field="*{password}" class="form-control" placeholder="Password">
+                </label>
+              </div>
+              <div class="input-group no-border input-lg">
+                <label>
+                  <input type="password" th:field="*{confirmPassword}" class="form-control"
+                         placeholder="Confirm Password">
+                </label>
+              </div>
+              <div class=" text-center">
+                <a type="submit" class="btn btn-primary btn-round btn-lg btn-block">Register</a>
+
+              </div>
+              </form>
+            </div>
+
+
         </div>
+      </div>
+    </div>
     <footer class="footer">
       <div class=" container-fluid ">
         <nav>
@@ -89,8 +95,8 @@
         </nav>
       </div>
     </footer>
-      </div>
-    </div>
+  </div>
+</div>
 
 </body>
 
