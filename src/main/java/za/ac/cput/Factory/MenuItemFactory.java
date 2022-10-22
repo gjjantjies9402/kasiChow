@@ -11,9 +11,9 @@ import za.ac.cput.util.Auth;
 public class MenuItemFactory {
 
     //Creating item object
-    public static MenuItem createItem(String itemID,String itemName,double itemPrice, String menuCategory){
+    public static MenuItem createMenuItem(String itemID, String menuCategory, String itemName,double itemPrice){
 
-        if(Auth.isNullorEmpty(itemID))
+        if (Auth.isNullorEmpty(itemID))
         {
             return null;
         }
