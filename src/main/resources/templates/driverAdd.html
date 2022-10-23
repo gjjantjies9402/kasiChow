@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Driver</title>
     <link rel="stylesheet" th:href="@{/style.css}">
+    <link rel="icon" type="image/png" th:href="@{/img/favicon.png}" >
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <!-- Google Fonts -->
@@ -29,7 +30,7 @@
 <nav class="navbar navbar-dark red">
 
     <!-- Navbar brand -->
-    <a class="navbar-brand" href="/services">City Sight Seeing Tours</a>
+    <a class="navbar-brand" href="/services">KasiChow</a>
 
     <!-- Collapse button -->
     <button class="navbar-toggler toggler-example" type="button" data-toggle="collapse"
@@ -52,7 +53,7 @@
                 <a class="nav-link" href="/location/home">Location</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/customer/home">Passenger</a>
+                <a class="nav-link" href="/passenger/home">Customer</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/route/home">Route</a>
@@ -75,17 +76,26 @@
 
     <h3> Add Driver</h3>
     <div>
-        <!--/*@thymesVar id="driver" type="java"*/-->
-        <form action="#" th:action="@{/driver/create}" th:object="${driver}" method="post">
+
+        <form th:action="@{/driver/create}" th:object="${driver}" method="post">
 
             <div class="form-outline mb-4">
-                <input type="text" th:field="*{id}" class="form-control" readonly>
+                <input type="text" th:field="*{driverID}"  class="form-control" required>
                 <label>Driver Id</label>
             </div>
 
             <div class="form-outline mb-4">
-                <input type="text" th:field="*{name}" class="form-control" required>
-                <label>Driver Name</label>
+                <input type="text" th:field="*{driverFname}"  class="form-control" required>
+                <label>First Name</label>
+            </div>
+            <div class="form-outline mb-4">
+                <input type="text" th:field="*{driverLname}" class="form-control" required>
+                <label>Last Name</label>
+            </div>
+
+            <div class="form-outline mb-4">
+                <input type="text" th:field="*{driverContact}"  class="form-control" required>
+                <label>Driver Contact</label>
             </div>
 
             <div >
@@ -95,23 +105,13 @@
     </div>
 </section>
 <!-- Footer -->
-<footer class="footer">
-    <div class=" container-fluid ">
-        <nav>
-            <ul>
-                <li>
-                    <a href="/home">
-                        Home
-                    </a>
-                </li>
-                <li>
-                    <a href="/about">
-                        About Us
-                    </a>
-                </li>
-            </ul>
-        </nav>
+<footer class="page-footer font-small red fixed-bottom">
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2022 Copyright:
     </div>
+    <!-- Copyright -->
+
 </footer>
 <!-- Footer -->
 </body>

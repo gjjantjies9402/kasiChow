@@ -8,11 +8,8 @@
  */
 
 package za.ac.cput.Entity;
-
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
 public class Customer {
@@ -25,7 +22,7 @@ public class Customer {
     private String emailAddress;
     private String custAddress;
 
-    protected Customer () {}
+    public Customer () {}
 
     public Customer(Builder builder) {
 
@@ -38,27 +35,23 @@ public class Customer {
 
     }
 
-    public String toString() {
-        return "Contact{" +
-                "Customer ID='" + custID + '\'' +
-                ", First Name='" + firstName + '\'' +
-                ", Last Name='" + lastName + '\'' +
-                ", Primary Number='" + primaryNr + '\'' +
-                ", Email Address='" + emailAddress + '\'' +
-                ", Customer Address='" + custAddress + '\'' +
-                '}';
-    }
-
 
     public String getCustID() {
 
         return custID;
     }
 
+    public void setCustID(String custID) {
+        this.custID = custID;
+    }
 
     public String getFirstName() {
 
         return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
@@ -66,14 +59,26 @@ public class Customer {
         return lastName;
     }
 
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
     public String getPrimaryNr() {
 
         return primaryNr;
     }
 
+    public void setPrimaryNr(String primaryNr) {
+        this.primaryNr = primaryNr;
+    }
+
     public String getEmailAddress() {
 
         return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
     }
 
     public String getCustAddress() {
@@ -83,10 +88,30 @@ public class Customer {
     }
 
 
+    public void setCustAddress(String custAddress) {
+        this.custAddress = custAddress;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "custID='" + custID + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", primaryNr='" + primaryNr + '\'' +
+                ", emailAddress='" + emailAddress + '\'' +
+                ", custAddress='" + custAddress + '\'' +
+                '}';
+    }
 
     public static class Builder {
 
-        private String custID, firstName, lastName, primaryNr, emailAddress, custAddress;
+        private String custID;
+        private String firstName;
+        private String lastName;
+        private String primaryNr;
+        private String emailAddress;
+        private String custAddress;
 
 
 
