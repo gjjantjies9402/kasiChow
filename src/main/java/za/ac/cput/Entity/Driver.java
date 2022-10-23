@@ -7,14 +7,14 @@ import javax.persistence.Id;
 public class Driver {
 
     @Id
-    private String driverID;
+    private String driverID ;
     private String driverFname;
     private String driverLname;
     private String driverContact;
 
-    protected Driver () {}
+    public Driver () {}
 
-    public Driver(Driver.Builder builder) {
+    public Driver(Builder builder) {
 
         this.driverID = builder.driverID;
         this.driverFname = builder.driverFname;
@@ -23,41 +23,61 @@ public class Driver {
 
     }
 
-    public String toString() {
-        return "Contact{" +
-                "Driver ID='" + driverID + '\'' +
-                ", Driver First Name='" + driverFname + '\'' +
-                ", Driver Last Name='" + driverLname + '\'' +
-                ", Driver Contact='" + driverContact + '\'' +
-                '}';
-    }
+
 
 
     public String getDriverID() {
 
-        return driverID;
+        return this.driverID;
     }
 
+    public void setDriverID(String driverID) {
+        this.driverID = driverID;
+    }
 
     public String getDriverFname() {
 
-        return driverFname;
+        return this.driverFname;
+    }
+
+    public void setDriverFname(String driverFname) {
+        this.driverFname = driverFname;
     }
 
     public String getDriverLname() {
 
-        return driverLname;
+        return this.driverLname;
+    }
+
+    public void setDriverLname(String driverLname) {
+        this.driverLname = driverLname;
     }
 
     public String getDriverContact() {
 
-        return driverContact;
+        return this.driverContact;
     }
 
+    public void setDriverContact(String driverContact) {
+        this.driverContact = driverContact;
+    }
+
+    @Override
+    public String toString() {
+        return "Driver{" +
+                "driverID='" + driverID + '\'' +
+                ", driverFname='" + driverFname + '\'' +
+                ", driverLname='" + driverLname + '\'' +
+                ", driverContact='" + driverContact + '\'' +
+                '}';
+    }
 
     public static class Builder {
 
-        private String driverID, driverFname, driverLname, driverContact;
+        private String driverID;
+        private String driverFname;
+        private String driverLname;
+        private String driverContact;
 
 
 

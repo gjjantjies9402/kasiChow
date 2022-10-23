@@ -2,11 +2,8 @@ package za.ac.cput.Service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import za.ac.cput.Entity.Customer;
 import za.ac.cput.Entity.Driver;
-import za.ac.cput.Repository.Interface.ICustomerRepository;
 import za.ac.cput.Repository.Interface.IDriverRepository;
-import za.ac.cput.Service.Interface.ICustomerService;
 import za.ac.cput.Service.Interface.IDriverService;
 
 import java.util.List;
@@ -26,17 +23,22 @@ public class DriverService implements IDriverService {
 
     }
 
-    public static IDriverService getDriverService() {
-
-        if(driverService == null)
-            driverService = new DriverService();
-        return driverService;
-
-    }
-
+//    public static IDriverService getDriverService() {
+//
+//        if(driverService == null)
+//            driverService = new DriverService();
+//        return driverService;
+//
+//    }
     @Override
     public Driver create(Driver driver) {
-        return this.driverRepository.save(driver);
+        try {
+            return this.driverRepository.save(driver);
+        }catch(Exception e) {
+            System.out.println("This is the execution"+e.getMessage());
+        }
+
+        return driver;
     }
 
     @Override
@@ -59,8 +61,7 @@ public class DriverService implements IDriverService {
 
         this.driverRepository.deleteById(s);
 
-        if(this.driverRepository.existsById(s)) return false;
-        else return true;
+        return !this.driverRepository.existsById(s);
 
     }
 
