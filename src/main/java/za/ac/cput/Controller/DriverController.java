@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.Entity.Driver;
+import za.ac.cput.Entity.Supermarket;
 import za.ac.cput.Factory.DriverFactory;
 import za.ac.cput.Service.impl.DriverService;
 
@@ -47,17 +48,19 @@ public class DriverController {
     }
 
 
-    @GetMapping("/read/{driverID}")
-    public Driver read (@PathVariable String driverID)
-    {
-        return driverService.read(driverID);
+    @GetMapping("/update/{driverID}")
+    public String getUpdateForm(@PathVariable("driverID") String driverID, Model model) {
+        Driver driver = driverService.read(driverID);
+        model.addAttribute("driver", driver);
+        return "driverUpdate";
     }
 
-    @PostMapping ("/update")
-    public Driver update (@RequestBody Driver driver)
-    {
-
-        return driverService.update(driver);
+    @PostMapping("/update")
+    public String update(Driver driver, BindingResult result, Model model) {
+        if (result.hasErrors())
+            return "driverUpdate";
+        driverService.update(driver);
+        return "redirect:/driver/home";
     }
 
     @DeleteMapping ("/delete/{driverID}")

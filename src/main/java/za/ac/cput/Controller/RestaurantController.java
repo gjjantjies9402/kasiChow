@@ -53,7 +53,7 @@ public class RestaurantController {
         return service.read(restaurantId);
     }
 
-    @PostMapping("/update/{restaurantId}")
+    @GetMapping("/update/{restaurantId}")
     public String getUpdateForm(@PathVariable("restaurantId") String restaurantId, Model model) {
         Restaurant restaurant = service.read(restaurantId);
         model.addAttribute("restaurant", restaurant);
