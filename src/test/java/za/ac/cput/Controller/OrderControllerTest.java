@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
 class OrderControllerTest {
 
-    private static Order order = OrderFactory.createOrder(1416, "ORD98","DRV25", 10, "Delivered", "14:32");
+    private static Order order = OrderFactory.createOrder("Cust45", "ORD98","DRV25", 10, "Delivered", "14:32");
 
     @Autowired
     private TestRestTemplate restTemplate;
@@ -64,14 +64,6 @@ class OrderControllerTest {
     }
 
     @Test
-    void delete() {
-        String url = baseURL+"/delete/"+order.getOrderID() ;
-        System.out.println("URL: "+url);
-        restTemplate.delete(url);
-
-    }
-
-    @Test
     void getAll() {
         String url = baseURL+"/getall";
         org.springframework.http.HttpHeaders headers = new HttpHeaders();
@@ -80,6 +72,13 @@ class OrderControllerTest {
         System.out.println("Orders: ");
         System.out.println(response);
         System.out.println(response.getBody());
+
+    }
+    @Test
+    void delete() {
+        String url = baseURL+"/delete/"+order.getOrderID() ;
+        System.out.println("URL: "+url);
+        restTemplate.delete(url);
 
     }
 }
