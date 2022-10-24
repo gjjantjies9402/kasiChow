@@ -1,7 +1,9 @@
 package za.ac.cput.Entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import org.springframework.beans.factory.annotation.Required;
+
+import javax.persistence.*;
+
 /**
  Order.java
  Entity: Order
@@ -12,14 +14,22 @@ import javax.persistence.Id;
 @Entity
 public class Order {
     @Id
-    private int custID;
     private String orderID;
-    private String driverID;
-    private int itemID;
     private String trackStatus;
     private String trackETA;
+    @ManyToOne
+    @JoinColumn(name = "cust_id_cust_id")
+    private Customer custID;
+    @ManyToOne
+    @JoinColumn(name = "driver_id_driver_id")
+    private Driver driverID;
+    @ManyToOne
+    @JoinColumn(name = "item_id_item_id")
+    private MenuItem itemID;
 
-    protected Order() {
+
+
+    public Order() {
     }
 
     private Order(Builder builder) {
@@ -32,19 +42,24 @@ public class Order {
 
     }
 
-    public int getCustID() {
+    public Customer getCustID() {
         return custID;
     }
+
 
     public String getOrderID() {
         return orderID;
     }
 
-    public String getDriverID() {
+    public void setOrderID(String orderID) {
+        this.orderID = orderID;
+    }
+
+    public Driver getDriverID() {
         return driverID;
     }
 
-    public int getItemID() {
+    public MenuItem getItemID() {
         return itemID;
     }
 
@@ -52,8 +67,16 @@ public class Order {
         return trackStatus;
     }
 
+    public void setTrackStatus(String trackStatus) {
+        this.trackStatus = trackStatus;
+    }
+
     public String getTrackETA() {
         return trackETA;
+    }
+
+    public void setTrackETA(String trackETA) {
+        this.trackETA = trackETA;
     }
 
     @Override
@@ -69,14 +92,14 @@ public class Order {
     }
 
     public static class Builder {
-        private int custID;
+        private Customer custID;
         private String orderID;
-        private String driverID;
-        private int itemID;
+        private Driver driverID;
+        private MenuItem itemID;
         private String trackStatus;
         private String trackETA;
 
-        public Builder setCustID(int custID) {
+        public Builder setCustID(Customer custID) {
             this.custID = custID;
             return this;
         }
@@ -86,12 +109,12 @@ public class Order {
             return this;
         }
 
-        public Builder setDriverID(String driverID) {
+        public Builder setDriverID(Driver driverID) {
             this.driverID = driverID;
             return this;
         }
 
-        public Builder setItemID(int itemID) {
+        public Builder setItemID(MenuItem itemID) {
             this.itemID = itemID;
             return this;
         }

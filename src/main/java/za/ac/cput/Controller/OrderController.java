@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import za.ac.cput.Factory.OrderFactory;
 import za.ac.cput.Service.impl.OrderService;
 
+import java.util.List;
 import java.util.Set;
 
 @Controller
@@ -41,7 +42,7 @@ public class OrderController {
     }
 
     @GetMapping("/getall")
-    public Set<Order> getAll()
+    public List<Order> getAll()
     {
         return orderService.getAll();
     }

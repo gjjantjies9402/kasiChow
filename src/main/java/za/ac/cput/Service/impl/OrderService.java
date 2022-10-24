@@ -2,10 +2,12 @@ package za.ac.cput.Service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import za.ac.cput.Entity.Driver;
 import za.ac.cput.Entity.Order;
 import za.ac.cput.Repository.Interface.IOrderRepository;
 import za.ac.cput.Service.Interface.IOrderService;
 
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -58,8 +60,11 @@ public class OrderService implements IOrderService {
     }
 
     @Override
-    public Set<Order> getAll() {
-        return this.repository.findAll().stream().collect(Collectors.toSet());
-    }
+    public List<Order> getAll() {
+
+            return this.repository.findAll();
+        }
+
+
 
 }

@@ -4,10 +4,11 @@ import org.springframework.stereotype.Service;
 import za.ac.cput.Entity.Order;
 import za.ac.cput.Service.IService;
 
+import java.util.List;
 import java.util.Set;
 
 @Service
 public interface IOrderService extends IService<Order, String> {
-    public Set<Order> getAll();
+    public List<Order> getAll();
 }
 
