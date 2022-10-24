@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class RestaurantServiceImplTest {
     @Autowired
     private static RestaurantService service ;
-    private static Restaurant res = RestaurantFactory.buildRestaurant("Shop 012","McDonalds","Tygervalley Center" );
+    private static final Restaurant res = RestaurantFactory.buildRestaurant("Shop 012","McDonalds","Tygervalley Center" );
 
     @Test
     void a_create() {

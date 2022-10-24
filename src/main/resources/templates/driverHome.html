@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head>
-    <meta charset="UTF-8">
-    <title>Driver</title>
-    <link rel="stylesheet" th:href="@{/style.css}">
-    <link rel="icon" type="image/png" th:href="@{/img/favicon.png}" >
+<html xmlns:th="http://www.thymeleaf.org">
 
+<head>
+    <meta charset="utf-8" />
+    <title> Driver </title>
+    <link rel="icon" type="image/png" th:href="@{/img/favicon.png}" >
+    <link th:href="@{/css/now-ui-kit.css}"  rel="stylesheet" />
+    <link rel="stylesheet" th:href="@{/css/style.css}">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <!-- Google Fonts -->
@@ -26,110 +27,185 @@
     <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
 </head>
-<body>
-<!--Navbar-->
-<nav class="navbar navbar-dark red">
 
-    <!-- Navbar brand -->
-    <a class="navbar-brand" href="/services">KasiChow</a>
+<body class="user-profile">
+<div class="wrapper ">
+    <div class="sidebar" data-color="orange">
+        <!--
+          Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
+      -->
+        <div class="logo">
+            <a  class="simple-text logo-mini">
+                KS
+            </a>
+            <a  class="simple-text logo-normal">
+                KasiChow Admin
+            </a>
+        </div>
+        <div class="sidebar-wrapper" id="sidebar-wrapper">
+            <ul class="nav">
+                <li>
+                    <a href="/dashboard">
+                        <p>Home</p>
+                    </a>
+                </li>
+                <li >
+                    <a href="/customer/home">
+                        <p>Customer</p>
+                    </a>
+                </li>
+                <li class="active ">
+                    <a href="/driver/home">
+                        <p>Driver</p>
+                    </a>
+                </li>
 
-    <!-- Collapse button -->
-    <button class="navbar-toggler toggler-example" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false"
-            aria-label="Toggle navigation"><span class="dark-blue-text"><i
-            class="fas fa-bars fa-1x"></i></span></button>
+                <li >
+                    <a href="/restaurant/home">
+                        <p>Restaurant</p>
+                    </a>
+                </li>
+                <li >
+                    <a href="/supermarket/home">
+                        <p>Supermarket</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/landing">
+                        <p>Logout</p>
+                    </a>
+                </li>
 
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent1">
-
-        <!-- Links -->
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="/driver/home">Driver</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/guide/home">Guide</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/location/home">Location</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/passenger/home">Passenger</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/route/home">Route</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/ticket/home">Ticket</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/vehicle/home">Vehicle</a>
-            </li>
-        </ul>
-        <!-- Links -->
-
-    </div>
-    <!-- Collapsible content -->
-
-</nav>
-<!--/.Navbar-->
-
-<section class="main">
-    <div>
-        <div th:switch="${drivers}" >
-            <p>
-                <a href="/driver/create" class="btn btn-light"><i class="fas fa-plus"> Add Driver</i></a>
-            </p>
-            <div>
-                <h2 th:case="null">No Drivers</h2>
-
-                <div th:case="*" style="text-align: center;">
-
-                    <table id="table" class="table">
-                        <thead>
-                        <tr>
-                            <th scope="col">Driver Id</th>
-                            <th scope="col">First Name</th>
-                            <th scope="col">Last Name</th>
-                            <th scope="col">Contact</th>
-                            <th scope="col">Edit</th>
-                            <th scope="col">Delete</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="class : ${drivers}">
-                            <td th:text="${class.getDriverID()}"></td>
-                            <td th:text="${class.getDriverFname()}"></td>
-                            <td th:text="${class.getDriverLname()}"></td>
-                            <td th:text="${class.getDriverContact()}"></td>
-
-                            <td><a th:href="@{/driver/update/{getDriverId}(id=${class.getDriverID()})}"
-                                   class="btn">
-                                <i class="far fa-edit"></i>
-                            </a>
-                            </td>
-                            <td><a th:href="@{/driver/delete/{getDriverId}(id=${class.getDriverID()})}"
-                                   class="btn">
-                                <i class="fas fa-trash-alt"></i>
-                            </a>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+            </ul>
         </div>
     </div>
-</section>
-<!-- Footer -->
-<footer class="page-footer font-small red fixed-bottom">
+    <div class="main-panel" id="main-panel">
+        <div class="panel-header panel-header-sm">
+        </div>
+        <div class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="title">Driver</h5>
+                        </div>
+                        <div class="card-body">
+                            <form>
+                                <section class="main">
+                                    <div>
+                                        <div th:switch="${drivers}" >
+                                            <p>
+                                                <a href="/driver/create" class="btn btn-light"><i class="fas fa-plus"> Add Driver</i></a>
+                                            </p>
 
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2020 Copyright:
+                                            <div>
+                                                <h4 th:case="null">No Driver</h4>
+
+                                                <div th:case="*" style="text-align: center;">
+
+                                                    <table id="table" class="table">
+                                                        <thead>
+                                                        <tr>
+                                                            <th scope="col">Driver Id</th>
+                                                            <th scope="col">First Name</th>
+                                                            <th scope="col">Last Name</th>
+                                                            <th scope="col">Contact Nr</th>
+                                                            <th scope="col">Edit</th>
+                                                            <th scope="col">Delete</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr th:each="class : ${drivers}">
+                                                            <td th:text="${class.getDriverID()}"></td>
+                                                            <td th:text="${class.getDriverFname()}"></td>
+                                                            <td th:text="${class.getDriverLname()}"></td>
+                                                            <td th:text="${class.getDriverContact()}"></td>
+
+
+                                                            <td><a th:href="@{/driver/update/{id}(id=${class.getDriverID()})}"
+                                                                   class="btn">
+                                                                <i class="far fa-edit"></i>
+                                                            </a>
+                                                            </td>
+                                                            <td><a th:href="@{/driver/delete/{id}(id=${class.getDriverID()})}"
+                                                                   class="btn">
+                                                                <i class="fas fa-trash-alt"></i>
+                                                            </a>
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!--          <div class="col-md-4">-->
+                <!--            <div class="card">-->
+                <!--            -->
+                <!--              <div class="card-body">-->
+                <!--                <section class="container-fluid col-6 pt-xl-4">-->
+
+                <!--                  <h5> Add Passenger</h5>-->
+                <!--                  <div>-->
+                <!--                      &lt;!&ndash;/*@thymesVar id="passenger" type="java"*/&ndash;&gt;-->
+                <!--                      <form action="#" th:action="@{/customer/create}" th:object="${customer}" method="post">-->
+                <!--              -->
+                <!--                          <div class="form-outline mb-4">-->
+                <!--                              <input type="text" th:field="*{custID}" class="form-control" readonly>-->
+                <!--                              <label>Passenger Id</label>-->
+                <!--                          </div>-->
+                <!--              -->
+                <!--                          <div class="form-outline mb-4">-->
+                <!--                              <input type="text" th:field="*{name}" class="form-control" required>-->
+                <!--                              <label>Name</label>-->
+                <!--                          </div>-->
+                <!--              -->
+                <!--                          <div class="form-outline mb-4">-->
+                <!--                              <input type="text" th:field="*{contact}" class="form-control">-->
+                <!--                              <label>Contact</label>-->
+                <!--                          </div>-->
+
+                <!--                          <div >-->
+                <!--                              <button type="submit" class="btn btn-light btn-block mb-4">Add</button>-->
+                <!--                          </div>-->
+                <!--                      </form>-->
+                <!--                  </div>-->
+                <!--              </section>-->
+                <!--              </div>-->
+                <!--              <hr>-->
+                <!--            </div>-->
+                <!--          </div>-->
+            </div>
+        </div>
+        <footer class=" page-footer font-small orange fixed-bottom">
+
+            <!-- Copyright -->
+            <div class="footer-copyright text-center py-3">© 2022 Copyright:
+            </div>
+            <!-- Copyright -->
+
+        </footer>
     </div>
-    <!-- Copyright -->
-
-</footer>
-<!-- Footer -->
+</div>
+<!--   Core JS Files   -->
+<script src="../static/js/core/jquery.min.js"></script>
+<script src="../static/js/core/popper.min.js"></script>
+<script src="../static/js/core/bootstrap.min.js"></script>
+<script src="../static/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+<!--  Google Maps Plugin    -->
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+<!-- Chart JS -->
+<script src="../static/js/plugins/chartjs.min.js"></script>
+<!--  Notifications Plugin    -->
+<script src="../static/js/plugins/bootstrap-notify.js"></script>
+<!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+<script src="../static/js/now-ui-dashboard.min.js?v=1.5.0" type="text/javascript"></script><!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
+<script src="../static/demo/demo.js"></script>
 </body>
+
 </html>

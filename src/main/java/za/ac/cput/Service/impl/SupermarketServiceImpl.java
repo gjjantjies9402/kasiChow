@@ -11,21 +11,27 @@ import za.ac.cput.Entity.Supermarket;
 import za.ac.cput.Repository.Interface.ISupermarketRepository;
 import za.ac.cput.Service.Interface.SupermarketService;
 
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.List;
 @Service
 public class SupermarketServiceImpl implements SupermarketService {
 
     @Autowired
     private ISupermarketRepository repository;
 
-    public Set<Supermarket> getAll(){
-        return this.repository.findAll().stream().collect(Collectors.toSet());
+    @Override
+    public List<Supermarket> getAll() {
+        return this.repository.findAll();
     }
 
     @Override
     public Supermarket create(Supermarket supermarket){
-        return this.repository.save(supermarket);
+        try {
+            return this.repository.save(supermarket);
+        }catch(Exception e) {
+            System.out.println("This is the execution"+e.getMessage());
+        }
+
+        return supermarket;
     }
     @Override
     public Supermarket read(String ab){

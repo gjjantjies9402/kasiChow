@@ -19,7 +19,7 @@ public class Supermarket {
     private String marketName;
     private String marketLocation;
 
-     protected Supermarket(){}
+     public Supermarket(){}
 
     private Supermarket(Supermarket.Builder sm){
 
@@ -32,12 +32,24 @@ public class Supermarket {
         return marketId;
     }
 
+    public void setMarketId(String marketId) {
+        this.marketId = marketId;
+    }
+
     public String getMarketName() {
         return marketName;
     }
 
+    public void setMarketName(String marketName) {
+        this.marketName = marketName;
+    }
+
     public String getMarketLocation() {
         return marketLocation;
+    }
+
+    public void setMarketLocation(String marketLocation) {
+        this.marketLocation = marketLocation;
     }
 
     public String toString() {
@@ -58,21 +70,21 @@ public class Supermarket {
 
 
 
-        public Supermarket.Builder setMarketId(String marketId) {
+        public Builder setMarketId(String marketId) {
             this.marketId = marketId;
             return this;
         }
-        public Supermarket.Builder setMarketName(String marketName) {
+        public Builder setMarketName(String marketName) {
             this.marketName = marketName;
             return this;
         }
-        public Supermarket.Builder setMarketLocation(String marketLocation) {
+        public Builder setMarketLocation(String marketLocation) {
             this.marketLocation = marketLocation;
             return this;
         }
 
 
-        public Supermarket.Builder copy(Supermarket smk){
+        public Builder copy(Supermarket smk){
             this.marketId = smk.marketId;
             this.marketName = smk.marketName;
             this.marketLocation = smk.marketLocation;

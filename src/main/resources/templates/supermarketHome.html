@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title> Customer </title>
+    <title> Supermarket </title>
     <link rel="icon" type="image/png" th:href="@{/img/favicon.png}" >
     <link th:href="@{/css/now-ui-kit.css}"  rel="stylesheet" />
     <link rel="stylesheet" th:href="@{/css/style.css}">
@@ -49,7 +49,7 @@
               <p>Home</p>
             </a>
           </li>
-          <li class="active ">
+          <li>
             <a href="/customer/home">
               <p>Customer</p>
             </a>
@@ -59,13 +59,12 @@
               <p>Driver</p>
             </a>
           </li>
-
-            <li >
+            <li>
                 <a href="/restaurant/home">
                     <p>Restaurant</p>
                 </a>
             </li>
-            <li >
+            <li class="active ">
                 <a href="/supermarket/home">
                     <p>Supermarket</p>
                 </a>
@@ -87,51 +86,45 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h5 class="title">Customer</h5>
+                <h5 class="title">Supermarket</h5>
               </div>
               <div class="card-body">
                 <form>
                   <section class="main">
                     <div>
-                        <div th:switch="${customers}" >
+                        <div th:switch="${supermarkets}" >
                             <p>
-                                <a href="/customer/create" class="btn btn-light"><i class="fas fa-plus"> Add Customer</i></a>
+                                <a href="/supermarket/create" class="btn btn-light"><i class="fas fa-plus"> Add Supermarket</i></a>
                             </p>
 
                             <div>
-                                <h4 th:case="null">No Customers</h4>
+                                <h4 th:case="null">No Supermarket</h4>
                 
                                 <div th:case="*" style="text-align: center;">
                 
                                     <table id="table" class="table">
                                         <thead>
                                         <tr>
-                                            <th scope="col">Customer Id</th>
-                                            <th scope="col">First Name</th>
-                                            <th scope="col">Last Name</th>
-                                            <th scope="col">Contact Nr</th>
-                                            <th scope="col">Email</th>
-                                            <th scope="col">Address</th>
+                                            <th scope="col">Supermarket Id</th>
+                                            <th scope="col">Supermarket Name</th>
+                                            <th scope="col">Location</th>
                                             <th scope="col">Edit</th>
                                             <th scope="col">Delete</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr th:each="class : ${customers}">
-                                            <td th:text="${class.getCustID()}"></td>
-                                            <td th:text="${class.getFirstName()}"></td>
-                                            <td th:text="${class.getLastName()}"></td>
-                                            <td th:text="${class.getPrimaryNr()}"></td>
-                                            <td th:text="${class.getEmailAddress()}"></td>
-                                            <td th:text="${class.getCustAddress()}"></td>
+                                        <tr th:each="class : ${supermarkets}">
+                                            <td th:text="${class.getMarketId()}"></td>
+                                            <td th:text="${class.getMarketName()}"></td>
+                                            <td th:text="${class.getMarketLocation()}"></td>
 
 
-                                            <td><a th:href="@{/customer/update/{id}(id=${class.getCustID()})}"
+                                            <td><a th:href="@{/supermarket/update/{id}(id=${class.getMarketId()})}"
                                                    class="btn">
                                                 <i class="far fa-edit"></i>
                                             </a>
                                             </td>
-                                            <td><a th:href="@{/customer/delete/{id}(id=${class.getCustID()})}"
+                                            <td><a th:href="@{/supermarket/delete/{id}(id=${class.getMarketId()})}"
                                                    class="btn">
                                                 <i class="fas fa-trash-alt"></i>
                                             </a>
@@ -186,14 +179,34 @@
 <!--          </div>-->
         </div>
       </div>
-        <footer class="page-footer font-small orange fixed-bottom">
-
-            <!-- Copyright -->
-            <div class="footer-copyright text-center py-3">© 2022 Copyright:
-            </div>
-            <!-- Copyright -->
-
-        </footer>
+      <footer class="footer">
+        <div class=" container-fluid ">
+          <nav>
+            <ul>
+              <li>
+                <a href="https://www.creative-tim.com">
+                  Creative Tim
+                </a>
+              </li>
+              <li>
+                <a href="http://presentation.creative-tim.com">
+                  About Us
+                </a>
+              </li>
+              <li>
+                <a href="http://blog.creative-tim.com">
+                  Blog
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <div class="copyright" id="copyright">
+            &copy; <script>
+              document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
+            </script>, Designed by <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+          </div>
+        </div>
+      </footer>
     </div>
   </div>
   <!--   Core JS Files   -->

@@ -1,7 +1,10 @@
 package za.ac.cput.Controller;
 
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -12,18 +15,19 @@ import za.ac.cput.Factory.RestaurantFactory;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-
+@TestMethodOrder(MethodOrderer.MethodName.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class RestaurantControllerTest {
 
      private static Restaurant res = RestaurantFactory.buildRestaurant("Shop 012","McDonalds","Tygervalley Center" );
 
     @Autowired
     private TestRestTemplate restTemplate;
-    private String baseURL = "http://localhost:8080/restaurant/";
+    private String baseURL = "http://localhost:8080/restaurant";
 
     @Test
-    public void a_created(){
-        String url = baseURL + "create";
+    public void create(){
+        String url = baseURL + "/create";
         ResponseEntity<Restaurant> postResponse = restTemplate.postForEntity(url, res, Restaurant.class);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
@@ -34,16 +38,16 @@ class RestaurantControllerTest {
 
 
     @Test
-    public  void b_read(){
-        String url = baseURL + "read/" + res.getRestaurantId();
+    public  void read(){
+        String url = baseURL + "/read/" + res.getRestaurantId();
         System.out.println("URL: " + url);
         ResponseEntity<Restaurant> restaurantResponse = restTemplate.getForEntity(url, Restaurant.class);
         assertEquals(res.getRestaurantId(), restaurantResponse.getBody().getRestaurantId());
     }
 
     @Test
-    public  void  c_update(){
-        String url = baseURL + "update";
+    public  void  update(){
+        String url = baseURL + "/update/";
         Restaurant updated = new Restaurant.Builder().copy(res).setRestaurantName("NEW NAME").build();
         System.out.println("URL: " + url);
         System.out.println("Updated Data: " + updated);
@@ -54,8 +58,8 @@ class RestaurantControllerTest {
 
 
     @Test
-    public void d_getAll(){
-        String url = baseURL + "all";
+    public void getAll(){
+        String url = baseURL + "/all";
         System.out.println("URL: " + url);
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> restaurantEntity = new HttpEntity<>(null, headers);
@@ -64,8 +68,8 @@ class RestaurantControllerTest {
         System.out.println(restaurantResponse.getBody());
     }
     @Test
-    public void e_delete(){
-        String url = baseURL + "delete/" + res.getRestaurantId();
+    public void delete(){
+        String url = baseURL + "/delete/" + res.getRestaurantId();
         System.out.println("URL " + url);
         restTemplate.delete(url);
     }

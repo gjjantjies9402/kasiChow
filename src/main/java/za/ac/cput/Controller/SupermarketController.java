@@ -11,9 +11,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.Entity.Supermarket;
+import za.ac.cput.Factory.SupermarketFactory;
 import za.ac.cput.Service.Interface.SupermarketService;
 
-import java.util.Set;
+import java.util.List;
 
 @Controller
 @RequestMapping("/supermarket")
@@ -25,36 +26,35 @@ public class SupermarketController {
     @GetMapping("/home")
     public String home(Model model) {
         model.addAttribute("supermarkets", service.getAll());
-        return "supermarket";
+        return "supermarketHome";
     }
-    @GetMapping("/menu")
-    public String menu(Model model) {
-        model.addAttribute("supermarketsmenu", service.getAll());
-        return "supermarketMenu";
-    }
-
     @GetMapping("/create")
-    public String getCreateForm(Supermarket supermarket) {
+    public String getCreateForm(@ModelAttribute("supermarket") Supermarket supermarket) {
         return "supermarketAdd";
     }
 
-    @PostMapping("/create")
-    public String create(@ModelAttribute Supermarket supermarket, BindingResult result, Model model) {
+    @PostMapping(value = "/create")
+    public String create(@ModelAttribute("supermarket") Supermarket supermarket, BindingResult result, Model model) {
         if (result.hasErrors())
             return "supermarketAdd";
-        service.create(supermarket);
+        Supermarket newSupermarket = SupermarketFactory.buildSupermarket(
+                supermarket.getMarketId(),
+                supermarket.getMarketName(),
+                supermarket.getMarketLocation()
+        );
+        service.create(newSupermarket);
         return "redirect:/supermarket/home";
     }
 
-    @GetMapping(value = "/read/{id}")
-    public Supermarket read(@PathVariable String id) {
+    @GetMapping(value = "/read/{marketId}")
+    public Supermarket read(@PathVariable String marketId) {
 
-        return service.read(id);
+        return service.read(marketId);
     }
 
     @GetMapping("/update/{id}")
-    public String getUpdateForm(@PathVariable("id") String id, Model model) {
-        Supermarket supermarket = service.read(id);
+    public String getUpdateForm(@PathVariable("marketId") String marketId, Model model) {
+        Supermarket supermarket = service.read(marketId);
         model.addAttribute("supermarket", supermarket);
         return "supermarketUpdate";
     }
@@ -67,20 +67,20 @@ public class SupermarketController {
         return "redirect:/supermarket/home";
     }
 
-    @DeleteMapping(value = "/delete/{id}")
-    public boolean delete(@PathVariable String id) {
-        return service.delete(id);
+    @DeleteMapping(value = "/delete/{marketId}")
+    public boolean delete(@PathVariable String marketId) {
+        return service.delete(marketId);
     }
 
-    @GetMapping("/delete/{id}")
-    public String delete(@PathVariable("id") String id, Model model) {
+    @GetMapping("/delete/{marketId}")
+    public String delete(@PathVariable("marketId") String id, Model model) {
         service.delete(id);
         model.addAttribute("supermarkets", service.getAll());
         return "redirect:/supermarket/home";
     }
 
     @GetMapping(value = "/all")
-    public Set<Supermarket> getAll() {
+    public List<Supermarket> getAll() {
         return service.getAll();
     }
 }

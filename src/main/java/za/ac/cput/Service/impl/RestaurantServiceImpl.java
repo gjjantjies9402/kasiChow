@@ -10,37 +10,29 @@ import org.springframework.stereotype.Service;
 import za.ac.cput.Entity.Restaurant;
 import za.ac.cput.Repository.Interface.IRestaurantRepository;
 import za.ac.cput.Service.Interface.RestaurantService;
-
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.List;
 
 @Service
 public class RestaurantServiceImpl implements RestaurantService {
 
-
-   @Autowired
+ private static RestaurantService restaurantService = null;
+    @Autowired
     private IRestaurantRepository repository;
 
-    public Set<Restaurant> getAll(){
-        return this.repository.findAll().stream().collect(Collectors.toSet());
+    @Override
+    public List<Restaurant> getAll() {
+        return this.repository.findAll();
     }
 
-
-//
-//    public Restaurant getRestaurantId(String restaurantID) {
-//        Restaurant ab = null;
-//        Set<Restaurant> restaurants = getAll();
-//        for(Restaurant restaurant : restaurants){
-//            if(restaurant.getRestaurantId().equals(restaurantID)){
-//                ab = restaurant;
-//                break;
-//            }
-//        }
-//        return ab;
-//    }
 @Override
-    public Restaurant create(Restaurant enroll){
-        return this.repository.save(enroll);
+    public Restaurant create(Restaurant restaurant){
+    try {
+        return this.repository.save(restaurant);
+    }catch(Exception e) {
+        System.out.println("This is the execution"+e.getMessage());
+    }
+
+    return restaurant;
     }
 @Override
     public Restaurant read(String ab){

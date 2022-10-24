@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8"/>
+  <title> Register </title>
+  <link rel="icon" th:href="@{/img/favicon.png}" type="image/png">
+  <link th:href="@{/css/now-ui-kit.css}" rel="stylesheet"/>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+        name='viewport'/>
+  <!-- CSS Files -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/css/now-ui-kit.css?v=1.3.0" rel="stylesheet"/>
+  <link href="../static/css/style.css" rel="stylesheet"/>
+</head>
+
+<body class="login-page sidebar-collapse">
+<div class="page-header clear-filter" filter-color="orange">
+  <div class="content">
+
+    <div class="container">
+      <div class="col-md-4 ml-auto mr-auto">
+        <div>
+
+          <div>
+            <div class="logo-container">
+              <img th:src="@{/img/logo.png}" alt="">
+            </div>
+          </div>
+
+
+            <div class="card-body">
+              <form th:action="@{/customer/create}" th:object="${customer}" method="post">
+
+                <div class="input-group no-border input-lg">
+                  <label>
+                    <input type="text" th:field="*{custID}" class="form-control" placeholder="Customer Id" required>
+                  </label>
+                </div>
+                <div class="input-group no-border input-lg">
+                  <label>
+                    <input type="text" th:field="*{firstName}" class="form-control" placeholder="First Name" required>
+                  </label>
+                </div>
+                <div class="input-group no-border input-lg">
+                  <label>
+                    <input type="text" th:field="*{lastName}" class="form-control" placeholder="Last Name" required>
+                  </label>
+                </div>
+                <div class="input-group no-border input-lg">
+                  <label>
+                    <input type="email" th:field="*{emailAddress}" class="form-control" placeholder="Email" required>
+                  </label>
+                </div>
+                <div class="input-group no-border input-lg">
+                  <label>
+                    <input type="number" th:field="*{primaryNr}" class="form-control" placeholder="Contact" required>
+                  </label>
+                </div>
+                <div class="input-group no-border input-lg">
+                  <label>
+                    <input type="text" th:field="*{custAddress}" class="form-control" placeholder="Address" required>
+                  </label>
+                </div>
+
+                <div class=" text-center">
+                  <button type="submit"  class="btn btn-primary btn-round btn-lg btn-block">Add</button>
+                </div>
+              </form>
+              </form>
+            </div>
+
+
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class=" container-fluid ">
+        <nav>
+          <ul>
+            <li>
+              <a href="/home">
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="/about">
+                About Us
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </footer>
+  </div>
+</div>
+
+</body>
+
+</html>
