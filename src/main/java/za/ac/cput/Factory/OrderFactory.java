@@ -6,17 +6,20 @@ package za.ac.cput.Factory;
  Date: 10 April 2022
  */
 
+import za.ac.cput.Entity.Customer;
+import za.ac.cput.Entity.Driver;
+import za.ac.cput.Entity.MenuItem;
 import za.ac.cput.Entity.Order;
 
 public class OrderFactory {
-    public static Order createOrder(int custID, String orderID, String driverID, int itemID, String trackStatus, String trackETA){
+    public static Order createOrder(String custID, String orderID, String driverID, int itemID, String trackStatus, String trackETA){
 
-       return new Order.Builder().setCustID(custID).
-               setOrderID(orderID).
-               setDriverID(driverID).
-               setItemID(itemID).
-               setTrackStatus(trackStatus).
-               setTrackETA(trackETA).build();
+        return new Order.Builder().setCustID(custID).
+                setOrderID(orderID).
+                setDriverID(driverID).
+                setItemID(itemID).
+                setTrackStatus(trackStatus).
+                setTrackETA(trackETA).build();
 
     }
 }

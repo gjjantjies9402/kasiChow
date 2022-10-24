@@ -15,7 +15,7 @@
 //import static org.junit.jupiter.api.Assertions.*;
 //
 //@TestMethodOrder(MethodOrderer.MethodName.class)
-//class TrackingRepositoryTest {
+//class RatingsRepositoryTest {
 //    private static RatingsRepository ratingsRepository = RatingsRepository.getRepository();
 //    private static Ratings ratings = RatingsFactory.createRatings(8868, "ORD98", 5, "Service was great!");
 //
