@@ -9,7 +9,7 @@ import za.ac.cput.Service.Interface.IRatingsService;
 
 import java.util.Set;
 import java.util.stream.Collectors;
-
+@Service
 public class RatingsService implements IRatingsService {
 
     private static IRatingsService ratingsService = null;
