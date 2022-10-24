@@ -19,7 +19,7 @@ public class Restaurant {
     private String restaurantName;
     private String restaurantLocation;
 
-    protected Restaurant(){}
+    public Restaurant(){}
 
     private Restaurant(Restaurant.Builder rs){
 
@@ -32,12 +32,24 @@ public class Restaurant {
         return restaurantId;
     }
 
+    public void setRestaurantId(String restaurantId) {
+        this.restaurantId = restaurantId;
+    }
+
     public String getRestaurantName() {
         return restaurantName;
     }
 
+    public void setRestaurantName(String restaurantName) {
+        this.restaurantName = restaurantName;
+    }
+
     public String getRestaurantLocation() {
         return restaurantLocation;
+    }
+
+    public void setRestaurantLocation(String restaurantLocation) {
+        this.restaurantLocation = restaurantLocation;
     }
 
     public String toString() {
@@ -58,21 +70,21 @@ public class Restaurant {
 
 
 
-        public Restaurant.Builder setRestaurantId(String restaurantId) {
+        public Builder setRestaurantId(String restaurantId) {
             this.restaurantId = restaurantId;
             return this;
         }
-        public Restaurant.Builder setRestaurantName(String restaurantName) {
+        public Builder setRestaurantName(String restaurantName) {
             this.restaurantName = restaurantName;
             return this;
         }
-        public Restaurant.Builder setRestaurantLocation(String restaurantLocation) {
+        public Builder setRestaurantLocation(String restaurantLocation) {
             this.restaurantLocation = restaurantLocation;
             return this;
         }
 
 
-        public Restaurant.Builder copy(Restaurant r){
+        public Builder copy(Restaurant r){
             this.restaurantId = r.restaurantId;
             this.restaurantName = r.restaurantName;
             this.restaurantLocation = r.restaurantLocation;

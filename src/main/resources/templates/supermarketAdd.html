@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
-    <title>Driver</title>
+    <title>Supermarket</title>
     <link rel="stylesheet" th:href="@{/style.css}">
     <link rel="icon" type="image/png" th:href="@{/img/favicon.png}" >
     <!-- Font Awesome -->
@@ -65,32 +65,26 @@
 <!--/.Navbar-->
 <section class="container-fluid col-6 pt-xl-4">
 
-    <h3> Add Driver</h3>
+    <h3> Add Supermarket</h3>
     <div>
 
-        <form th:action="@{/driver/create}" th:object="${driver}" method="post">
+        <form th:action="@{/supermarket/create}" th:object="${supermarket}" method="post">
 
             <div class="form-outline mb-4">
-                <input type="text" th:field="*{driverID}"  class="form-control" required>
-                <label>Driver Id</label>
+                <input type="text" th:field="*{marketId}"  class="form-control" required>
+                <label>Supermarket Id</label>
             </div>
 
             <div class="form-outline mb-4">
-                <input type="text" th:field="*{driverFname}"  class="form-control" required>
-                <label>First Name</label>
+                <input type="text" th:field="*{marketName}"  class="form-control" required>
+                <label>Supermarket Name</label>
             </div>
             <div class="form-outline mb-4">
-                <input type="text" th:field="*{driverLname}" class="form-control" required>
-                <label>Last Name</label>
+                <input type="text" th:field="*{marketLocation}" class="form-control" required>
+                <label>Location</label>
             </div>
-
-            <div class="form-outline mb-4">
-                <input type="text" th:field="*{driverContact}"  class="form-control" required>
-                <label>Driver Contact</label>
-            </div>
-
             <div >
-                <button type="submit" class="btn btn-light btn-block mb-4">Add</button>
+                <button type="submit" class="btn btn-light btn-block mb-4 btn-red">Add</button>
             </div>
         </form>
     </div>

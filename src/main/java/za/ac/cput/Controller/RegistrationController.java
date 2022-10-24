@@ -7,68 +7,62 @@
 package za.ac.cput.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.Entity.Customer;
-import za.ac.cput.Entity.Restaurant;
-import za.ac.cput.Entity.registration;
 import za.ac.cput.Factory.CustomerFactory;
-import za.ac.cput.Factory.registrationFactory;
-import za.ac.cput.Service.Interface.RestaurantService;
-import za.ac.cput.Service.impl.RegistrationServices;
+import za.ac.cput.Service.Interface.ICustomerService;
 
-import java.util.Set;
-@RestController
+import java.util.List;
+@Controller
 @RequestMapping("/register")
 public class RegistrationController {
 
     @Autowired
-    private RegistrationServices service;
+    private ICustomerService service;
 
     @GetMapping("/home")
     public String home(Model model) {
-        model.addAttribute("registration", service.getAll());
-        return "register";
+        model.addAttribute("customers", service.getAll());
+        return "customerHome";
     }
-
     @GetMapping("/create")
-    public String getCreateForm(registration register) {
-        return "register";
+    public String getCreateForm(@ModelAttribute("customer") Customer customer) {
+        return "registerAdd";
     }
-
     @PostMapping("/create")
-
-    public registration create(@RequestBody  registration register) {
-        {
-
-            registration newRegistration = registrationFactory.createRegistration(
-                    register.getFirstName(),
-                    register.getLastName(),
-                    register.getUsername(),
-                    register.getPassword(),
-                    register.getConfirmPassword(),
-                    register.getEmailAddress()
-            );
-            return service.create(newRegistration);
-
-        }
+    public String create (@ModelAttribute("customer") Customer customer, BindingResult result)
+    {
+        if (result.hasErrors())
+            return "registerAdd";
+        Customer newCustomer = CustomerFactory.createCustomer
+                (
+                        customer.getCustID(),
+                        customer.getFirstName(),
+                        customer.getLastName(),
+                        customer.getPrimaryNr(),
+                        customer.getEmailAddress(),
+                        customer.getCustAddress()
+                );
+        service.create(newCustomer);
+        return  "redirect:/customer/home";
     }
-
     @GetMapping(value = "/read/{id}")
-    public registration read(@PathVariable String id) {
+    public Customer read(@PathVariable String id) {
         return this.service.read(id);
     }
 
     @GetMapping("/update/{id}")
     public String getUpdateForm(@PathVariable("id") String id, Model model) {
-        registration reg = service.read(id);
+        Customer reg = service.read(id);
         model.addAttribute("registration", reg);
         return "registrationUpdated";
     }
 
     @PostMapping("/update")
-    public String update(registration register, BindingResult result, Model model) {
+    public String update(Customer register, BindingResult result, Model model) {
         if (result.hasErrors())
             return "registerUpdate";
         service.update(register);
@@ -88,7 +82,7 @@ public class RegistrationController {
     }
 
     @GetMapping(value = "/all")
-    public Set<registration> getAll() {
+    public List<Customer> getAll() {
         return service.getAll();
     }
 }

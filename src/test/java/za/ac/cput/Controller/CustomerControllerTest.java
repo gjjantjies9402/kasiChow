@@ -47,12 +47,12 @@ class CustomerControllerTest {
     void create() {
 
         String url = baseURL + "/create";
-        ResponseEntity<Customer> postResponse = restTemplate.postForEntity(url, customer2 , Customer.class);
+        ResponseEntity<Customer> postResponse = restTemplate.postForEntity(url, customer3 , Customer.class);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
-        customer = postResponse.getBody();
-        System.out.println("Saved: " + customer2);
-        assertEquals(customer2.getCustID(), postResponse.getBody().getCustID());
+        customer3 = postResponse.getBody();
+        System.out.println("Saved: " + customer3);
+        assertEquals(customer3.getCustID(), postResponse.getBody().getCustID());
 
     }
 
@@ -80,7 +80,7 @@ class CustomerControllerTest {
     @Test
     void delete() {
 
-        String url = baseURL + "/delete/" + customer3.getCustID();
+        String url = baseURL + "/delete/" + customer.getCustID();
         System.out.println("URL: " + url);
         restTemplate.delete(url);
 

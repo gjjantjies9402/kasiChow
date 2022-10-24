@@ -1,11 +1,12 @@
 package za.ac.cput.Service.Interface;
 
+
 import za.ac.cput.Entity.Supermarket;
 import za.ac.cput.Service.IService;
 
-import java.util.Set;
+import java.util.List;
 
 public interface SupermarketService extends IService<Supermarket, String> {
 
-    Set<Supermarket> getAll();
+    List<Supermarket> getAll();
 }

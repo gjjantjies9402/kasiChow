@@ -29,11 +29,11 @@ public class HomeController {
         return "dashboard";
     }
 
-    @RequestMapping("/contact")
-    public String contact() {
-        System.out.println("Contact Page");
-        return "contact";
-    }
+//    @RequestMapping("/contact")
+//    public String contact() {
+//        System.out.println("Contact Page");
+//        return "contact";
+//    }
 
     @RequestMapping("/login")
     public String login() {
@@ -41,15 +41,15 @@ public class HomeController {
         return "login";
     }
 
-    @RequestMapping("/register")
-    public String register() {
-        System.out.println("Register Page");
-        return "register";
-    }
-
-    @RequestMapping("/services")
-    public String services() {
-        System.out.println("Services Page");
-        return "services";
-    }
+//    @RequestMapping("/register")
+//    public String register() {
+//        System.out.println("Register Page");
+//        return "register";
+//    }
+//
+//    @RequestMapping("/services")
+//    public String services() {
+//        System.out.println("Services Page");
+//        return "services";
+//    }
 }

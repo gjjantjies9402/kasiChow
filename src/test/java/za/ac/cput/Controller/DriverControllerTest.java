@@ -10,9 +10,10 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import za.ac.cput.Entity.Customer;
 import za.ac.cput.Entity.Driver;
 import za.ac.cput.Factory.DriverFactory;
+
+import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -31,18 +32,19 @@ class DriverControllerTest {
     private TestRestTemplate restTemplate;
     private final String baseURL = "http://localhost:8090/driver";
 
-    public static Driver getDriver() {
+//    public static Driver getDriver() {
+//
+//        return driver;
+//
+//    }
 
-        return driver;
-
-    }
-
-    public static void setDriver(Driver driver) {
+   /* public static void setDriver(Driver driver) {
 
         DriverControllerTest.driver = driver;
-    }
+    }*/
 
     @Test
+
     void create() {
 
         String url = baseURL + "/create";
@@ -61,7 +63,7 @@ class DriverControllerTest {
         String url = baseURL + "/read/" + driver3.getDriverID();
         System.out.println("URL: " + url);
         ResponseEntity<Driver> response = restTemplate.getForEntity(url, Driver.class);
-        assertEquals(driver3.getDriverID(), response.getBody().getDriverID());
+        assertEquals(driver3.getDriverID(), Objects.requireNonNull(response.getBody()).getDriverID());
 
     }
 

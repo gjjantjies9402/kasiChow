@@ -2,6 +2,9 @@ package za.ac.cput.Controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.Entity.Driver;
 import za.ac.cput.Factory.DriverFactory;
@@ -9,25 +12,40 @@ import za.ac.cput.Service.impl.DriverService;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/driver")
 public class DriverController {
 
     @Autowired
     private DriverService driverService;
 
-    @PostMapping("/create")
-    public Driver create (@RequestBody Driver driver)
+    @GetMapping("/home")
+    public String home(Model model) {
+        model.addAttribute("drivers", driverService.getAll());
+        return "driverHome";
+    }
+
+    @GetMapping("/create")
+    public String getCreateForm(@ModelAttribute("driver") Driver driver){
+        return "driverAdd";
+    }
+
+
+    @PostMapping(value = "/create")
+    public String create (@ModelAttribute("driver") Driver driver, BindingResult result)
     {
-        Driver newDriver = DriverFactory.createDriver
-                (
+        if (result.hasErrors())
+            return "driverAdd";
+        Driver newDriver = DriverFactory.createDriver(
                         driver.getDriverID(),
-                        driver.getDriverLname(),
+                        driver.getDriverFname(),
                         driver.getDriverLname(),
                         driver.getDriverContact()
                 );
-        return driverService.create(newDriver);
+         driverService.create(newDriver);
+         return "redirect:/driver/home";
     }
+
 
     @GetMapping("/read/{driverID}")
     public Driver read (@PathVariable String driverID)
@@ -38,9 +56,8 @@ public class DriverController {
     @PostMapping ("/update")
     public Driver update (@RequestBody Driver driver)
     {
-        Driver update = driverService.update(driver);
 
-        return update;
+        return driverService.update(driver);
     }
 
     @DeleteMapping ("/delete/{driverID}")
@@ -50,10 +67,8 @@ public class DriverController {
     }
 
 
-    @GetMapping ("/getall")
-    public List<Driver> getAll()
-    {
+    @GetMapping("/all")
+    public List<Driver> getAll() {
         return driverService.getAll();
     }
-
 }
