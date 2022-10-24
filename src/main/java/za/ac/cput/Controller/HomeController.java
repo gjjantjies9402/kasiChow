@@ -41,11 +41,11 @@ public class HomeController {
         return "login";
     }
 
-//    @RequestMapping("/register")
-//    public String register() {
-//        System.out.println("Register Page");
-//        return "register";
-//    }
+    @RequestMapping("/adminlogin")
+    public String adminLogin() {
+        System.out.println("Admin Login Page");
+        return "adminLogin";
+    }
 //
 //    @RequestMapping("/services")
 //    public String services() {
