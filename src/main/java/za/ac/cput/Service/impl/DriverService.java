@@ -3,6 +3,7 @@ package za.ac.cput.Service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.Entity.Driver;
+import za.ac.cput.Entity.Restaurant;
 import za.ac.cput.Repository.Interface.IDriverRepository;
 import za.ac.cput.Service.Interface.IDriverService;
 

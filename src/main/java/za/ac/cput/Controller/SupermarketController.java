@@ -52,7 +52,7 @@ public class SupermarketController {
         return service.read(marketId);
     }
 
-    @GetMapping("/update/{id}")
+    @GetMapping("/update/{marketId}")
     public String getUpdateForm(@PathVariable("marketId") String marketId, Model model) {
         Supermarket supermarket = service.read(marketId);
         model.addAttribute("supermarket", supermarket);
