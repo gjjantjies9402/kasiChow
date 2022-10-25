@@ -44,7 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 //WildCard for all classes
-                .antMatchers(HttpMethod.POST, "**/create").hasRole(USER_ROLE)
+                .antMatchers(HttpMethod.POST, "/**/create").hasRole(USER_ROLE)
                 .antMatchers(HttpMethod.GET, "**/read/**").hasRole(USER_ROLE)
                 .antMatchers(HttpMethod.PUT, "**/update").hasRole(ADMIN_ROLE)
                 .antMatchers(HttpMethod.DELETE, "**/delete/**").hasRole(ADMIN_ROLE)
