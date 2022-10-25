@@ -13,9 +13,9 @@ import static org.junit.jupiter.api.Assertions.*;
 class OrderFactoryTest {
 
     @Test
-    void createOrder() {
+    void buildOrder() {
         Order order = new Order.Builder()
-                .setCustID(1416)
+                .setCustID("Cust06")
                 .setOrderID("ORD98")
                 .setDriverID("DRV25")
                 .setItemID(10)
@@ -24,7 +24,7 @@ class OrderFactoryTest {
                 .build();
 
 
-        assertEquals(1416, order.getCustID());
+        assertEquals("cust06", order.getCustID());
         assertEquals("ORD98", order.getOrderID());
         assertEquals("DRV25", order.getDriverID());
         assertEquals(10, order.getItemID());

@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.Entity.Ratings;
-import za.ac.cput.Entity.Restaurant;
 import za.ac.cput.Factory.RatingsFactory;
 
 import static org.junit.jupiter.api.Assertions.*;

@@ -4,19 +4,17 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.Entity.Order;
 import za.ac.cput.Factory.OrderFactory;
 import za.ac.cput.Service.Interface.IOrderService;
 
 import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.MethodName.class)
-@SpringBootTest
 class OrderServiceTest {
 
     @Autowired
     private static OrderService orderServ;
-    private static Order order = OrderFactory.createOrder(1416, "ORD98","DRV25", 10, "Delivered", "14:32");
+    private static Order order = OrderFactory.createOrder("Cust45", "ORD98","DRV25", 10, "Delivered", "14:32");
 
     @Test
     void getService() {
@@ -44,6 +42,7 @@ class OrderServiceTest {
     @Test
     void update() {
         Order order1 = new Order.Builder().copy(order).setOrderID("ORD96").build();
+        order1 = orderServ.update(order1);
         assertNotNull(orderServ.update(order1));
         System.out.println("\nUpdated: " + order1);
 
