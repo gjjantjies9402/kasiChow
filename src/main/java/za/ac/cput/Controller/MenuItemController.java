@@ -2,23 +2,42 @@ package za.ac.cput.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.Entity.MenuItem;
 import za.ac.cput.Factory.MenuItemFactory;
 import za.ac.cput.Service.impl.MenuItemService;
+
+import java.util.List;
 import java.util.Set;
 //
-//@Controller
-@RestController
+@Controller
+//@RestController
 @RequestMapping("/menuItem")
 public class MenuItemController {
 //
     @Autowired
     private MenuItemService service;
+    @GetMapping("/restaurant")
+    public String restaurant(Model model) {
+        model.addAttribute("menuitems", service.getAll());
+        return "menuItemR";
+    }
+    @GetMapping("/supermarket")
+    public String supermarket(Model model) {
+        model.addAttribute("menuitems", service.getAll());
+        return "menuItemS";
+    }
+
+    @GetMapping("/create")
+    public String getCreateForm(@ModelAttribute("menuitem") MenuItem menuItem){
+        return "menuItemR";
+    }
+
 
     @PostMapping("/create")
-public MenuItem create (@RequestBody MenuItem menuItem) {
-    MenuItem newMenuItem = MenuItemFactory.createMenuItem (
+    public MenuItem create (@ModelAttribute("menuitem") MenuItem menuItem) {
+        MenuItem newMenuItem = MenuItemFactory.createMenuItem (
             menuItem.getItemID(),
             menuItem.getMenuCategory(),
             menuItem.getItemName(),
@@ -48,6 +67,6 @@ public MenuItem create (@RequestBody MenuItem menuItem) {
 
 //
     @GetMapping(value = "/all")
-    public Set<MenuItem> getAll() {return service.getAll();}
+    public List<MenuItem> getAll() {return service.getAll();}
 }
 //
