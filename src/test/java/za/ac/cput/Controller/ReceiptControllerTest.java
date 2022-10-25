@@ -16,19 +16,26 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import za.ac.cput.Entity.Receipt;
+import za.ac.cput.Factory.OrderFactory;
 import za.ac.cput.Factory.ReceiptFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+
 @TestMethodOrder(MethodOrderer.MethodName.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class ReceiptControllerTest {
-    private static Receipt receipt1 = ReceiptFactory.createReceipt("R123456","OR456","D0987","C657", 650 );
-    private static Receipt receipt2 = ReceiptFactory.createReceipt("R123457","OR457","D0988","C658", 750 );
+
+    private static Receipt receipt1 = ReceiptFactory.createReceipt("R123456",
+            OrderFactory.createOrder(25,"OR12345","D56",10,"Pending","11:00"));
+
+    private static Receipt receipt2 = ReceiptFactory.createReceipt("R123457",
+            OrderFactory.createOrder(26,"OR12346","D57",11,"Pending","12:00"));
 
     @Autowired
     private TestRestTemplate restTemplate;
     private final String baseURL = "http://localhost:8090/receipt";
+
 
     @Test
     void create() {
@@ -37,34 +44,31 @@ class ReceiptControllerTest {
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
         receipt2 = postResponse.getBody();
-        System.out.println("Saved: " + receipt2);
         assertEquals(receipt2.getReceiptID(), postResponse.getBody().getReceiptID());
+        System.out.println("Saved: " + receipt2.toString());
 
     }
 
     @Test
     void read() {
-        String url = baseURL + "/read" + receipt1.getReceiptID();
+        String url = baseURL + "/read/" + receipt2.getReceiptID();
         System.out.println("Url:" + url);
         ResponseEntity<Receipt> response = restTemplate.getForEntity(url, Receipt.class);
         assertEquals(receipt2.getReceiptID(), response.getBody().getReceiptID());
-
     }
 
     @Test
     void update() {
-        Receipt update = new Receipt.Builder().copy(receipt2).setAmountPaid(1000).build();
+        Receipt update = new Receipt.Builder().setOrder(receipt2.getOrder()).copy(receipt2).build();
         String url = baseURL + "/update";
         System.out.println("Update:" + update);
         ResponseEntity<Receipt> response = restTemplate.postForEntity(url, update, Receipt.class);
         assertNotNull(response.getBody());
-
-
     }
 
     @Test
     void delete() {
-        String url = baseURL + "/delete/" + receipt1.getReceiptID();
+        String url = baseURL + "/delete/" + receipt2.getReceiptID();
         System.out.println("URL: " + url);
         restTemplate.delete(url);
     }

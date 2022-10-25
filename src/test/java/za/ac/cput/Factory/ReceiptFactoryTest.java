@@ -11,11 +11,13 @@ import za.ac.cput.Entity.Receipt;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ReceiptFactoryTest {
-    @Test
-    public void test(){
-        Receipt receipt = ReceiptFactory.createReceipt("220475643", "OR12","CA2245638","87467856785", 100);
-        System.out.println(receipt.toString());
-        assertNotNull(receipt);
-    }
 
+    @Test
+    void createReceipt() {
+        Receipt receipt = ReceiptFactory.createReceipt("R123456",
+                OrderFactory.createOrder(25,"OR12345","D56",10,"Pending","11:00"));
+        assertNotNull(receipt);
+        System.out.println(receipt.toString());
+
+    }
 }

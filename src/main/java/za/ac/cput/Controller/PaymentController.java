@@ -10,26 +10,28 @@ import org.springframework.web.bind.annotation.*;
 import za.ac.cput.Entity.Payment;
 import za.ac.cput.Factory.PaymentFactory;
 import za.ac.cput.Service.impl.PaymentServicesImpl;
-
 import java.util.Set;
+
 
 @RestController
 @RequestMapping("/payment")
 public class PaymentController {
+
     @Autowired
     private PaymentServicesImpl paymentServices;
 
     @PostMapping("/create")
     public Payment create (@RequestBody Payment payment)
     {
-        Payment newPayment = PaymentFactory.createPayment(payment.getPaymentType(), payment.getReceiptID());
+        Payment newPayment = PaymentFactory.createPayment(payment.getPaymentID(), payment.getPaymentType(), payment.getNameOnCard(), payment.getCreditCardNumber(), payment.getExpMonth(), payment.getExpYear(), payment.getCvv());
+
         return paymentServices.create(newPayment);
     }
 
-    @GetMapping("/read/{paymentType}")
-    public Payment read (@PathVariable String paymentType)
+    @GetMapping("/read/{paymentID}")
+    public Payment read (@PathVariable String paymentID)
     {
-        return paymentServices.read(paymentType);
+        return paymentServices.read(paymentID);
     }
 
     @PostMapping ("/update")
@@ -40,18 +42,16 @@ public class PaymentController {
         return update;
     }
 
-    @DeleteMapping ("/delete/{paymentType}")
-    public boolean delete (@PathVariable(value = "paymentType") String paymentType)
+    @DeleteMapping ("/delete/{paymentID}")
+    public boolean delete (@PathVariable(value = "paymentID") String paymentID)
     {
-        return paymentServices.delete(paymentType);
+        return paymentServices.delete(paymentID);
     }
 
-    @GetMapping ("/findAll")
+    @GetMapping ("/getall")
     public Set<Payment> getAll()
     {
         return paymentServices.getAll();
     }
-
-
 
 }

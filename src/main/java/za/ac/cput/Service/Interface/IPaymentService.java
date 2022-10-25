@@ -7,6 +7,8 @@ package za.ac.cput.Service.Interface;
 
 import za.ac.cput.Entity.Payment;
 import za.ac.cput.Service.IService;
+
+import java.util.List;
 import java.util.Set;
 
 public interface IPaymentService extends IService<Payment, String> {
