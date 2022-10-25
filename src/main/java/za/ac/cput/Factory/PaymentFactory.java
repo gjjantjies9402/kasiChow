@@ -10,12 +10,18 @@ import za.ac.cput.util.Auth;
 
 public class PaymentFactory {
     //creating Payment object
-    public static Payment createPayment(String paymentType, String receiptID){
-        if (Auth.isNullorEmpty(paymentType) || Auth.isNullorEmpty(receiptID)){
+    public static Payment createPayment(String paymentID, String paymentType, String nameOnCard,String creditCardNumber,String expMonth, String expYear, int cvv){
+        if (Auth.isNullorEmpty(paymentID) || Auth.isNullorEmpty(paymentType) || Auth.isNullorEmpty(nameOnCard) ||Auth.isNullorEmpty(creditCardNumber) || Auth.isNullorEmpty(expMonth) || Auth.isNullorEmpty(expYear))
             return null;
-        }
-        return new Payment.Builder().setPaymentType(paymentType)
-                .setReceiptID(receiptID)
+
+        return new Payment.Builder()
+                .setPaymentID(paymentID)
+                .setPaymentType(paymentType)
+                .setNameOnCard(nameOnCard)
+                .setCreditCardNumber(creditCardNumber)
+                .setExpMonth(expMonth)
+                .setExpYear(expYear)
+                .setCvv(cvv)
                 .build();
     }
 }

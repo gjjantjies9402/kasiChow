@@ -13,7 +13,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class PaymentFactoryTest {
     @Test
     public void test(){
-        Payment payment = PaymentFactory.createPayment("Card", "220410213");
+        Payment payment = PaymentFactory.createPayment(
+                "1", "Card","Nikitha Mbokotwana","9715-0092-5113-6222","Dec","2025", 876);
         System.out.println(payment.toString());
         assertNotNull(payment);
     }
