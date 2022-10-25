@@ -2,7 +2,7 @@ package za.ac.cput.Controller;
 
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import za.ac.cput.Entity.Order;
+import za.ac.cput.Entity.Orders;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -24,15 +24,15 @@ public class OrderController {
         return "OrderHome";
     }
     @GetMapping("/create")
-    public String create(@ModelAttribute("Order") Order order) {
+    public String create(@ModelAttribute("Order") Orders order) {
         return "OrderAdd";
     }
     @PostMapping("/create")
-    public String create (@ModelAttribute("Order") Order order, BindingResult result)
+    public String create (@ModelAttribute("Order") Orders order, BindingResult result)
     {
         if (result.hasErrors())
             return "orderAdd";
-        Order newOrder = OrderFactory.createOrder
+        Orders newOrder = OrderFactory.createOrder
                 (
                         order.getCustID(),
                         order.getOrderID(),
@@ -46,13 +46,13 @@ public class OrderController {
     }
 
     @GetMapping("/read/{orderID}")
-    public Order read(@PathVariable String orderID)
+    public Orders read(@PathVariable String orderID)
     {
         return orderService.read(orderID);
     }
 
     @PostMapping("/update")
-    public Order update(@RequestBody Order order)
+    public Orders update(@RequestBody Orders order)
     {
         return orderService.update(order);
     }
@@ -63,7 +63,7 @@ public class OrderController {
     }
 
     @GetMapping(value = "/getall")
-    public List<Order> getAll()
+    public List<Orders> getAll()
     {
         return orderService.getAll();
     }
