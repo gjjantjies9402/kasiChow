@@ -6,8 +6,7 @@ import za.ac.cput.Entity.MenuItem;
 import za.ac.cput.Repository.Interface.iMenuItemRepository;
 import za.ac.cput.Service.Interface.IMenuItemService;
 
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.List;
 
 @Service
 public class MenuItemService implements IMenuItemService {
@@ -16,9 +15,12 @@ public class MenuItemService implements IMenuItemService {
     private static MenuItemService service = null;
     private iMenuItemRepository menuItemRepository;
 
-    @Override
-    public Set<MenuItem> getAll() {return this.menuItemRepository.findAll().stream().collect(Collectors.toSet());}
+    public MenuItemService(iMenuItemRepository menuItemRepository) {
+        this.menuItemRepository = menuItemRepository;
+    }
 
+    @Override
+    public List<MenuItem> getAll() {return this.menuItemRepository.findAll();}
 
     @Override
     public MenuItem create(MenuItem menuItem) {

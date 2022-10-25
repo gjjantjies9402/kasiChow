@@ -1,6 +1,10 @@
 package za.ac.cput.Entity;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 
 /**
  Order.java
@@ -10,25 +14,25 @@ import javax.persistence.*;
  */
 
 @Entity
-public class Order {
+public class Orders {
     @Id
     private String orderID;
     private String trackStatus;
     private String trackETA;
     @ManyToOne
     @JoinColumn(name = "cust_id_cust_id")
-    private String custID;
+    private Customer custID;
     @ManyToOne
     @JoinColumn(name = "driver_id_driver_id")
-    private String driverID;
+    private Driver driverID;
     @ManyToOne
     @JoinColumn(name = "item_id_item_id")
-    private int itemID;
+    private MenuItem itemID;
 
-    public Order() {
+    public Orders() {
     }
 
-    private Order(Order.Builder buil) {
+    private Orders(Orders.Builder buil) {
         this.custID = buil.custID;
         this.orderID = buil.orderID;
         this.driverID = buil.driverID;
@@ -38,12 +42,13 @@ public class Order {
 
     }
 
-    public String getCustID() {
+    public Customer getCustID() {
         return custID;
     }
 
-    public void setCustID(String custID) {
+    public Customer setCustID(Customer custID) {
         this.custID = custID;
+        return custID;
     }
 
     public String getOrderID() {
@@ -54,20 +59,22 @@ public class Order {
         this.orderID = orderID;
     }
 
-    public String getDriverID() {
+    public Driver getDriverID() {
         return driverID;
     }
 
-    public void setDriverID(String driverID) {
+    public Driver setDriverID(Driver driverID) {
         this.driverID = driverID;
+        return driverID;
     }
 
-    public int getItemID() {
+    public MenuItem getItemID() {
         return itemID;
     }
 
-    public void setItemID(int itemID) {
+    public MenuItem setItemID(MenuItem itemID) {
         this.itemID = itemID;
+        return itemID;
     }
 
     public String getTrackStatus() {
@@ -99,14 +106,14 @@ public class Order {
     }
 
     public static class Builder {
-        private String custID;
+        private Customer custID;
         private String orderID;
-        private String driverID;
-        private int itemID;
+        private Driver driverID;
+        private MenuItem itemID;
         private String trackStatus;
         private String trackETA;
 
-        public Builder setCustID(String custID) {
+        public Builder setCustID(Customer custID) {
             this.custID = custID;
             return this;
         }
@@ -116,12 +123,12 @@ public class Order {
             return this;
         }
 
-        public Builder setDriverID(String driverID) {
+        public Builder setDriverID(Driver driverID) {
             this.driverID = driverID;
             return this;
         }
 
-        public Builder setItemID(int itemID) {
+        public Builder setItemID(MenuItem itemID) {
             this.itemID = itemID;
             return this;
         }
@@ -136,7 +143,7 @@ public class Order {
             return this;
         }
 
-        public Builder copy(Order ord) {
+        public Builder copy(Orders ord) {
             this.custID = ord.custID;
             this.orderID = ord.orderID;
             this.driverID = ord.driverID;
@@ -146,8 +153,8 @@ public class Order {
             return this;
         }
 
-        public Order build() {
-            return new Order(this);
+        public Orders build() {
+            return new Orders(this);
         }
 
         }

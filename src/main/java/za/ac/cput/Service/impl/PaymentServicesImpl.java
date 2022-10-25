@@ -25,22 +25,22 @@ public class PaymentServicesImpl implements IPaymentService {
     }
 
     @Override
-    public Payment read(String s) {
-        return this.repository.findById(s).orElseGet(null);
+    public Payment read(String paymentID) {
+        return this.repository.findById(paymentID).orElseGet(null);
     }
 
     @Override
     public Payment update(Payment payment) {
-        if(this.repository.existsById(payment.getReceiptID())){
+        if(this.repository.existsById(payment.getPaymentID())){
             return this.repository.save(payment);
         }
         return null;
     }
 
     @Override
-    public boolean delete(String s) {
-        this.repository.deleteById(s);
-        if (this.repository.existsById(s))
+    public boolean delete(String paymentID) {
+        this.repository.deleteById(paymentID);
+        if (this.repository.existsById(paymentID))
             return false;
         else
             return true;

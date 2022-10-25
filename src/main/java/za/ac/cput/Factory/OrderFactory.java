@@ -9,12 +9,12 @@ package za.ac.cput.Factory;
 import za.ac.cput.Entity.Customer;
 import za.ac.cput.Entity.Driver;
 import za.ac.cput.Entity.MenuItem;
-import za.ac.cput.Entity.Order;
+import za.ac.cput.Entity.Orders;
 
 public class OrderFactory {
-    public static Order createOrder(String custID, String orderID, String driverID, int itemID, String trackStatus, String trackETA){
+    public static Orders createOrder(Customer custID, String orderID, Driver driverID, MenuItem itemID, String trackStatus, String trackETA){
 
-        return new Order.Builder().setCustID(custID).
+        return new Orders.Builder().setCustID(custID).
                 setOrderID(orderID).
                 setDriverID(driverID).
                 setItemID(itemID).
