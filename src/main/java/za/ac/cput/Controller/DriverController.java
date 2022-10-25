@@ -68,7 +68,12 @@ public class DriverController {
     {
         return driverService.delete(driverID);
     }
-
+    @GetMapping("/delete/{driverID}")
+    public String delete(@PathVariable("driverID") String driverID, Model model) {
+        driverService.delete(driverID);
+        model.addAttribute("drivers", driverService.getAll());
+        return "redirect:/driver/home";
+    }
 
     @GetMapping("/all")
     public List<Driver> getAll() {

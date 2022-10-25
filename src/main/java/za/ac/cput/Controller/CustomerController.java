@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.Entity.Customer;
+import za.ac.cput.Entity.Restaurant;
 import za.ac.cput.Factory.CustomerFactory;
 import za.ac.cput.Service.impl.CustomerService;
 
@@ -52,11 +53,19 @@ public class CustomerController {
         return customerService.read(custID);
     }
 
-    @PostMapping ("/update")
-    public Customer update (@RequestBody Customer customer)
-    {
+    @GetMapping("/update/{custID}")
+    public String getUpdateForm(@PathVariable("custID") String custID, Model model) {
+        Customer customer = customerService.read(custID);
+        model.addAttribute("customer", customer);
+        return "customerUpdate";
+    }
 
-        return customerService.update(customer);
+    @PostMapping("/update")
+    public String update(Customer customer, BindingResult result, Model model) {
+        if (result.hasErrors())
+            return "customerUpdate";
+        customerService.update(customer);
+        return "redirect:/customer/home";
     }
 
     @DeleteMapping ("/delete/{custID}")
@@ -64,7 +73,12 @@ public class CustomerController {
     {
         return customerService.delete(custID);
     }
-
+    @GetMapping("/delete/{custID}")
+    public String delete(@PathVariable("custID") String custID, Model model) {
+        customerService.delete(custID);
+        model.addAttribute("customers", customerService.getAll());
+        return "redirect:/customer/home";
+    }
     @GetMapping ("/getall")
     public List<Customer> getAll()
     {
