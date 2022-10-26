@@ -14,9 +14,9 @@ public class Receipt {
     @Id
     @GeneratedValue
     private String receiptID;
-    @ManyToOne(targetEntity = Order.class, cascade = CascadeType.ALL)
+    @ManyToOne(targetEntity = Orders.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "order_cust_id")
-    private Order order;
+    private Orders order;
 
     protected Receipt() {}
 
@@ -36,7 +36,7 @@ public class Receipt {
     public String getReceiptID() {
         return receiptID;
     }
-    public Order getOrder() {
+    public Orders getOrder() {
         return order;
     }
 
@@ -44,19 +44,19 @@ public class Receipt {
     public void setReceiptID(String receiptID) {
         this.receiptID = receiptID;
     }
-    public void setOrder(Order order) {
+    public void setOrder(Orders order) {
         this.order = order;
     }
 
     public static class Builder{
         private String receiptID;
-        private Order order;
+        private Orders order;
 
         public Builder setReceiptID(String receiptID){
             this.receiptID =receiptID;
             return this;
         }
-        public Builder setOrder(Order order){
+        public Builder setOrder(Orders order){
             this.order = order;
             return this;
         }
