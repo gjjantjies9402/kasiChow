@@ -6,21 +6,33 @@ import za.ac.cput.Entity.MenuItem;
 import za.ac.cput.Repository.Interface.iMenuItemRepository;
 import za.ac.cput.Service.Interface.IMenuItemService;
 
-import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class MenuItemService implements IMenuItemService {
 
+    private static IMenuItemService menuItemService = null;
     @Autowired
-    private static MenuItemService service = null;
     private iMenuItemRepository menuItemRepository;
 
-    public MenuItemService(iMenuItemRepository menuItemRepository) {
-        this.menuItemRepository = menuItemRepository;
+    private MenuItemService()
+    {
+
+
+    }
+
+    public static IMenuItemService getMenuItemService() {
+
+        if(menuItemService == null)
+            menuItemService = new MenuItemService();
+        return menuItemService;
+
     }
 
     @Override
-    public List<MenuItem> getAll() {return this.menuItemRepository.findAll();}
+    public Set<MenuItem> getAll() {return this.menuItemRepository.findAll().stream().collect(Collectors.toSet());}
+
 
     @Override
     public MenuItem create(MenuItem menuItem) {

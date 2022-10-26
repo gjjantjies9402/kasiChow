@@ -15,16 +15,16 @@ public class OrderItemService implements IOrderItemService {
     @Autowired
     private OrderItemInterface orderItemRepository;
 
-    private static IOrderItemService service = null;
+    private static IOrderItemService orderItemService = null;
 
     private OrderItemService(){
 
     }
 
     public static IOrderItemService getOrderItemService() {
-        if(service == null)
-            service = new OrderItemService();
-        return service;
+        if(orderItemService == null)
+            orderItemService = new OrderItemService();
+        return orderItemService;
     }
 
     @Override

@@ -30,25 +30,25 @@ public class OrderItem {
         return itemID;
     }
 
-//    public void setItemID(String itemID) {
-//        this.itemID = itemID;
-//    }
+    public void setItemID(String itemID) {
+        this.itemID = itemID;
+    }
 
     public int getQuantity() {
         return quantity;
     }
 
-//    public void setQuantity(int quantity) {
-//        this.quantity = quantity;
-//    }
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
     public double getTotalAmount() {
         return totalAmount;
     }
 
-//    public void setTotalAmount(double totalAmount) {
-//        this.totalAmount = totalAmount;
-//    }
+    public void setTotalAmount(double totalAmount) {
+        this.totalAmount = totalAmount;
+    }
 
     @Override
     public String toString() {
