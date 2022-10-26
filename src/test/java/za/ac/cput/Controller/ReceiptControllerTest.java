@@ -2,7 +2,8 @@
  * Test Controller for Receipt
  * Author: Nikitha Mbokotwana (218337906)
  * Date: 17 October 2022
- **/
+ **//*
+
 package za.ac.cput.Controller;
 
 import org.junit.jupiter.api.MethodOrderer;
@@ -26,11 +27,9 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class ReceiptControllerTest {
 
-    private static Receipt receipt1 = ReceiptFactory.createReceipt("R123456",
-            OrderFactory.createOrder(25,"OR12345","D56",10,"Pending","11:00"));
+    private static Receipt receipt1 = ReceiptFactory.createReceipt();
 
-    private static Receipt receipt2 = ReceiptFactory.createReceipt("R123457",
-            OrderFactory.createOrder(26,"OR12346","D57",11,"Pending","12:00"));
+    private static Receipt receipt2 = ReceiptFactory.createReceipt();
 
     @Autowired
     private TestRestTemplate restTemplate;
@@ -59,7 +58,7 @@ class ReceiptControllerTest {
 
     @Test
     void update() {
-        Receipt update = new Receipt.Builder().setOrder(receipt2.getOrder()).copy(receipt2).build();
+        Receipt update = new Receipt.Builder().setOrder(receipt2.getOrderID()).copy(receipt2).build();
         String url = baseURL + "/update";
         System.out.println("Update:" + update);
         ResponseEntity<Receipt> response = restTemplate.postForEntity(url, update, Receipt.class);
@@ -83,4 +82,4 @@ class ReceiptControllerTest {
         System.out.println(response);
         System.out.println(response.getBody());
     }
-}
+}*/
