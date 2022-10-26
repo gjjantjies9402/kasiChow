@@ -78,29 +78,36 @@
     <div class="container">
         <div class="col-md-4 ml-auto mr-auto">
             <h3>Payment</h3>
+            <form th:action="@{/payment/create}" th:object="${payment}" method="post">
+
+                <div class="input-group no-border input-lg">
+                    <input type="text" th:field="*{paymentID}" class="form-control" placeholder="Name on Card" required>
+                </div>
             <label>Name on Card</label>
             <div class="input-group no-border input-lg">
-                <input type="text" class="form-control" placeholder="Name on Card">
+                <input type="text" th:field="*{nameOnCard}" class="form-control" placeholder="Name on Card" required>
             </div>
             <label>Credit card number</label>
             <div class="input-group no-border input-lg">
-                <input type="text" class="form-control" placeholder="Credit card number">
+                <input type="text" th:field="*{creditCardNumber}" class="form-control" placeholder="Credit card number" required>
             </div>
             <label>Exp Month</label>
             <div class="input-group no-border input-lg">
-                <input type="text" class="form-control" placeholder="Exp Month">
+                <input type="text" th:field="*{expMonth}" class="form-control" placeholder="Exp Month" required>
             </div>
             <label>Exp Year</label>
             <div class="input-group no-border input-lg">
-                <input type="text" class="form-control" placeholder="Exp Year">
+                <input type="text" th:field="*{expYear}" class="form-control" placeholder="Exp Year" required>
             </div>
              <label>CVV</label>
             <div class="input-group no-border input-lg">
-                <input type="text" class="form-control" placeholder="CVV">
+                <input type="text" th:field="*{cvv}" class="form-control" placeholder="CVV" required>
             </div>
             <div class="input-group no-border input-lg">
-                <a  method="post"  th:action="@{/login}"  href="./receipt.html" class="btn btn-primary btn-round btn-lg btn-block">  Payment </a>
+                 <a    href="/receipt/home" class="btn btn-primary btn-round btn-lg btn-block">  Payment </a>
+<!--                <button type="submit" class="btn btn-light btn-block mb-4">Add</button>-->
             </div>
+            </form>
             </div>
 
         </div>
@@ -121,8 +128,13 @@
                     </li>
                 </ul>
             </nav>
+            <div class="copyright" id="copyright">
+
+                © 2022 Copyright: KasiChow
+            </div>
         </div>
     </footer>
+
     </div>
   </div>
 

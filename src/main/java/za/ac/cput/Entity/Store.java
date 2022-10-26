@@ -23,7 +23,7 @@ public class Store {
     private String storeId, restaurantId, marketId;
 
 
-    protected Store(){}
+    public Store(){}
 
     private Store(Builder s) {
         this.storeId = s.storeId;

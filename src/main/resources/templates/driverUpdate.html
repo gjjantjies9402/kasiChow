@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Driver</title>
     <link rel="stylesheet" th:href="@{/style.css}">
-    <link rel="icon" type="image/png" th:href="@{/img/favicon.png}" >
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <!-- Google Fonts -->
@@ -65,32 +64,32 @@
 <!--/.Navbar-->
 <section class="container-fluid col-6 pt-xl-4">
 
-    <h3> Add Driver</h3>
+    <h3 class="mb-3"> Update Driver</h3>
     <div>
+        <form action="#" th:action="@{/driver/update}"
+              th:object="${driver}" method="post">
+            <div class="form-outline mb-12">
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="driverID">Driver Id </label>
+                    <input type="text" th:field="*{driverID}" id="driverID" class="form-control" readonly>
+                </div>
 
-        <form th:action="@{/driver/create}" th:object="${driver}" method="post">
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="driverFname" >First Name</label>
+                    <input type="text" th:field="*{driverFname}" class="form-control" id="driverFname" readonly>
+                </div>
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="driverLname" >Last Name</label>
+                    <input type="text" th:field="*{driverLname}" class="form-control" id="driverLname" readonly>
+                </div>
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="driverContact" >Contact Number</label>
+                    <input type="text" th:field="*{driverContact}" class="form-control" id="driverContact" required>
+                </div>
 
-            <div class="form-outline mb-4">
-                <input type="text" th:field="*{driverID}"  class="form-control" required>
-                <label>Driver Id</label>
-            </div>
-
-            <div class="form-outline mb-4">
-                <input type="text" th:field="*{driverFname}"  class="form-control" required>
-                <label>First Name</label>
-            </div>
-            <div class="form-outline mb-4">
-                <input type="text" th:field="*{driverLname}" class="form-control" required>
-                <label>Last Name</label>
-            </div>
-
-            <div class="form-outline mb-4">
-                <input type="text" th:field="*{driverContact}"  class="form-control" required>
-                <label>Driver Contact</label>
-            </div>
-
-            <div >
-                <button type="submit" class="btn btn-light btn-block mb-4">Add</button>
+                <div >
+                    <input type="submit" class="btn" value="Update">
+                </div>
             </div>
         </form>
     </div>

@@ -7,7 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.Entity.Driver;
-import za.ac.cput.Entity.Supermarket;
 import za.ac.cput.Factory.DriverFactory;
 import za.ac.cput.Service.impl.DriverService;
 
@@ -68,7 +67,12 @@ public class DriverController {
     {
         return driverService.delete(driverID);
     }
-
+    @GetMapping("/delete/{driverID}")
+    public String delete(@PathVariable("driverID") String driverID, Model model) {
+        driverService.delete(driverID);
+        model.addAttribute("drivers", driverService.getAll());
+        return "redirect:/driver/home";
+    }
 
     @GetMapping("/all")
     public List<Driver> getAll() {

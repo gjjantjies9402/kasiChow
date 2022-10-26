@@ -21,7 +21,7 @@ public class login {
     private String username;
     private String password;
 
-    protected login(){}
+    public login(){}
 
     private login(Builder builder){
         this.id = builder.id;

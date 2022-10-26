@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title> Driver </title>
+    <title> MenuItems </title>
     <link rel="icon" type="image/png" th:href="@{/img/favicon.png}" >
     <link th:href="@{/css/now-ui-kit.css}"  rel="stylesheet" />
     <link rel="stylesheet" th:href="@{/css/style.css}">
@@ -44,13 +44,17 @@
         </div>
         <div class="sidebar-wrapper" id="sidebar-wrapper">
             <ul class="nav">
-
+                <!--                <li>-->
+                <!--                    <a href="/dashboard">-->
+                <!--                        <p>Home</p>-->
+                <!--                    </a>-->
+                <!--                </li>-->
                 <li >
                     <a href="/customer/home">
                         <p>Customer</p>
                     </a>
                 </li>
-                <li >
+                <li class="active ">
                     <a href="/menuItem/restaurant">
                         <p>Restaurant Menu Items</p>
                     </a>
@@ -60,7 +64,7 @@
                         <p>Supermarket Menu Items</p>
                     </a>
                 </li>
-                <li class="active " >
+                <li>
                     <a href="/driver/home">
                         <p>Driver</p>
                     </a>
@@ -93,55 +97,49 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h5 class="title">Driver</h5>
+                            <h5 class="title">Restaurant Menu</h5>
                         </div>
                         <div class="card-body">
                             <form>
                                 <section class="main">
                                     <div>
-                                        <div th:switch="${drivers}" >
-                                            <p>
-                                                <a href="/driver/create" class="btn btn-light"><i class="fas fa-plus"> Add Driver</i></a>
-                                            </p>
-
+                                        <div th:switch="${menuItems}" >
                                             <div>
-                                                <h4 th:case="null">No Driver</h4>
+                                                <h4 th:case="null">No Menu</h4>
 
                                                 <div th:case="*" style="text-align: center;">
 
                                                     <table id="table" class="table">
                                                         <thead>
                                                         <tr>
-                                                            <th scope="col">Driver Id</th>
-                                                            <th scope="col">First Name</th>
-                                                            <th scope="col">Last Name</th>
-                                                            <th scope="col">Contact Nr</th>
-                                                            <th scope="col">Edit</th>
-                                                            <th scope="col">Delete</th>
+                                                            <th scope="col" hidden>Item Id</th>
+                                                            <th scope="col" colspan="2">Item Name</th>
+                                                            <th scope="col">Item Price</th>
+                                                            <th scope="col">Menu Category</th>
+                                                            <th scope="col">Qty</th>
+                                                            <th scope="col"> ADD</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
-                                                        <tr th:each="class : ${drivers}">
-                                                            <td th:text="${class.getDriverID()}"></td>
-                                                            <td th:text="${class.getDriverFname()}"></td>
-                                                            <td th:text="${class.getDriverLname()}"></td>
-                                                            <td th:text="${class.getDriverContact()}"></td>
+                                                        <tr th:each="class : ${menuItems}" >
+                                                            <td th:text="${class.getItemID()}" hidden></td>
+                                                            <td th:text="${class.getItemName()}" colspan="2"></td>
+                                                            <td th:text="${class.getItemPrice()}"></td>
+                                                            <td th:text="${class.getMenuCategory()}"></td>
 
 
-                                                            <td><a th:href="@{/driver/update/{id}(id=${class.getDriverID()})}"
-                                                                   class="btn">
-                                                                <i class="far fa-edit"></i>
-                                                            </a>
+                                                            <td>
+                                                                <input type="number"   class="form-control" >
                                                             </td>
-                                                            <td><a th:href="@{/driver/delete/{id}(id=${class.getDriverID()})}"
-                                                                   class="btn">
-                                                                <i class="fas fa-trash-alt"></i>
-                                                            </a>
-                                                            </td>
+                                                            <td>
 
+                                                                <input type="checkbox"   class="form-control" >
+                                                            </td>
                                                         </tr>
                                                         </tbody>
                                                     </table>
+                                                    <a  href="/payment/home"  class="btn btn-primary btn-round btn-lg btn-block">  Checkout </a>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -151,7 +149,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
         <footer class="footer">

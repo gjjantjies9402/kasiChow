@@ -11,10 +11,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import za.ac.cput.Entity.Payment;
 import za.ac.cput.Factory.PaymentFactory;
 
@@ -24,12 +21,13 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 
 class PaymentControllerTest {
-    private static Payment payment1 = PaymentFactory.createPayment("Cash on delivery", "R123456");
-    private static Payment payment2 = PaymentFactory.createPayment("Card", "R123457");
+    private static Payment payment1 = PaymentFactory.createPayment("1", "Card","Luncumo Mbokotwana", "9715-0092-5113-6222", "Dec", "2025", 908);
+    private static Payment payment2 = PaymentFactory.createPayment("2", "Card","Nikitha Mbokotwana","9715-0092-5113-6223","Dec","2025",789);
 
     @Autowired
     private TestRestTemplate restTemplate;
     private final String baseURL = "http://localhost:8090/payment";
+
 
     @Test
     void create() {
@@ -38,21 +36,22 @@ class PaymentControllerTest {
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
         payment2 = postResponse.getBody();
-        System.out.println("Saved: " + payment2);
-        assertEquals(payment2.getPaymentType(), postResponse.getBody().getPaymentType());
+        assertEquals(payment2.getPaymentID(), postResponse.getBody().getPaymentID());
+        System.out.println("Saved: " + payment2.toString());
+
     }
 
     @Test
     void read() {
-        String url = baseURL + "/read" + payment1.getPaymentType();
+        String url = baseURL + "/read/" + payment2.getPaymentID();
         System.out.println("Url:" + url);
         ResponseEntity<Payment> response = restTemplate.getForEntity(url, Payment.class);
-        assertEquals(payment2.getPaymentType(), response.getBody().getPaymentType());
+        assertEquals(payment2.getPaymentID(), response.getBody().getPaymentID());
     }
 
     @Test
     void update() {
-        Payment update = new Payment.Builder().copy(payment2).setPaymentType("Cash on delivery").build();
+        Payment update = new Payment.Builder().copy(payment2).setExpMonth("Jan").build();
         String url = baseURL + "/update";
         System.out.println("Update:" + update);
         ResponseEntity<Payment> response = restTemplate.postForEntity(url, update, Payment.class);
@@ -61,7 +60,7 @@ class PaymentControllerTest {
 
     @Test
     void delete() {
-        String url = baseURL + "/delete/" + payment1.getReceiptID();
+        String url = baseURL + "/delete/" + payment2.getPaymentID();
         System.out.println("URL: " + url);
         restTemplate.delete(url);
     }

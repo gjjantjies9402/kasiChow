@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title> Supermarket </title>
+    <title> Restaurant </title>
     <link rel="icon" type="image/png" th:href="@{/img/favicon.png}" >
     <link th:href="@{/css/now-ui-kit.css}"  rel="stylesheet" />
     <link rel="stylesheet" th:href="@{/css/style.css}">
@@ -49,32 +49,22 @@
 <!--              <p>Home</p>-->
 <!--            </a>-->
 <!--          </li>-->
-          <li>
+          <li >
             <a href="/customer/home">
               <p>Customer</p>
             </a>
           </li>
-            <li >
-                <a href="/menuItem/restaurant">
-                    <p>Restaurant Menu Items</p>
-                </a>
-            </li>
-            <li >
-                <a href="/menuItem/supermarket">
-                    <p>Supermarket Menu Items</p>
-                </a>
-            </li>
           <li>
             <a href="/driver/home">
               <p>Driver</p>
             </a>
           </li>
-            <li>
+            <li class="active ">
                 <a href="/restaurant/home">
                     <p>Restaurant</p>
                 </a>
             </li>
-            <li class="active ">
+            <li >
                 <a href="/supermarket/home">
                     <p>Supermarket</p>
                 </a>
@@ -96,45 +86,45 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h5 class="title">Supermarket</h5>
+                <h5 class="title">Restaurant</h5>
               </div>
               <div class="card-body">
                 <form>
                   <section class="main">
                     <div>
-                        <div th:switch="${supermarkets}" >
+                        <div th:switch="${restaurants}" >
                             <p>
-                                <a href="/supermarket/create" class="btn btn-light"><i class="fas fa-plus"> Add Supermarket</i></a>
+                                <a href="/restaurant/create" class="btn btn-light"><i class="fas fa-plus"> Add Restaurant</i></a>
                             </p>
 
                             <div>
-                                <h4 th:case="null">No Supermarket</h4>
+                                <h4 th:case="null">No Restaurants</h4>
                 
                                 <div th:case="*" style="text-align: center;">
                 
                                     <table id="table" class="table">
                                         <thead>
                                         <tr>
-                                            <th scope="col">Supermarket Id</th>
-                                            <th scope="col">Supermarket Name</th>
+                                            <th scope="col">Restaurant Id</th>
+                                            <th scope="col">Restaurant Name</th>
                                             <th scope="col">Location</th>
                                             <th scope="col">Edit</th>
                                             <th scope="col">Delete</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr th:each="class : ${supermarkets}">
-                                            <td th:text="${class.getMarketId()}"></td>
-                                            <td th:text="${class.getMarketName()}"></td>
-                                            <td th:text="${class.getMarketLocation()}"></td>
+                                        <tr th:each="class : ${restaurants}">
+                                            <td th:text="${class.getRestaurantId()}"></td>
+                                            <td th:text="${class.getRestaurantName()}"></td>
+                                            <td th:text="${class.getRestaurantLocation()}"></td>
 
 
-                                            <td><a th:href="@{/supermarket/update/{id}(id=${class.getMarketId()})}"
+                                            <td><a th:href="@{/restaurant/update/{id}(id=${class.getRestaurantId()})}"
                                                    class="btn">
                                                 <i class="far fa-edit"></i>
                                             </a>
                                             </td>
-                                            <td><a th:href="@{/supermarket/delete/{id}(id=${class.getMarketId()})}"
+                                            <td><a th:href="@{/restaurant/delete/{id}(id=${class.getRestaurantId()})}"
                                                    class="btn">
                                                 <i class="fas fa-trash-alt"></i>
                                             </a>
@@ -151,69 +141,32 @@
               </div>
             </div>
           </div>
-<!--          <div class="col-md-4">-->
-<!--            <div class="card">-->
-<!--            -->
-<!--              <div class="card-body">-->
-<!--                <section class="container-fluid col-6 pt-xl-4">-->
-
-<!--                  <h5> Add Passenger</h5>-->
-<!--                  <div>-->
-<!--                      &lt;!&ndash;/*@thymesVar id="passenger" type="java"*/&ndash;&gt;-->
-<!--                      <form action="#" th:action="@{/customer/create}" th:object="${customer}" method="post">-->
-<!--              -->
-<!--                          <div class="form-outline mb-4">-->
-<!--                              <input type="text" th:field="*{custID}" class="form-control" readonly>-->
-<!--                              <label>Passenger Id</label>-->
-<!--                          </div>-->
-<!--              -->
-<!--                          <div class="form-outline mb-4">-->
-<!--                              <input type="text" th:field="*{name}" class="form-control" required>-->
-<!--                              <label>Name</label>-->
-<!--                          </div>-->
-<!--              -->
-<!--                          <div class="form-outline mb-4">-->
-<!--                              <input type="text" th:field="*{contact}" class="form-control">-->
-<!--                              <label>Contact</label>-->
-<!--                          </div>-->
-              
-<!--                          <div >-->
-<!--                              <button type="submit" class="btn btn-light btn-block mb-4">Add</button>-->
-<!--                          </div>-->
-<!--                      </form>-->
-<!--                  </div>-->
-<!--              </section>-->
-<!--              </div>-->
-<!--              <hr>-->
-<!--            </div>-->
-<!--          </div>-->
         </div>
       </div>
-       <footer class="footer">
-        <div class=" container-fluid ">
-            <nav>
-                <ul>
-                    <li>
-                        <a href="/home">
-                            Home
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/about">
-                            About Us
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="copyright" id="copyright">
+        <footer class="footer">
+            <div class=" container-fluid ">
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="/home">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/about">
+                                About Us
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="copyright" id="copyright">
 
-                © 2022 Copyright: KasiChow
+                    © 2022 Copyright: KasiChow
+                </div>
             </div>
-        </div>
         </footer>
     </div>
   </div>
-
 </body>
 
 </html>
