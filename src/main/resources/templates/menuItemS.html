@@ -108,7 +108,7 @@
 
 
                                                 <div th:case="*" style="text-align: center;">
-
+                                                    <form th:action="@{/menuItem/create}" th:object="${menuitem}" method="post">
                                                     <table id="table" class="table">
                                                         <thead>
                                                         <tr>
@@ -129,16 +129,17 @@
 
 
                                                             <td>
-                                                                <input value="" type="number"  required>
+                                                                <input type="text" th:field="*{quantity}"  class="form-control" required>
                                                             </td>
-                                                            <td><a th:href="@{/customer/delete/{id}(id=${class.getItemID()})}"
-                                                                   class="btn">
+                                                           
+                                                            <td><button type="submit" class="btn btn-light btn-block mb-4">Add</button>
                                                                 ADD
                                                             </a>
                                                             </td>
                                                         </tr>
                                                         </tbody>
                                                     </table>
+                                                </form>
                                                 </div>
                                             </div>
                                         </div>

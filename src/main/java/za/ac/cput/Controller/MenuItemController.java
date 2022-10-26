@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.*;
 import za.ac.cput.Entity.MenuItem;
 import za.ac.cput.Factory.MenuItemFactory;
 import za.ac.cput.Service.impl.MenuItemService;
+import za.ac.cput.Service.impl.OrderItemService;
 
 import java.util.List;
-import java.util.Set;
 //
 @Controller
 //@RestController
@@ -18,6 +18,9 @@ public class MenuItemController {
 //
     @Autowired
     private MenuItemService service;
+    @Autowired
+    private OrderItemService orderService;
+
     @GetMapping("/restaurant")
     public String restaurant(Model model) {
         model.addAttribute("menuitems", service.getAll());
