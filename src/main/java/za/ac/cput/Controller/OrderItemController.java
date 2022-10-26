@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import za.ac.cput.Entity.OrderItem;
 import za.ac.cput.Factory.OrderItemFactory;
 import za.ac.cput.Service.Interface.IOrderItemService;
+import za.ac.cput.Service.impl.MenuItemService;
 import za.ac.cput.Service.impl.OrderItemService;
 
 import java.util.Set;
@@ -18,24 +19,30 @@ public class OrderItemController {
 
     @Autowired
     private OrderItemService service;
-
+    @Autowired
+    private MenuItemService MenuService;
+//    @GetMapping("/home")
+//    public String home(Model model) {
+//        model.addAttribute("orderItems", service.getAll());
+//        return "orderItem";
+//    }
     @GetMapping("/home")
-    public String home(Model model) {
-        model.addAttribute("orderItems", service.getAll());
-        return "orderItem";
+    public String supermarket(Model model) {
+        model.addAttribute("orderItems", MenuService.getAll());
+        return "menuItemS";
     }
 
     @GetMapping("/create")
-    public String getCreateForm(@ModelAttribute("orderItem") OrderItem driver) {
+    public String getCreateForm(@ModelAttribute("orderItem") OrderItem orderItem) {
 
-        return "menuItemR";
+        return "orderItem";
 
     }
 
     @PostMapping("/create")
     public String create(@ModelAttribute("orderItem") OrderItem orderItem, BindingResult result) {
         if (result.hasErrors())
-            return "orderItemAdd";
+            return "orderItem";
 
         OrderItem newOrderItem = OrderItemFactory.createOrderItem(
                 orderItem.getItemID(),

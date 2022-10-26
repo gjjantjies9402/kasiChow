@@ -7,6 +7,7 @@ package za.ac.cput.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.Entity.Payment;
@@ -20,7 +21,11 @@ public class PaymentController {
 
     @Autowired
     private PaymentServicesImpl paymentServices;
-
+    @GetMapping("/home")
+    public String home(Model model) {
+        model.addAttribute("payment", paymentServices.getAll());
+        return "paymentType";
+    }
     @GetMapping("/create")
     public String getCreateForm(@ModelAttribute("payment") Payment payment){
         return "payment";
@@ -29,12 +34,17 @@ public class PaymentController {
     public String create(@RequestBody Payment payment, BindingResult result) {
         if (result.hasErrors())
             return "payment";
-        Payment newPayment = PaymentFactory.createPayment(payment.getPaymentID(), payment.getPaymentType(),
-                payment.getNameOnCard(), payment.getCreditCardNumber(), payment.getExpMonth(), payment.getExpYear(),
+        Payment newPayment = PaymentFactory.createPayment(
+                payment.getPaymentID(),
+                payment.getPaymentType(),
+                payment.getNameOnCard(),
+                payment.getCreditCardNumber(),
+                payment.getExpMonth(),
+                payment.getExpYear(),
                 payment.getCvv());
 
          paymentServices.create(newPayment);
-         return "redirect:/receipt/home";
+         return "redirect:/home";
     }
 
     @GetMapping("/read/{paymentID}")

@@ -5,7 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.Entity.MenuItem;
+import za.ac.cput.Entity.OrderItem;
 import za.ac.cput.Factory.MenuItemFactory;
+import za.ac.cput.Factory.OrderItemFactory;
 import za.ac.cput.Service.impl.MenuItemService;
 import za.ac.cput.Service.impl.OrderItemService;
 
@@ -23,31 +25,31 @@ public class MenuItemController {
 
     @GetMapping("/restaurant")
     public String restaurant(Model model) {
-        model.addAttribute("menuitems", service.getAll());
+        model.addAttribute("menuItems", service.getAll());
         return "menuItemR";
     }
     @GetMapping("/supermarket")
     public String supermarket(Model model) {
-        model.addAttribute("menuitems", service.getAll());
+        model.addAttribute("menuItems", service.getAll());
         return "menuItemS";
     }
 
     @GetMapping("/create")
-    public String getCreateForm(@ModelAttribute("menuitem") MenuItem menuItem){
-        return "menuItemR";
+    public String getCreateForm(@ModelAttribute("menuitem") OrderItem orderItem){
+        return "menuItemS";
     }
 
 
     @PostMapping("/create")
-    public MenuItem create (@ModelAttribute("menuitem") MenuItem menuItem) {
-        MenuItem newMenuItem = MenuItemFactory.createMenuItem (
-            menuItem.getItemID(),
-            menuItem.getMenuCategory(),
-            menuItem.getItemName(),
-            menuItem.getItemPrice()
+    public OrderItem create (@ModelAttribute("menuitem") OrderItem orderItem) {
+        OrderItem newOrderItem = OrderItemFactory.createOrderItem(
 
-    );
-    return service.create(newMenuItem);
+                orderItem.getItemID(),
+                orderItem.getQuantity(),
+                orderItem.getTotalAmount()
+        );
+
+        return orderService.create(newOrderItem);
 }
 
 //

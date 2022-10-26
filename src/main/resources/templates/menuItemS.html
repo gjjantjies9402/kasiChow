@@ -44,22 +44,22 @@
         </div>
         <div class="sidebar-wrapper" id="sidebar-wrapper">
             <ul class="nav">
-                <li>
-                    <a href="/dashboard">
-                        <p>Home</p>
-                    </a>
-                </li>
+                <!--                <li>-->
+                <!--                    <a href="/dashboard">-->
+                <!--                        <p>Home</p>-->
+                <!--                    </a>-->
+                <!--                </li>-->
                 <li >
                     <a href="/customer/home">
                         <p>Customer</p>
                     </a>
                 </li>
-                <li >
+                <li class="active ">
                     <a href="/menuItem/restaurant">
                         <p>Restaurant Menu Items</p>
                     </a>
                 </li>
-                <li class="active " >
+                <li >
                     <a href="/menuItem/supermarket">
                         <p>Supermarket Menu Items</p>
                     </a>
@@ -97,18 +97,18 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h5 class="title">Supermarket Menu</h5>
+                            <h5 class="title">Restaurant Menu</h5>
                         </div>
                         <div class="card-body">
                             <form>
                                 <section class="main">
                                     <div>
-                                        <div th:switch="${menuitems}" >
+                                        <div th:switch="${menuItems}" >
                                             <div>
-
+                                                <h4 th:case="null">No Menu</h4>
 
                                                 <div th:case="*" style="text-align: center;">
-                                                    <form th:action="@{/menuItem/create}" th:object="${menuitem}" method="post">
+
                                                     <table id="table" class="table">
                                                         <thead>
                                                         <tr>
@@ -121,7 +121,7 @@
                                                         </tr>
                                                         </thead>
                                                         <tbody>
-                                                        <tr th:each="class : ${menuitems}" >
+                                                        <tr th:each="class : ${menuItems}" >
                                                             <td th:text="${class.getItemID()}" hidden></td>
                                                             <td th:text="${class.getItemName()}" colspan="2"></td>
                                                             <td th:text="${class.getItemPrice()}"></td>
@@ -129,17 +129,17 @@
 
 
                                                             <td>
-                                                                <input type="text" th:field="*{quantity}"  class="form-control" required>
+                                                                <input type="number"   class="form-control" >
                                                             </td>
-                                                           
-                                                            <td><button type="submit" class="btn btn-light btn-block mb-4">Add</button>
-                                                                ADD
-                                                            </a>
+                                                            <td>
+
+                                                                <input type="checkbox"   class="form-control" >
                                                             </td>
                                                         </tr>
                                                         </tbody>
                                                     </table>
-                                                </form>
+                                                    <a  href="/payment/home"  class="btn btn-primary btn-round btn-lg btn-block">  Checkout </a>
+
                                                 </div>
                                             </div>
                                         </div>
