@@ -3,84 +3,75 @@ package za.ac.cput.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.Entity.MenuItem;
+import za.ac.cput.Entity.OrderItem;
 import za.ac.cput.Factory.MenuItemFactory;
+import za.ac.cput.Factory.OrderItemFactory;
 import za.ac.cput.Service.impl.MenuItemService;
-import java.util.Set;
-//
+import za.ac.cput.Service.impl.OrderItemService;
 
+import java.util.List;
+//
 @Controller
-@RestController
+//@RestController
 @RequestMapping("/menuItem")
 public class MenuItemController {
-//
+    //
     @Autowired
-    private MenuItemService menuItemService;
+    private MenuItemService service;
+    @Autowired
+    private OrderItemService orderService;
 
-    @GetMapping("/home")
-    public String home(Model model) {
-        model.addAttribute("menuItems", menuItemService.getAll());
-        return "menuItemsHome";
+    @GetMapping("/restaurant")
+    public String restaurant(Model model) {
+        model.addAttribute("menuItems", service.getAll());
+        return "menuItemR";
+    }
+    @GetMapping("/supermarket")
+    public String supermarket(Model model) {
+        model.addAttribute("menuItems", service.getAll());
+        return "menuItemS";
+    }
+
+    @GetMapping("/create")
+    public String getCreateForm(@ModelAttribute("menuitem") OrderItem orderItem){
+        return "menuItemS";
     }
 
 
     @PostMapping("/create")
-public MenuItem create (@RequestBody MenuItem menuItem) {
-    MenuItem newMenuItem = MenuItemFactory.createMenuItem (
-            menuItem.getItemID(),
-            menuItem.getMenuCategory(),
-            menuItem.getItemName(),
-            menuItem.getItemPrice()
+    public OrderItem create (@ModelAttribute("menuitem") OrderItem orderItem) {
+        OrderItem newOrderItem = OrderItemFactory.createOrderItem(
 
-    );
-    return menuItemService.create(newMenuItem);
-}
+                orderItem.getItemID(),
+                orderItem.getQuantity(),
+                orderItem.getTotalAmount()
+        );
 
-    @GetMapping("/create")
-    public String create(@ModelAttribute MenuItem menuItem, BindingResult result, Model model) {
-        if (result.hasErrors())
-            return "menuItemAdd";
-        menuItemService.create(menuItem);
-        return "redirect:/menuItem/home";
+        return orderService.create(newOrderItem);
     }
 
-//
+    //
     @GetMapping(value = "/read/{id}")
-    public MenuItem read (@PathVariable String id) {return menuItemService.read(id);}
-//
+    public MenuItem read (@PathVariable String id) {return service.read(id);}
+    //
     @GetMapping("/update")
     public MenuItem update(@RequestBody MenuItem menuItem) {
-        MenuItem update = menuItemService.update(menuItem);
+        MenuItem update = service.update(menuItem);
 
         return update;
     }
 
-    @PostMapping("/update")
-    public String update(MenuItem menuItem, BindingResult result, Model model) {
-        if (result.hasErrors())
-            return "menuItemUpdate";
-        menuItemService.update(menuItem);
-        return "redirect:/menuItem/home";
-    }
-
-//
+    //
     @DeleteMapping(value = "/delete/{id}")
     public boolean delete (@PathVariable(value = "Id") String Id)
     {
-        return menuItemService.delete(Id);
+        return service.delete(Id);
     }
 
-    @GetMapping("/delete/{id}")
-    public String delete(@PathVariable("id") String id, Model model) {
-        menuItemService.delete(id);
-        model.addAttribute("menuItems", menuItemService.getAll());
-        return "redirect:/menuItem/home";
-    }
-
-//
+    //
     @GetMapping(value = "/all")
-    public Set<MenuItem> getAll() {return menuItemService.getAll();}
+    public List<MenuItem> getAll() {return service.getAll();}
 }
 //
