@@ -18,7 +18,7 @@ public class Receipt {
     @JoinColumn(name = "order_cust_id")
     private Orders order;
 
-    protected Receipt() {}
+    public Receipt() {}
 
     //private constructor
     private Receipt(Builder builder) {

@@ -28,6 +28,11 @@ public class RestaurantController {
         model.addAttribute("restaurants", service.getAll());
         return "restaurantHome";
     }
+    @GetMapping("/home/customers")
+    public String homeC(Model model) {
+        model.addAttribute("restaurants", service.getAll());
+        return "RestaurantCustomer";
+    }
 
     @GetMapping("/create")
     public String getCreateForm(@ModelAttribute("restaurant") Restaurant restaurant){

@@ -79,30 +79,42 @@
 <div class="page-header clear-filter" filter-color="orange">
     <div class="content">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <div class="card card-chart">
 
                     <div class="card-body">
-                        <a class="nav-link" href="/restaurant/home/customers">
-                            <img th:src="@{/img/rest.jpg}" alt="" />
-                            <div class="middle">
-                                <div class="h4">Restaurant</div>
-                            </div>
-                        </a>
-                    </div>
+                        <form>
+                            <section class="main">
+                                <div>
+                                        <div>
+
+                                            <div style="text-align: center;">
+
+                                                <table id="table" class="table">
+                                                    <thead>
+                                                    <tr>
+                                                        <th scope="col" hidden>Restaurant Id</th>
+                                                        <th scope="col">Restaurant Name</th>
+                                                        <th scope="col">Location</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr th:each="class : ${restaurants}" >
+                                                        <td th:text="${class.getRestaurantId()}" hidden></td>
+                                                        <td th:text="${class.getRestaurantName()}"></td>
+                                                        <td th:text="${class.getRestaurantLocation()}"></td>
+
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                                <a   href="/menuItem/restaurant" class="btn btn-primary btn-round btn-lg btn-block">  Next </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </section>
+                        </form>
+
                 </div>
-            </div>
-
-            <div class="col-lg-6">
-                <div class="card card-chart">
-
-                    <div class="card-body">
-                        <a class="nav-link" href="/supermarket/home/customers">
-                            <img th:src="@{/img/supermarket.jpg}" alt="" />
-                            <div class="middle">
-                                <div class="h4">Supermarket</div>
-                            </div>
-                        </a>
                     </div>
                 </div>
             </div>

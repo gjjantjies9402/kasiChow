@@ -16,7 +16,7 @@ public class OrderItem {
     private int quantity;
     private double totalAmount;
 
-    protected OrderItem(){}
+    public OrderItem(){}
 
     //Private constructor
     private OrderItem(Builder builder) {

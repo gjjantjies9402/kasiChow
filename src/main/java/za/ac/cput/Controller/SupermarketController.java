@@ -28,6 +28,11 @@ public class SupermarketController {
         model.addAttribute("supermarkets", service.getAll());
         return "supermarketHome";
     }
+    @GetMapping("/home/customers")
+    public String homeS(Model model) {
+        model.addAttribute("supermarkets", service.getAll());
+        return "SupermarketCustomer";
+    }
     @GetMapping("/create")
     public String getCreateForm(@ModelAttribute("supermarket") Supermarket supermarket) {
         return "supermarketAdd";

@@ -7,7 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.Entity.Driver;
-import za.ac.cput.Entity.Supermarket;
 import za.ac.cput.Factory.DriverFactory;
 import za.ac.cput.Service.impl.DriverService;
 
