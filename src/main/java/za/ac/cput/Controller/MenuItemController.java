@@ -9,12 +9,14 @@ import za.ac.cput.Service.impl.MenuItemService;
 import java.util.Set;
 //
 //@Controller
-@RestController
+@Controller
 @RequestMapping("/menuItem")
 public class MenuItemController {
 //
     @Autowired
-    private MenuItemService service;
+    private MenuItemService menuItemService;
+
+
 
     @PostMapping("/create")
 public MenuItem create (@RequestBody MenuItem menuItem) {
@@ -25,16 +27,16 @@ public MenuItem create (@RequestBody MenuItem menuItem) {
             menuItem.getItemPrice()
 
     );
-    return service.create(newMenuItem);
+    return menuItemService.create(newMenuItem);
 }
 
 //
     @GetMapping(value = "/read/{id}")
-    public MenuItem read (@PathVariable String id) {return service.read(id);}
+    public MenuItem read (@PathVariable String id) {return menuItemService.read(id);}
 //
     @GetMapping("/update")
     public MenuItem update(@RequestBody MenuItem menuItem) {
-        MenuItem update = service.update(menuItem);
+        MenuItem update = menuItemService.update(menuItem);
 
         return update;
     }
@@ -43,11 +45,11 @@ public MenuItem create (@RequestBody MenuItem menuItem) {
     @DeleteMapping(value = "/delete/{id}")
     public boolean delete (@PathVariable(value = "Id") String Id)
     {
-        return service.delete(Id);
+        return menuItemService.delete(Id);
     }
 
 //
     @GetMapping(value = "/all")
-    public Set<MenuItem> getAll() {return service.getAll();}
+    public Set<MenuItem> getAll() {return menuItemService.getAll();}
 }
 //

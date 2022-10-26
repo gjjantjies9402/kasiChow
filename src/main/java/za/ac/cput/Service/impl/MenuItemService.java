@@ -12,9 +12,23 @@ import java.util.stream.Collectors;
 @Service
 public class MenuItemService implements IMenuItemService {
 
+    private static IMenuItemService menuItemService = null;
     @Autowired
-    private static MenuItemService service = null;
     private iMenuItemRepository menuItemRepository;
+
+    private MenuItemService()
+    {
+
+
+    }
+
+    public static IMenuItemService getMenuItemService() {
+
+        if(menuItemService == null)
+            menuItemService = new MenuItemService();
+        return menuItemService;
+
+    }
 
     @Override
     public Set<MenuItem> getAll() {return this.menuItemRepository.findAll().stream().collect(Collectors.toSet());}

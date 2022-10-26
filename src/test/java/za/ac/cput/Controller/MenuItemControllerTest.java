@@ -54,8 +54,8 @@ class MenuItemControllerTest {
     public void read() {
         String url = baseURL + "/read/" + mItem.getItemID();
         System.out.println("URL: " + url);
-        ResponseEntity<MenuItem> menuItemResponse = restTemplate.getForEntity(url, MenuItem.class);
-        assertEquals(mItem.getItemID(), menuItemResponse.getBody().getItemID());
+        ResponseEntity<MenuItem> response = restTemplate.getForEntity(url, MenuItem.class);
+        assertEquals(mItem.getItemID(), response.getBody().getItemID());
     }
 
     @Test
@@ -64,8 +64,8 @@ class MenuItemControllerTest {
         MenuItem updated = new MenuItem.Builder().copy(mItem).setItemPrice(15.50).build();
         System.out.println("URL: " + url);
         System.out.println("Updated: " + updated);
-        ResponseEntity<MenuItem> menuItemResponse = restTemplate.postForEntity(url, updated, MenuItem.class);
-        assertNotNull(menuItemResponse.getBody());
+        ResponseEntity<MenuItem> response = restTemplate.postForEntity(url, updated, MenuItem.class);
+        assertNotNull(response.getBody());
     }
 
     @Test
@@ -74,10 +74,10 @@ class MenuItemControllerTest {
         System.out.println("URL: " + url);
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> menuItemEntity = new HttpEntity<>(null, headers);
-        ResponseEntity<String> menuItemResponse = restTemplate.exchange(url, HttpMethod.GET, menuItemEntity, String.class);
+        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, menuItemEntity, String.class);
         System.out.println("Show All: ");
-        System.out.println(menuItemResponse);
-        System.out.println(menuItemResponse.getBody());
+        System.out.println(response);
+        System.out.println(response.getBody());
     }
 
     @Test
