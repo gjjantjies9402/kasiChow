@@ -5,21 +5,21 @@
  **/
 package za.ac.cput.Factory;
 
-import za.ac.cput.Entity.Orders;
-import za.ac.cput.Entity.OrderItem;
-import za.ac.cput.Entity.Receipt;
+import za.ac.cput.Entity.*;
 import za.ac.cput.util.Auth;
 
 public class ReceiptFactory {
     //Creating a Receipt object
-    public static Receipt createReceipt(String receiptID, Orders order){
+    public static Receipt createReceipt(String receiptID, Orders orderID, Customer custID, Driver driverID, MenuItem itemID){
         if(Auth.isNullorEmpty(receiptID))
             return null;
 
         return new Receipt.Builder()
                 .setReceiptID(receiptID)
-                .setOrder(order)
-//                .setOrderItem(orderItem)
+                .setOrder(orderID)
+                .setCustID(custID)
+                .setDriverID(driverID)
+                .setItemID(itemID)
                 .build();
     }
 

@@ -33,13 +33,20 @@ public class Orders {
     }
 
     private Orders(Orders.Builder buil) {
-        this.custID = buil.custID;
         this.orderID = buil.orderID;
+        this.custID = buil.custID;
         this.driverID = buil.driverID;
         this.itemID = buil.itemID;
         this.trackStatus = buil.trackStatus;
         this.trackETA = buil.trackETA;
 
+    }
+    public String getOrderID() {
+        return orderID;
+    }
+
+    public void setOrderID(String orderID) {
+        this.orderID = orderID;
     }
 
     public Customer getCustID() {
@@ -49,14 +56,6 @@ public class Orders {
     public Customer setCustID(Customer custID) {
         this.custID = custID;
         return custID;
-    }
-
-    public String getOrderID() {
-        return orderID;
-    }
-
-    public void setOrderID(String orderID) {
-        this.orderID = orderID;
     }
 
     public Driver getDriverID() {
@@ -96,8 +95,8 @@ public class Orders {
     @Override
     public String toString() {
         return "Builder{" +
-                "custID=" + custID +
-                ", orderID=" + orderID +
+                "orderID=" + orderID +
+                ", custID=" + custID +
                 ", driverID=" + driverID +
                 ", itemID=" + itemID +
                 ", trackStatus='" + trackStatus + '\'' +
@@ -106,20 +105,20 @@ public class Orders {
     }
 
     public static class Builder {
-        private Customer custID;
         private String orderID;
+        private Customer custID;
         private Driver driverID;
         private MenuItem itemID;
         private String trackStatus;
         private String trackETA;
 
-        public Builder setCustID(Customer custID) {
-            this.custID = custID;
+        public Builder setOrderID(String orderID) {
+            this.orderID = orderID;
             return this;
         }
 
-        public Builder setOrderID(String orderID) {
-            this.orderID = orderID;
+        public Builder setCustID(Customer custID) {
+            this.custID = custID;
             return this;
         }
 
@@ -144,8 +143,8 @@ public class Orders {
         }
 
         public Builder copy(Orders ord) {
-            this.custID = ord.custID;
             this.orderID = ord.orderID;
+            this.custID = ord.custID;
             this.driverID = ord.driverID;
             this.itemID = ord.itemID;
             this.trackStatus = ord.trackStatus;

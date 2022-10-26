@@ -29,8 +29,13 @@ public class ReceiptController {
     @PostMapping("/create")
     public Receipt create (@RequestBody Receipt receipt)
     {
-        Receipt newReceipt = ReceiptFactory.createReceipt(receipt.getReceiptID(), receipt.getOrder());
-        return receiptServices.create(newReceipt);
+        Receipt newReceipt = ReceiptFactory.createReceipt(
+                receipt.getReceiptID(),
+                receipt.getOrderID(),
+                receipt.getCustID(),
+                receipt.getDriverID(),
+                receipt.getItemID());
+        return receiptServices.create(receipt);
     }
 
     @GetMapping("/read/{receiptID}")
