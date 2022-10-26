@@ -6,13 +6,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.Entity.OrderItem;
 import za.ac.cput.Factory.OrderItemFactory;
-import za.ac.cput.Service.Interface.IOrderItemService;
 import za.ac.cput.Service.impl.OrderItemService;
 
 import java.util.Set;
 
 
-//@RestController
+@RestController
 @Controller
 @RequestMapping("/orderItem")
 public class OrderItemController {

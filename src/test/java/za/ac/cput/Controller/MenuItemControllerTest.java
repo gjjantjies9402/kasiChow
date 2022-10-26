@@ -11,9 +11,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import za.ac.cput.Entity.MenuItem;
-import za.ac.cput.Entity.OrderItem;
 import za.ac.cput.Factory.MenuItemFactory;
-import za.ac.cput.Factory.OrderItemFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -40,7 +38,7 @@ class MenuItemControllerTest {
     }
 
     @Test
-    public void create() {
+    public void a_create() {
         String url = baseURL + "/create";
         ResponseEntity<MenuItem> postResponse = restTemplate.postForEntity(url, mItem, MenuItem.class);
         assertNotNull(postResponse);
@@ -51,7 +49,7 @@ class MenuItemControllerTest {
     }
 
     @Test
-    public void read() {
+    public void b_read() {
         String url = baseURL + "/read/" + mItem.getItemID();
         System.out.println("URL: " + url);
         ResponseEntity<MenuItem> response = restTemplate.getForEntity(url, MenuItem.class);
@@ -59,7 +57,7 @@ class MenuItemControllerTest {
     }
 
     @Test
-    public void update() {
+    public void c_update() {
         String url = baseURL + "update";
         MenuItem updated = new MenuItem.Builder().copy(mItem).setItemPrice(15.50).build();
         System.out.println("URL: " + url);
@@ -69,7 +67,7 @@ class MenuItemControllerTest {
     }
 
     @Test
-    public void getAll() {
+    public void d_getAll() {
         String url = baseURL + "/getall/";
         System.out.println("URL: " + url);
         HttpHeaders headers = new HttpHeaders();
@@ -82,7 +80,7 @@ class MenuItemControllerTest {
 
     @Test
     public void delete() {
-        String url = baseURL + "/delete/" + mItem1.getItemID();
+        String url = baseURL + "/delete/" + mItem.getItemID();
         System.out.println("URL " + url);
         restTemplate.delete(url);
     }

@@ -15,7 +15,7 @@ public class MenuItem {
     private String itemName;
     private double itemPrice;
     private String menuCategory;
-    protected MenuItem(){
+    public MenuItem(){
     }
     //private constructer
     private MenuItem(Builder builder){
