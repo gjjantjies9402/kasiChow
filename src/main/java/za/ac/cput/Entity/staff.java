@@ -23,7 +23,7 @@ public class staff {
     private String deliveryDriver;
     private String assistant ;
 
-    protected staff(){}
+    public staff(){}
     //Builder Constructor
     private staff(Builder builder){
         this.adminName = builder.adminName;

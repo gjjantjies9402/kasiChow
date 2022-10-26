@@ -16,7 +16,7 @@ public class Ratings {
     private int  rateScale;
     private String rateReview;
 
-    protected Ratings() {
+    public Ratings() {
     }
 
     private Ratings(Builder builder) {

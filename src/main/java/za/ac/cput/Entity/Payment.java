@@ -13,6 +13,7 @@ import javax.persistence.Id;
 public class Payment {
     @Id
     private String paymentID;
+    //get this from payment type
     private String paymentType;
     private String nameOnCard;
     private String creditCardNumber;
@@ -20,7 +21,7 @@ public class Payment {
     private String expYear;
     private int cvv;
 
-    protected Payment(){
+    public Payment(){
 
     }
     //private constructers
